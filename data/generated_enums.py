@@ -1,7 +1,6 @@
 from enum import Enum
 
-
-class PlugCategoryHashes(Enum):
+class PlugCategoryHashes(int, Enum):
     HunterStasisTotems = 1853189378
     TitanStasisTotems = 1491608144
     WarlockStasisTotems = 2997725741
@@ -664,8 +663,7 @@ class PlugCategoryHashes(Enum):
     SocialClansPerks = 3898156960
     SocialClansStaves = 3954618873
 
-
-class StatHashes(Enum):
+class StatHashes(int, Enum):
     能量 = 1935470627
     防御 = 3897883278
     敏捷 = 2996146975
@@ -724,8 +722,7 @@ class StatHashes(Enum):
     冰影消耗_3950461274 = 3950461274
     冰影消耗_998798867 = 998798867
 
-
-class ItemCategoryHashes(Enum):
+class ItemCategoryHashes(int, Enum):
     武器 = 1
     动能武器 = 2
     能量武器 = 3
@@ -845,8 +842,7 @@ class ItemCategoryHashes(Enum):
     模组_MOD = 59
     公会战旗_874645359 = 874645359
 
-
-class SocketCategoryHashes(Enum):
+class SocketCategoryHashes(int, Enum):
     原料 = 322810736
     诱饵升级 = 2402926498
     诱饵模组 = 3848483489
@@ -888,8 +884,7 @@ class SocketCategoryHashes(Enum):
     公会特性_UNLOCKABLE_公会战旗 = 3898156960
     公会特性_UNLOCKABLE_UNUSED = 1683579090
 
-
-class BucketHashes(Enum):
+class BucketHashes(int, Enum):
     动能武器 = 1498876634
     能量武器 = 2465295065
     威能武器 = 953998645
@@ -931,8 +926,8 @@ class BucketHashes(Enum):
     动作_EQUIPPABLE = 3054419239
     动作_1107761855 = 1107761855
 
-
-class BreakerTypeHashes(Enum):
+class BreakerTypeHashes(int, Enum):
     贯穿护盾 = 485622768
     干扰 = 2611060930
     眩晕 = 3178805705
+
