@@ -1,4 +1,4 @@
-from typing import Any, List, TypeVar, Callable, Hashable, Generator
+from typing import List, TypeVar, Callable, Hashable, Optional, Generator
 
 T = TypeVar("T")
 
@@ -26,3 +26,18 @@ def deduplicate(
         if val not in d:
             yield item
             d.add(val)
+
+
+Sortable = TypeVar("Sortable", str, int)
+
+
+def dedupeAndSortArray(items: List[Sortable], reverse: bool = False) -> List[Sortable]:
+    items = list(deduplicate(items))
+    items.sort(reverse=reverse)
+    return items
+
+
+def diffArrays(all: List[T], exclude: Optional[List[T]] = None) -> List[T]:
+    if exclude is None:
+        return list(deduplicate(all))
+    return [i for i in deduplicate(all) if i not in exclude]
