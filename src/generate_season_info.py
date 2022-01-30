@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 import ujson
 
-from tools import copyFile, readFile, writeFile, deduplication
+from tools import copyFile, readFile, writeFile, deduplicate
 from manifest import getAll, loadLocal
 from data.seasons.d2_season_info import D2SeasonInfo, D2CalculatedSeason
 
@@ -18,7 +18,7 @@ powerCaps = [
     if i["powerCap"] > 1000 and i["powerCap"] < 50000
 ]
 # 对  powerCaps 在保留顺序的情况下进行去重
-powerCaps = deduplication(powerCaps)
+powerCaps = list(deduplicate(powerCaps))
 
 # 将新增的内容标记到当前赛季
 for i in inventoryItems:

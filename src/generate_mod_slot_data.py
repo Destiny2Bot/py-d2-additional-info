@@ -3,7 +3,7 @@ from typing import List
 import ujson
 from pydantic import BaseModel
 
-from tools import writeFile, deduplication
+from tools import writeFile, deduplicate
 from manifest import get, getAll, loadLocal
 from data.seasons.d2_season_info import D2CalculatedSeason
 
@@ -72,16 +72,22 @@ def getCompatibleTags(exampleArmorSocketEntry: dict):
     if temp:
         temp = get("DestinyPlugSetDefinition", temp)
         if temp:
-            return deduplication(
-                [
-                    seasonTagFromMod(
-                        get("DestinyInventoryItemDefinition", plugItem["plugItemHash"])
-                    )
-                    for plugItem in temp["reusablePlugItems"]
-                    if get(
-                        "DestinyInventoryItemDefinition", plugItem.get("plugItemHash")
-                    )
-                ]
+            return list(
+                deduplicate(
+                    [
+                        seasonTagFromMod(
+                            get(
+                                "DestinyInventoryItemDefinition",
+                                plugItem["plugItemHash"],
+                            )
+                        )
+                        for plugItem in temp["reusablePlugItems"]
+                        if get(
+                            "DestinyInventoryItemDefinition",
+                            plugItem.get("plugItemHash"),
+                        )
+                    ]
+                )
             )
 
 
@@ -109,13 +115,15 @@ def getEmptySeasonalModSocketsInfo(emptyModSocket: dict):
     socketTypeHash = exampleArmorSocketEntry["socketTypeHash"]
 
     # plugCategoryHashes 其原生插槽是这个
-    plugCategoryHashes = deduplication(
-        [
-            item["plug"]["plugCategoryHash"]
-            for item in inventoryItems
-            if item.get("itemTypeDisplayName") == itemTypeDisplayName
-            if item.get("plug") and item["plug"]["plugCategoryHash"]
-        ]
+    plugCategoryHashes = list(
+        deduplicate(
+            [
+                item["plug"]["plugCategoryHash"]
+                for item in inventoryItems
+                if item.get("itemTypeDisplayName") == itemTypeDisplayName
+                if item.get("plug") and item["plug"]["plugCategoryHash"]
+            ]
+        )
     )
 
     # 此 SocketType 支持的 plugCategoryHashes

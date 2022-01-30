@@ -3,7 +3,7 @@ from typing import Any, List
 import ujson
 
 from log import logger
-from tools import copyFile, readFile, writeFile, deduplication
+from tools import copyFile, readFile, writeFile, deduplicate
 from manifest import get, getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
 from data.seasons.d2_season_info import D2CalculatedSeason
@@ -49,7 +49,7 @@ for item in inventoryItems:
 
 # seasonToSource 去重
 for season in seasonNumbers:
-    seasonToSource[season] = deduplication(seasonToSource[season])
+    seasonToSource[season] = list(deduplicate(seasonToSource[season]))
 
 # 验证是否有交集，如果有则从 seasonToSource 中去除
 
@@ -62,7 +62,7 @@ for seasonA in seasonNumbers:
         )
 
 # notSeasonallyUnique 去重
-notSeasonallyUnique = deduplication(notSeasonallyUnique)
+notSeasonallyUnique = list(deduplicate(notSeasonallyUnique))
 
 # 从 seasonToSource 中删除 notSeasonallyUnique 中的条目
 for season in seasonNumbers:
