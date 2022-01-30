@@ -1,6 +1,6 @@
 import os
 import shutil
-from typing import Dict, Union
+from typing import Any, Union
 from pathlib import Path
 
 import ujson
@@ -23,7 +23,7 @@ def copyFile(src: str, dst: str):
     shutil.copy2(src, dst)
 
 
-def writeFile(path: Union[str, Path], content: Union[str, Dict]):
+def writeFile(path: Union[str, Path], content: Union[str, Any]):
     """
     :说明: `writeFile`
     > 将数据写入文件
@@ -33,10 +33,10 @@ def writeFile(path: Union[str, Path], content: Union[str, Dict]):
       * `content: Union[str, Dict]`: 写入内容
     """
     with open(path, "w", encoding="utf-8") as file:
-        if isinstance(content, dict):
-            ujson.dump(content, file, ensure_ascii=False, indent=4)
-        else:
+        if isinstance(content, str):
             file.write(content)
+        else:
+            ujson.dump(content, file, ensure_ascii=False, indent=4)
 
 
 def readFile(path: Union[str, Path]) -> str:
