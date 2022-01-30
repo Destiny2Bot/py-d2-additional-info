@@ -1,10 +1,10 @@
-from pydantic import BaseModel
-from typing import List, Optional, Union
+from typing import List, Union, Optional
 
-from manifest import getAll, get, loadLocal
-from data.generated_enums import ItemCategoryHashes
-from tools.JsonIO import readjson, writejson
-from tools import deduplication, writeFile
+from pydantic import BaseModel
+
+from tools import writeFile
+from manifest import getAll, loadLocal
+
 
 class CategoriesSources(BaseModel):
     # 字符串列表， 如果一个来源描述包含其中之一
@@ -27,21 +27,23 @@ class CategoriesSources(BaseModel):
 
     searchString: Optional[List[str]]
 
+
 class Categories(BaseModel):
     sources: dict[
-        str, # 一个 sourceTag, i.e. "adventures" or "deadorbit" or "zavala" or "crucible"
-        CategoriesSources
+        str,  # 一个 sourceTag, i.e. "adventures" or "deadorbit" or "zavala" or "crucible"
+        CategoriesSources,
     ]
 
-    exceptions: List[List[str]] # 我真的不记得为什么会有这个东西
+    exceptions: List[List[str]]  # 我真的不记得为什么会有这个东西
 
-categories = Categories.parse_file('./data/sources/categories.json')
+
+categories = Categories.parse_file("./data/sources/categories.json")
 
 loadLocal()
 
-allInventoryItems = getAll('DestinyInventoryItemDefinition')
-allCollectibles = getAll('DestinyCollectibleDefinition')
-allPresentationNodes = getAll('DestinyPresentationNodeDefinition')
+allInventoryItems = getAll("DestinyInventoryItemDefinition")
+allCollectibles = getAll("DestinyCollectibleDefinition")
+allPresentationNodes = getAll("DestinyPresentationNodeDefinition")
 
 # 这只是一个 hash-to-sourceString 转换表，since none exists (因为不存在这样的表)。
 sourceStringsByHash: dict[int, str] = {}
@@ -51,27 +53,33 @@ assignedSources: List[int] = []
 unassignedSources: List[int] = []
 
 for collectible in allCollectibles:
-    hash = collectible.get('sourceHash')
-    sourceName = collectible['sourceString'] if collectible.get('sourceString') else collectible['displayProperties']['description']
+    hash = collectible.get("sourceHash")
+    sourceName = (
+        collectible["sourceString"]
+        if collectible.get("sourceString")
+        else collectible["displayProperties"]["description"]
+    )
     if hash:
         # 仅添加具有现有哈希的源（例如，没有分类项目）
         sourceStringsByHash[hash] = sourceName
         allSources.append(hash)
 
-writejson('./output/sources.json', sourceStringsByHash)
+writeFile("./output/sources.json", sourceStringsByHash)
+
 
 class D2SourceInfo(BaseModel):
     itemHashes: List[int]
     sourceHashes: List[int]
     searchString: List[str]
 
+
 sourcesInfo: dict[int, str] = {}
 D2Sources: dict[str, D2SourceInfo] = {}
 
 # 由 manifest collectibles 构建 sourcesInfo
 for collectible in allCollectibles:
-    if collectible.get('sourceHash'):
-        sourcesInfo[collectible['sourceHash']] = collectible['sourceString']
+    if collectible.get("sourceHash"):
+        sourcesInfo[collectible["sourceHash"]] = collectible["sourceString"]
 
 # 从 categories.json 添加手动源字符串
 for sourceHash, sourceString in categories.exceptions:
