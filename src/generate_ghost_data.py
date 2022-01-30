@@ -39,7 +39,8 @@ ghostPerkHashDenyList = [2328497849]
 
 for item in inventoryItems:
     hash: int = item["hash"]
-    description: str = item["displayProperties"]["displayProperties"]
+    description: str = item["displayProperties"]["description"]
+    name: str = item["displayProperties"]["name"]
     categoryHashes: List[int] = item["itemCategoryHashes"] or []
 
     if (ItemCategoryHashes.机灵模组特性 in categoryHashes) and (
@@ -49,3 +50,9 @@ for item in inventoryItems:
         pass
 
 writeFile("./output/ghost-perks.json", ghostPerks)
+
+
+def getLocation(description: str):
+    lcDescription = description.lower()
+    if lcDescription.find(""):
+        return ""
