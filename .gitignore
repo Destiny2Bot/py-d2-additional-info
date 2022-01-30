@@ -121,4 +121,3 @@ data/BungieManifest/*
 *.DS_Store
 fytest
 .vscode/launch.json
-./output/*
