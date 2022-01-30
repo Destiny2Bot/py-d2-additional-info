@@ -1,9 +1,8 @@
 import os
+import json
 import shutil
 from typing import Any, Union
 from pathlib import Path
-
-import ujson
 
 
 def copyFile(src: str, dst: str):
@@ -36,7 +35,7 @@ def writeFile(path: Union[str, Path], content: Union[str, Any]):
         if isinstance(content, str):
             file.write(content)
         else:
-            ujson.dump(content, file, ensure_ascii=False, indent=4)
+            json.dump(content, file, ensure_ascii=False, indent=4)
 
 
 def readFile(path: Union[str, Path]) -> str:
