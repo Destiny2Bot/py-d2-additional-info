@@ -16,11 +16,22 @@ def loadLocal(language: str = "zh-chs") -> None:
     )
 
 
-def getAll(tablename: str = None, language: str = "zh-chs") -> dict:
+def getAll(tablename: str = None, language: str = "zh-chs") -> Union[dict, list]:
     if tablename:
-        return manifest_json[language][tablename].values()
+        return list(manifest_json[language][tablename].values())
     return manifest_json
 
 
-def get(tablename: str, hash: Union[str, int], language: str = "zh-chs") -> dict:
-    return manifest_json[language][tablename].get(str(hash))
+def get(
+    tablename: str, hash: Union[str, int], itemname: str = None, language: str = "zh-chs"
+) -> dict:
+    if not hash and itemname:
+        item = [
+            item
+            for item in manifest_json[language][tablename]
+            if item.get("displayProperties")
+            and item.get("displayProperties").get("name") == itemname
+        ]
+        return item[0] if item else {}
+    else:
+        return manifest_json[language][tablename].get(str(hash))
