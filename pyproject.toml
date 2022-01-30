@@ -8,10 +8,24 @@ authors = ["Tian-que <1605206150@qq.com>"]
 python = "^3.9"
 bungieapi = {path = "../bungieapi"}
 ujson = "^5.1.0"
+types-ujson = "^4.2.1"
 aiofiles = "^0.8.0"
+pydantic = "^1.9.0"
+loguru = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+mypy = "^0.931"
+black = "^22.1.0"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 89
+target-version = ['py39']
