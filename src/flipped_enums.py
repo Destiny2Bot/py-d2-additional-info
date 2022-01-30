@@ -1,6 +1,7 @@
 # stolen from bungieapi/generated/components/schemas/destiny/__init__.py
 from enum import Enum
 
+
 class DestinySocketCategoryStyle(Enum):
     """表示游戏用于渲染 Socket 类别的可能和已知的 UI 样式。"""
 
@@ -13,6 +14,7 @@ class DestinySocketCategoryStyle(Enum):
     LARGE_PERK = 6
     ABILITIES = 7
     SUPERS = 8
+
 
 class DestinyItemType(Enum):
     """一个表示物品的高级 "类型 "的枚举，试图为一个实体的具体实例消除上下文的差异。
@@ -49,6 +51,7 @@ class DestinyItemType(Enum):
     WRAPPER = 27
     SEASONAL_ARTIFACT = 28
     FINISHER = 29
+
 
 class DestinyItemSubType(Enum):
     """这个枚举通过比DestinyItemType更具体的分类来进一步对项目进行分类。
@@ -91,16 +94,18 @@ class DestinyItemSubType(Enum):
     BOW = 31
     DUMMY_REPEATABLE_BOUNTY = 32
 
+
 class BucketCategory(Enum):
     """这个枚举表示一个物品的类别。"""
-    
+
     INVISIBLE = 0
     ITEM = 1
     CURRENCY = 2
     EQUIPPABLE = 3
     IGNORED = 4
 
-DestinySocketCategoryStyleLookup = {v.value:v.name for v in DestinySocketCategoryStyle}
-DestinyItemTypeLookup = {v.value:v.name for v in DestinyItemType}
-DestinyItemSubTypeLookup = {v.value:v.name for v in DestinyItemSubType}
-BucketCategoryLookup = {v.value:v.name for v in BucketCategory}
+
+DestinySocketCategoryStyleLookup = {v.value: v.name for v in DestinySocketCategoryStyle}
+DestinyItemTypeLookup = {v.value: v.name for v in DestinyItemType}
+DestinyItemSubTypeLookup = {v.value: v.name for v in DestinyItemSubType}
+BucketCategoryLookup = {v.value: v.name for v in BucketCategory}
