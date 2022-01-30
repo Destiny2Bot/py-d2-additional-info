@@ -1,7 +1,7 @@
 from typing import Any, Dict, List
 
 from log import logger
-from tools import writeFile, deduplication
+from tools import writeFile, deduplicate
 from manifest import getAll, loadLocal
 from src.flipped_enums import (
     BucketCategoryLookup,
@@ -190,7 +190,7 @@ for i in enumSources:
     ]
 
     # 如果生成的名字不都是唯一的，我也不知道该怎么做
-    if len(deduplication(deDupedIdentifiers)) != len(deDupedIdentifiers):
+    if len(list(deduplicate(deDupedIdentifiers))) != len(deDupedIdentifiers):
         logger.error(f"couldn't properly make unique labels for {deDupedIdentifiers}")
         continue
 

@@ -1,15 +1,9 @@
 import os
 import shutil
-from typing import Dict, List, Union, TypeVar
+from typing import Dict, Union
 from pathlib import Path
 
 import ujson
-
-T = TypeVar("T")
-
-
-def deduplication(lst: List[T]) -> List[T]:
-    return list(dict.fromkeys(lst))
 
 
 def copyFile(src: str, dst: str):
