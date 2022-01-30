@@ -205,8 +205,11 @@ for i in enumSources:
 # 枚举格式化输出
 outString = "from enum import Enum\n\n"
 for enumName, enumValues in generatedEnums.items():
-    outString += f"class {enumName}(Enum):\n\t"
-    outString += "\n\t".join(f"{label} = {value}" for label, value in enumValues.items())
+    spaces = " " * 4
+    outString += f"class {enumName}(int, Enum):\n{spaces}"
+    outString += f"\n{spaces}".join(
+        f"{label} = {value}" for label, value in enumValues.items()
+    )
     outString += "\n\n"
 
 writeFile("./output/generated_enums.py", outString)

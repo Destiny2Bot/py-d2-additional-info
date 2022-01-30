@@ -10,8 +10,10 @@ bungieapi = {path = "../bungieapi"}
 ujson = "^5.1.0"
 types-ujson = "^4.2.1"
 aiofiles = "^0.8.0"
-pydantic = "^1.9.0"
+types-aiofiles = "^0.8.3"
+pydantic = {extras = ["dotenv"], version = "^1.9.0"}
 loguru = "^0.6.0"
+
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

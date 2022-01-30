@@ -1,0 +1,1410 @@
+{
+    "4051388481": {
+        "location": "欧洲无人区",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "2199055252": {
+        "location": "木卫一",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "932058162": {
+        "location": "土卫六",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "3457795268": {
+        "location": "涅索斯",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "2425296638": {
+        "location": "欧洲无人区",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "1916863581": {
+        "location": "木卫一",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "1400394461": {
+        "location": "土卫六",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "2856116177": {
+        "location": "涅索斯",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "3935848740": {
+        "location": "熔炉竞技场",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "3147447938": {
+        "location": "欧洲无人区",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "4040200521": {
+        "location": "木卫一",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "1946260457": {
+        "location": "土卫六",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "3393447213": {
+        "location": "涅索斯",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "1329583752": {
+        "location": "熔炉竞技场",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "3523930524": {
+        "location": "欧洲无人区",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "707631447": {
+        "location": "木卫一",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "263169843": {
+        "location": "土卫六",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "1085640235": {
+        "location": "涅索斯",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": false,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "1626532497": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": false,
+                "solar": false
+            },
+            "improved": false
+        }
+    },
+    "1942048138": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": false,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "4287983117": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1990928495": {
+        "location": "欧洲无人区",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1064347710": {
+        "location": "木卫一",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1933479768": {
+        "location": "土卫六",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1894263102": {
+        "location": "涅索斯",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "329782251": {
+        "location": "熔炉竞技场",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1765741659": {
+        "location": "木卫一",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "2645492862": {
+        "location": "欧洲无人区",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "2274579115": {
+        "location": "土卫六",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "3260411014": {
+        "location": "水星",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2142971474": {
+        "location": "水星",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "66383463": {
+        "location": "涅索斯",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "1048118643": {
+        "location": "木卫一",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "390974608": {
+        "location": "欧洲无人区",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "815624991": {
+        "location": "土卫六",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1255371660": {
+        "location": "水星",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3569214087": {
+        "location": "涅索斯",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1255489387": {
+        "location": false,
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2010132761": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "103219604": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1712870644": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "2956832212": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1612078667": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2404852074": {
+        "location": "水星",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1198449474": {
+        "location": "水星",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2126415067": {
+        "location": "水星",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3300497782": {
+        "location": "打击",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3138059283": {
+        "location": "水星",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1991567150": {
+        "location": "打击",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "741416970": {
+        "location": "利维坦",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3785828493": {
+        "location": "利维坦",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "4082217637": {
+        "location": "水星",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3447587684": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "3883296839": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "3448093826": {
+        "location": false,
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "566395092": {
+        "location": "水星",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2207103371": {
+        "location": "打击",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2224144604": {
+        "location": "赫拉斯盆地",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1586768444": {
+        "location": "赫拉斯盆地",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "819844944": {
+        "location": "赫拉斯盆地",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "281656579": {
+        "location": "赫拉斯盆地",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "183999083": {
+        "location": "赫拉斯盆地",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "30834361": {
+        "location": "赫拉斯盆地",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3900721702": {
+        "location": "赫拉斯盆地",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2536988426": {
+        "location": "幽梦之城",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "322369214": {
+        "location": "幽梦之城",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "1791543972": {
+        "location": "纷争海岸",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1702115876": {
+        "location": "纷争海岸",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": true
+        }
+    },
+    "2858914062": {
+        "location": "纷争海岸",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "478676376": {
+        "location": "幽梦之城",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "816744355": {
+        "location": "幽梦之城",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "693114386": {
+        "location": "智谋",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2595207061": {
+        "location": "纷争海岸",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3249887691": {
+        "location": "幽梦之城",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3528214957": {
+        "location": "纷争海岸",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "36804749": {
+        "location": "幽梦之城",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1143206163": {
+        "location": "纷争海岸",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2602884912": {
+        "location": "幽梦之城",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "4258605391": {
+        "location": "智谋",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3126446358": {
+        "location": "纷争海岸",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "4217001755": {
+        "location": "月球",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "4212305433": {
+        "location": "月球",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1287422957": {
+        "location": "月球",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": true,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2096072732": {
+        "location": "月球",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": true,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "2278653192": {
+        "location": "月球",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "3920312498": {
+        "location": "月球",
+        "type": {
+            "xp": false,
+            "resource": true,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "1365595761": {
+        "location": "月球",
+        "type": {
+            "xp": true,
+            "resource": false,
+            "cache": false,
+            "scanner": false,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    },
+    "392619685": {
+        "location": "熔炉竞技场",
+        "type": {
+            "xp": false,
+            "resource": false,
+            "cache": false,
+            "scanner": true,
+            "glimmer": false,
+            "telemetry": {
+                "arc": true,
+                "void": true,
+                "solar": true
+            },
+            "improved": false
+        }
+    }
+}
