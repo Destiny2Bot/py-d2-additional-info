@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 import ujson
 from pydantic import BaseModel
@@ -20,7 +20,17 @@ namedSeasonExceptions: dict[int, str] = {
 }
 
 
-def getSeasonID(season: int):
+def getSeasonID(season: int) -> str:
+    """
+    :说明: `getSeasonID`
+    > 获取用于查询模组的赛季标识字符串
+
+    :参数:
+      * `season: int`: 赛季ID
+
+    :返回:
+    - `str`: 用于查询模组的赛季标识字符串
+    """
     id = 420 + 10 * (season - 4)
     return f'enhancements.season_{namedSeasonExceptions.get(id, f"v{id}")}'
 
@@ -32,29 +42,46 @@ for season in range(4, D2CalculatedSeason + 1):
 
 
 class ModSocketMetadata(BaseModel):
-    # 这允许我们按时间顺序对模组进行排序以达到 LO 的目的
     season: int
-    # 我们使用这两个来匹配搜索过滤器
+    """这允许我们按时间顺序对模组进行排序以达到 LO 的目的"""
+
     tag: str
+    """我们使用这两个来匹配搜索过滤器"""
+
     compatibleTags: List[str]
-    # 一个道具插口的 socketTypeHash 用于查找 ModSocketMetadata
+    """我们使用这两个来匹配搜索过滤器"""
+
     socketTypeHash: int
+    """# 一个道具插口的 socketTypeHash 用于查找 ModSocketMetadata"""
+
+    plugCategoryHashes: List[int]
     """
     模组本身并不指向它们的兼容插槽，它们只是有一个plugCategoryHash。
     一个socket指向一个socketType，它指的是多个plugCategoryHashes
     所以这里是一种更直接的方法，如果你有一个plugCategoryHash，无需进行数据表查找就可以找到ModSocketMetadata
     """
-    plugCategoryHashes: List[int]
-    # 哈希用于在加载管理器中更快地查找，它们直接对应于在单个模块中找到的信息
+
     compatiblePlugCategoryHashes: List[int]
-    # 这有助于我们查找空白的模组内容，以获取其图标/名称
+    """哈希用于在加载管理器中更快地查找，它们直接对应于在单个模块中找到的信息"""
+
     emptyModSocketHash: int
+    """这有助于我们查找空白的模组内容，以获取其图标/名称"""
 
 
 seasonalPlugCategoryIdentifier = "enhancements.season_"
 
 
 def seasonTagFromMod(item: dict) -> str:
+    """
+    :说明: `seasonTagFromMod`
+    > 从模组名中获取赛季标识简称
+
+    :参数:
+      * `item: dict`: 模组的JSON字典数据
+
+    :返回:
+        - `str`: 赛季标识简称
+    """
     tag = item["itemTypeDisplayName"]
     if tag.endswith("模组"):
         tag = tag[:-2]
@@ -67,31 +94,52 @@ def seasonTagFromMod(item: dict) -> str:
     return tag
 
 
-def getCompatibleTags(exampleArmorSocketEntry: dict):
-    temp = exampleArmorSocketEntry.get("reusablePlugSetHash")
-    if temp:
-        temp = get("DestinyPlugSetDefinition", temp)
-        if temp:
+def getCompatibleTags(exampleArmorSocketEntry: dict) -> List[str]:
+    """
+    :说明: `getCompatibleTags`
+    > 从示例道具插槽数据中获取所有可以插入这个插槽的模组
+
+    :参数:
+      * `exampleArmorSocketEntry: dict`: 示例的道具插槽数据
+
+    :Exceptions:
+      * ``: [description]
+
+    :返回:
+    - `List[str]`: [description]
+    """
+    if temp := exampleArmorSocketEntry.get("reusablePlugSetHash"):
+        if temp := get("DestinyPlugSetDefinition", temp):
             return list(
                 deduplicate(
                     [
-                        seasonTagFromMod(
-                            get(
-                                "DestinyInventoryItemDefinition",
-                                plugItem["plugItemHash"],
-                            )
-                        )
+                        seasonTagFromMod(plugItemHash)
                         for plugItem in temp["reusablePlugItems"]
-                        if get(
-                            "DestinyInventoryItemDefinition",
-                            plugItem.get("plugItemHash"),
+                        if (
+                            plugItemHash := get(
+                                "DestinyInventoryItemDefinition",
+                                plugItem.get("plugItemHash"),
+                            )
                         )
                     ]
                 )
             )
+    raise ValueError(f"{exampleArmorSocketEntry} can get compatible tags")
 
 
-def getEmptySeasonalModSocketsInfo(emptyModSocket: dict):
+def getEmptySeasonalModSocketsInfo(
+    emptyModSocket: dict,
+) -> Union[ModSocketMetadata, None]:
+    """
+    :说明: `getEmptySeasonalModSocketsInfo`
+    > 获取空模组插槽相关信息
+
+    :参数:
+      * `emptyModSocket: dict`: 空模组插槽元数据
+
+    :返回:
+    - `Union(ModSocketMetadata, None)`: [description]
+    """
     # 模组类型信息
     itemTypeDisplayName = emptyModSocket["itemTypeDisplayName"]
 
@@ -104,9 +152,12 @@ def getEmptySeasonalModSocketsInfo(emptyModSocket: dict):
     tag = seasonTagFromMod(emptyModSocket)
 
     # 具有此空插槽的示例装备
-    exampleArmorSocketEntry = findExampleSocketByEmptyModHash(emptyModSocket["hash"])
-    if not exampleArmorSocketEntry:
-        return
+    if not (
+        exampleArmorSocketEntry := findExampleSocketByEmptyModHash(
+            emptyModSocket["hash"]
+        )
+    ):
+        return None
 
     # 所有可以插入这个空模组插槽的模组
     compatibleTags = getCompatibleTags(exampleArmorSocketEntry) or []
@@ -118,10 +169,11 @@ def getEmptySeasonalModSocketsInfo(emptyModSocket: dict):
     plugCategoryHashes = list(
         deduplicate(
             [
-                item["plug"]["plugCategoryHash"]
+                itemPlugCategoryHash
                 for item in inventoryItems
                 if item.get("itemTypeDisplayName") == itemTypeDisplayName
-                if item.get("plug") and item["plug"]["plugCategoryHash"]
+                and item.get("plug")
+                and (itemPlugCategoryHash := item["plug"]["plugCategoryHash"])
             ]
         )
     )
@@ -145,15 +197,25 @@ def getEmptySeasonalModSocketsInfo(emptyModSocket: dict):
     )
 
 
-def findExampleSocketByEmptyModHash(emptyModSocketHash: int):
+def findExampleSocketByEmptyModHash(emptyModSocketHash: int) -> Union[dict, None]:
+    """
+    :说明: `findExampleSocketByEmptyModHash`
+    > 获取空模组插槽的示例装备的插槽数据
+
+    :参数:
+      * `emptyModSocketHash: int`: 空模组插槽的哈希
+
+    :返回:
+    - `Union[dict, None]`: 示例装备的插槽数据, 未查询到则为 None
+    """
     targetInventoryItems = [
         i
         for i in inventoryItems
-        if i.get("sockets")
+        if (sockets := i.get("sockets"))
         and any(
             [
                 j
-                for j in i["sockets"]["socketEntries"]
+                for j in sockets["socketEntries"]
                 if j["singleInitialItemHash"] == emptyModSocketHash
             ]
         )
@@ -173,66 +235,86 @@ emptySeasonalModSockets = [
     i
     for i in inventoryItems
     if i["displayProperties"]["name"] == "空模组插槽"
-    and i.get("plug")
-    and i["plug"]["plugCategoryIdentifier"].startswith(seasonalPlugCategoryIdentifier)
+    and (plug := i.get("plug"))
+    and plug["plugCategoryIdentifier"].startswith(seasonalPlugCategoryIdentifier)
 ]
 
 # 按 hash 对空模组插槽排序
 emptySeasonalModSockets.sort(key=lambda x: x["hash"])
 
 modMetadatas: List[ModSocketMetadata] = [
-    i
-    for i in [
-        getEmptySeasonalModSocketsInfo(emptyModSocket)
-        for emptyModSocket in emptySeasonalModSockets
-    ]
-    if i
+    modMetadata
+    for emptyModSocket in emptySeasonalModSockets
+    if (modMetadata := getEmptySeasonalModSocketsInfo(emptyModSocket))
 ]
+
 
 modMetadatas.sort(key=lambda x: x.season)
 seasonNameOrder = [i.tag for i in modMetadatas]
 
 
 def sortCompatibleTags(key: str) -> int:
+    """
+    :说明: `sortCompatibleTags`
+    > sortCompatibleTags 排序取 key
+
+    :参数:
+      * `key: str`: sortCompatibleTag
+
+    :返回:
+    - `int`: 返回元素的位置, 未查询到则返回 -1
+    """
     try:
         return seasonNameOrder.index(key)
     except ValueError:
         return -1
 
 
+# 对字段进行排序
 for m in modMetadatas:
     m.compatiblePlugCategoryHashes.sort()
     m.plugCategoryHashes.sort()
     m.compatibleTags.sort(key=sortCompatibleTags)
 
-
+# 将 modMetadatas 转为字符串
 modMetadatasStr = ujson.dumps(
     [i.dict() for i in modMetadatas], ensure_ascii=False, indent=4
 )
 
 
 pretty = """from pydantic import BaseModel
+
 from typing import List
 
+
 class ModSocketMetadata(BaseModel):
-    # 这允许我们按时间顺序对模组进行排序以达到 LO 的目的
     season: int
-    # 我们使用这两个来匹配搜索过滤器
+    \"\"\"这允许我们按时间顺序对模组进行排序以达到 LO 的目的\"\"\"
+
     tag: str
+    \"\"\"我们使用这两个来匹配搜索过滤器\"\"\"
+
     compatibleTags: List[str]
-    # 一个道具插口的 socketTypeHash 用于查找 ModSocketMetadata
+    \"\"\"我们使用这两个来匹配搜索过滤器\"\"\"
+
     socketTypeHash: int
+    \"\"\"# 一个道具插口的 socketTypeHash 用于查找 ModSocketMetadata\"\"\"
+
+    plugCategoryHashes: List[int]
     \"\"\"
     模组本身并不指向它们的兼容插槽，它们只是有一个plugCategoryHash。
     一个socket指向一个socketType，它指的是多个plugCategoryHashes
     所以这里是一种更直接的方法，如果你有一个plugCategoryHash，无需进行数据表查找就可以找到ModSocketMetadata
     \"\"\"
-    plugCategoryHashes: List[int]
-    # 哈希用于在加载管理器中更快地查找，它们直接对应于在单个模块中找到的信息
+
     compatiblePlugCategoryHashes: List[int]
-    # 这有助于我们查找空白的模组内容，以获取其图标/名称
+    \"\"\"哈希用于在加载管理器中更快地查找，它们直接对应于在单个模块中找到的信息\"\"\"
+
     emptyModSocketHash: int
+    \"\"\"这有助于我们查找空白的模组内容，以获取其图标/名称\"\"\"
     """
+
+
 pretty += "\n\nmodMetadatasList = " + modMetadatasStr
 pretty += "\n\nmodMetadatas = [ModSocketMetadata(**i) for i in modMetadatasList]"
 
