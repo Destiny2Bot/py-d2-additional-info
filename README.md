@@ -14,9 +14,9 @@
 - [x] generate_season_to_source.py
 - [x] generate_mod_slot_data.py
 - [x] generate_mod_slot_data
-- [ ] generate_source_info.py
-  - Assigned to FYWinds
+- [x] generate_source_info.py
 - [ ] generate_event_info.py
+  - Assigned to FYWinds
 - [x] generate_ghost_data.py
 - [ ] generate_objective_to_triumph.py
 - [ ] generate_bounty_data.py
