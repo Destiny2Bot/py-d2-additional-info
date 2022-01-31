@@ -24,6 +24,16 @@ generatedEnums["PlugCategoryHashes"] = {}
 
 
 def convertMixedStringToLeadingCapCamelCase(input: str) -> str:
+    """
+    :说明: `convertMixedStringToLeadingCapCamelCase`
+    > 对于任何字符串，对特殊符号替换后将其转换为首字母大写的驼峰式命名
+
+    :参数:
+        * `input: str`: 输入字符串
+
+    :返回:
+        - `str`: 输出字符串
+    """
     input = (
         input.replace(" ", "-")
         .replace(":", "-")
@@ -37,10 +47,12 @@ def convertMixedStringToLeadingCapCamelCase(input: str) -> str:
 
 
 for item in inventoryItems:
-    if item.get("plug") and not item.get("redacted"):
+    # 对于每个项目，我们将尝试获取一个唯一的标签
+    if (plug := item.get("plug")) and not item.get("redacted"):
         identifier = convertMixedStringToLeadingCapCamelCase(
-            item["plug"]["plugCategoryIdentifier"]
+            plug["plugCategoryIdentifier"]
         )
+        # 如果我们已经生成了一个标签，我们将添加一个新的标签
         if identifier not in generatedEnums["PlugCategoryHashes"]:
             generatedEnums["PlugCategoryHashes"][identifier] = item["plug"][
                 "plugCategoryHash"
@@ -65,29 +77,39 @@ enumSources: List[Dict[str, Any]] = [
 # 这将寻找关于一个项目的额外信息，当它的displayProperties.name不是唯一时，就会包括在内
 # 我试着让枚举参与其中，所以它们不太可能改变。
 def tryToGetAdditionalStringContent(thing: dict) -> str:
+    """
+    :说明: `tryToGetAdditionalStringContent`
+    > 尝试获取一个项目的唯一标识字符串
+
+    :参数:
+        * `thing: dict`: item 元数据
+
+    :返回:
+        - `str`: 生成的唯一标识
+    """
     labels: List[str] = []
 
     # 对于 ItemCategories ，尝试使用它的类型作为标签
     if thing in allItemCategories:
-        if thing.get("grantDestinyItemType"):
-            labels.append(DestinyItemTypeLookup[thing.get("grantDestinyItemType")])
-        if thing.get("grantDestinySubType"):
-            labels.append(DestinyItemSubTypeLookup[thing.get("grantDestinySubType")])
+        if grantDestinyItemType := thing.get("grantDestinyItemType"):
+            labels.append(DestinyItemTypeLookup[grantDestinyItemType])
+        if grantDestinySubType := thing.get("grantDestinySubType"):
+            labels.append(DestinyItemSubTypeLookup[grantDestinySubType])
 
     # SocketCategories 处理
     if thing in allSocketCategories:
-        if thing.get("categoryStyle"):
-            labels.append(DestinySocketCategoryStyleLookup[thing.get("categoryStyle")])
+        if categoryStyle := thing.get("categoryStyle"):
+            labels.append(DestinySocketCategoryStyleLookup[categoryStyle])
 
         # 或尝试查找具有此插口类型的示例项目，以显示有关此插口最终位置的更多信息
         # 目前这基本上有助于区分 Ship 插口和 Sparrow 插口
         exampleItems = [
             i
             for i in inventoryItems
-            if i.get("sockets")
+            if (sockets := i.get("sockets"))
             and [
                 j
-                for j in i["sockets"]["socketCategories"]
+                for j in sockets["socketCategories"]
                 if j["socketCategoryHash"] == thing["hash"]
             ]
         ]
@@ -97,9 +119,9 @@ def tryToGetAdditionalStringContent(thing: dict) -> str:
         else:
             itemTypes = set(
                 [
-                    i.get("itemTypeDisplayName")
+                    itemTypeDisplayName
                     for i in exampleItems
-                    if i.get("itemTypeDisplayName")
+                    if (itemTypeDisplayName := i.get("itemTypeDisplayName"))
                 ]
             )
 
@@ -111,8 +133,8 @@ def tryToGetAdditionalStringContent(thing: dict) -> str:
 
     # buckets 处理 ，尝试附加类型信息
     if thing in allBuckets:
-        if thing.get("category"):
-            labels.append(BucketCategoryLookup[thing.get("category")])
+        if category := thing.get("category"):
+            labels.append(BucketCategoryLookup[category])
 
     if not labels:
         labels.append(f'{thing["hash"]}')
@@ -189,7 +211,7 @@ for i in enumSources:
         for dupeNamedItem in dupeNamedItems
     ]
 
-    # 如果生成的名字不都是唯一的，我也不知道该怎么做
+    # 如果生成的名字不都是唯一的，只能说是寄了
     if len(list(deduplicate(deDupedIdentifiers))) != len(deDupedIdentifiers):
         logger.error(f"couldn't properly make unique labels for {deDupedIdentifiers}")
         continue
