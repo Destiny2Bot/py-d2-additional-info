@@ -5,7 +5,6 @@ name = "py-d2-additional-info"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-aiofiles = "^0.8.0"
 bungieapi = {path = "../bungieapi"}
 loguru = "^0.6.0"
 pydantic = {extras = ["dotenv"], version = "^1.9.0"}
