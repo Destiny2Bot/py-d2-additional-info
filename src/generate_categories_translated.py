@@ -14,6 +14,21 @@ def _translater_for_table(
     enDict: list,
     tableName: str = "DestinyInventoryItemDefinition",
 ) -> str:
+    """
+    :说明: `_translater_for_table`
+    > 需要查数据表的基础验证器，通过 `enDict` 和 `tableName` 参数查找对应的中文名
+
+    :参数:
+      * `item: str`: 需要翻译的名称
+      * `keyName: str`: 翻译字典的类别
+      * `enDict: list`: 原语言manifest中对应的表
+
+    :可选参数:
+      * `tableName: str = 'DestinyInventoryItemDefinition'`: 表名
+
+    :返回:
+        - `str`: 翻译后的名称，若翻译失败则返回原名
+    """ """"""
     if unKnownItems.get(keyName) is None:
         unKnownItems[keyName] = []
 
@@ -56,7 +71,16 @@ def _translater_for_table(
 
 
 def itemsTranslater(items: List[str]) -> List[str]:
-    """将 item 英文名译为中文"""
+    """
+    :说明: `itemsTranslater`
+    > 将 item 英文名译为中文，来源为翻译表中 `items` 字段与 `manifest[InventoryItems]` 表项
+
+    :参数:
+      * `items: List[str]`: 需要翻译的名称列表
+
+    :返回:
+        - `List[str]`: 翻译后的名称, 若翻译失败则返回原名
+    """
     itemNames = []
     itemNameList = [
         _translater_for_table(item, keyName="items", enDict=list(allInventoryItems_en))
@@ -68,7 +92,16 @@ def itemsTranslater(items: List[str]) -> List[str]:
 
 
 def sourcesTranslater(sourcesNames: List[str]) -> List[str]:
-    """将 includes 中文名译为英文"""
+    """
+    :说明: `sourcesTranslater`
+    > 将 includes 中文名译为英文, ，来源为翻译表中 `sources` 字段与 `manifest[Collectibles]` 表项
+
+    :参数:
+      * `sourcesNames: List[str]`: 需要翻译的名称列表
+
+    :返回:
+        - `List[str]`: 翻译后的名称, 若翻译失败则返回原名
+    """
     sourcesNamesCn = []
     for sourceName in sourcesNames:
         # 如果是数字则跳过
@@ -124,7 +157,16 @@ def sourcesTranslater(sourcesNames: List[str]) -> List[str]:
 
 
 def presentationNodesTranslater(presentations: List[str]) -> List[str]:
-    """将 presentationNode 英文名译为中文"""
+    """
+    :说明: `presentationNodesTranslater`
+    > 将 presentationNodes 中文名译为英文, ，来源为 `manifest[presentationNodes]` 表项
+
+    :参数:
+      * `sourcesNames: List[str]`: 需要翻译的名称列表
+
+    :返回:
+        - `List[str]`: 翻译后的名称, 若翻译失败则返回原名
+    """
     presentationNodes = []
     unKnownItems["presentationNodes"] = []
     presentationNameList = [
@@ -142,6 +184,17 @@ def presentationNodesTranslater(presentations: List[str]) -> List[str]:
 
 
 def _translater(originStrs: str, keyName: str) -> str:
+    """
+    :说明: `_translater`
+    > 仅需查询字典的基础验证器函数
+
+    :参数:
+        * `originStrs: str`: 需要翻译的字符串
+        * `keyName: str`: 翻译表的字段名 key
+
+    :返回:
+        - `str`: 翻译后的字符串，若翻译失败则返回原字符串
+    """
     retName = translatDict[keyName].get(originStrs)
     if unKnownItems.get(keyName) is None:
         unKnownItems[keyName] = []
@@ -159,6 +212,16 @@ def _translater(originStrs: str, keyName: str) -> str:
 
 
 def fieldsTranslater(originStrs: Union[str, List[str]]) -> Union[str, List[str]]:
+    """
+    :说明: `fieldsTranslater`
+    > `fields` 字段验证函数，主要为分类简称和别名，不一定与游戏原名称相同，一般为游戏原名称子集
+
+    :参数:
+        * `originStrs: Union[str, List[str]]`: 需要翻译的字符串或字符串列表
+
+    :返回:
+        - `Union[str, List[str]]`: 返回翻译后的内容，若翻译失败则返回原字符串
+    """
     if isinstance(originStrs, str):
         return _translater(originStrs, "fields")
     elif isinstance(originStrs, list):
@@ -167,28 +230,29 @@ def fieldsTranslater(originStrs: Union[str, List[str]]) -> Union[str, List[str]]
         return originStrs
 
 
-def searchStringTranslater(originStrs: List[str]) -> List[str]:
-    return [_translater(i, "fields") for i in originStrs]
-
-
 class CategoriesSources(BaseModel):
+    """
+    :说明: `CategoriesSources`
+    > 对来源信息的筛选设定
+    """
 
     includes: List[str]
     """字符串列表， 如果一个来源描述包含其中之一，它可能指的是这个 sourceTag"""
 
-    # 字符串列表，如果一个来源描述包含其中之一
-    # 他不可能指这个 sourceTag
     excludes: Optional[List[str]]
+    """字符串列表，如果一个来源描述包含其中之一, 他不可能指这个 sourceTag"""
 
-    # 一个包含来源英文名或来源 hash 的列表
     items: Optional[List[Union[str, int]]]
+    """一个包含来源英文名或来源 hash 的列表"""
 
-    # 将此类别复制到另一个 sourceTag
     alias: Optional[str]
+    """将此类别复制到另一个 sourceTag"""
 
-    # presentationNodes 包含一个 items (Collections) 的集合
-    # 我们将通过名称或哈希找到 presentationNodes 并将他们的子项目添加到 来源中
     presentationNodes: Optional[List[Union[str, int]]]
+    """
+    presentationNodes 包含一个 items (Collections) 的集合,
+    我们将通过名称或哈希找到 presentationNodes 并将他们的子项目添加到 来源中
+    """
 
     searchString: Optional[List[str]]
 
@@ -214,12 +278,17 @@ class CategoriesSources(BaseModel):
 
 
 class Categories(BaseModel):
+    """
+    :说明: `Categories`
+    > 来源类别数据类
+    """
+
     sources: dict[
         str,  # 一个 sourceTag, i.e. "adventures" or "deadorbit" or "zavala" or "crucible"
         CategoriesSources,
     ]
 
-    exceptions: List[List[str]]  # 我真的不记得为什么会有这个东西
+    exceptions: List[List[str]]
 
     @validator("sources", pre=True)
     def sourcesKeyTranslater(cls, sources):
@@ -230,6 +299,7 @@ class Categories(BaseModel):
         return [[hash, *sourcesTranslater([str])] for hash, str in sources]
 
 
+# 加载中英文数据表信息
 loadLocal()
 loadLocal(language="en")
 
@@ -240,12 +310,15 @@ allCollectibles_en = getAll("DestinyCollectibleDefinition", language="en")
 allPresentationNodes = getAll("DestinyPresentationNodeDefinition")
 allPresentationNodes_en = getAll("DestinyPresentationNodeDefinition", language="en")
 
+# 妈的这俩必须定义 要不写个类吧
 unKnownItems: dict[str, List[str]] = {}
 translatDict: dict[str, dict[str, str]] = ujson.loads(
     readFile("./data/sources/translate_dict.json")
 )
 
+
 categories = Categories.parse_file("./data/sources/categories.json")
+
 
 for k, v in unKnownItems.items():
     if v:
@@ -255,9 +328,10 @@ for k, v in unKnownItems.items():
             + "\n"
         )
     else:
-        logger.success(f"{k} all translate")
+        logger.success(f"{k.upper()} all translate")
 
 writeFile("./data/sources/translate_dict.json", translatDict)
+
 writeFile(
     "./data/sources/categories_translated.json", categories.dict(exclude_none=True)
 )
