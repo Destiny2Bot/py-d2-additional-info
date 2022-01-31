@@ -16,7 +16,6 @@ for i in getAll("DestinyInventoryItemDefinition"):
         )
         and (get("DestinyVendorDefinition", i["hash"]) is not None)
     ):
-        print(i)
         results[i["inventory"]["tierTypeName"]] = i["displayProperties"]["icon"]
 
 writeFile("./output/engram-rarity-icons.json", results)
