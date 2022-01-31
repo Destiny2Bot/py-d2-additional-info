@@ -14,27 +14,28 @@
 - [x] generate_season_to_source.py
 - [x] generate_mod_slot_data.py
 - [x] generate_mod_slot_data
-- [ ] generate_source_info.py
-- [ ] generate-event-info.js
-- [x] generate-ghost-data.js
-- [ ] generate-objective-to-triumph.js
-- [ ] generate-bounty-data.js
-- [x] generate-catalyst-data.js
-- [ ] generate-powerful-rewards.js
-- [x] generate-engram-rarity-icons.js
-- [ ] generate-bright-engram-data.js
-- [ ] generate-workaround-items.js
-- [ ] generate-spider-mats.js
-- [ ] generate-rich-text-objective.js
-- [ ] generate-missing-collectible-info.js
-- [ ] generate-watermark-info.js
-- [x] generate-enums.js
-- [ ] generate-missing-faction-tokens.js
-- [ ] generate-season-watermark-backup.js
-- [ ] generate-extended-ich.js
-- [x] generate-adept-weapon-hashes.js
-- [ ] generate-masterworks-with-cond-stats.js
-- [ ] generate-raid-mods.js
-- [ ] generate-subclass-plug-category-hashes.js
-- [ ] generate-font-glyph-enums.js
-- [ ] generate-trials-objectives.js
+- [x] generate_source_info.py
+- [ ] generate_event_info.py
+  - Assigned to FYWinds
+- [x] generate_ghost_data.py
+- [ ] generate_objective_to_triumph.py
+- [ ] generate_bounty_data.py
+- [x] generate_catalyst_data.py
+- [ ] generate_powerful_rewards.py
+- [x] generate_engram_rarity_icons.py
+- [ ] generate_bright_engram_data.py
+- [ ] generate_workaround_items.py
+- [ ] generate_spider_mats.py
+- [ ] generate_rich_text_objective.py
+- [ ] generate_missing_collectible_info.py
+- [ ] generate_watermark_info.py
+- [x] generate_enums.py
+- [ ] generate_missing_faction_tokens.py
+- [ ] generate_season_watermark_backup.py
+- [ ] generate_extended_ich.py
+- [x] generate_adept_weapon_hashes.py
+- [ ] generate_masterworks_with_cond_stats.py
+- [ ] generate_raid_mods.py
+- [ ] generate_subclass_plug_category_hashes.py
+- [ ] generate_font_glyph_enums.py
+- [ ] generate_trials_objectives.py
