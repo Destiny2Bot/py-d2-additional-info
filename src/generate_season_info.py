@@ -13,9 +13,9 @@ loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
 powerCaps = [
-    i["powerCap"]
+    powerCap
     for i in getAll("DestinyPowerCapDefinition")
-    if i["powerCap"] > 1000 and i["powerCap"] < 50000
+    if (powerCap := i["powerCap"]) > 1000 and powerCap < 50000
 ]
 # 对  powerCaps 在保留顺序的情况下进行去重
 powerCaps = list(deduplicate(powerCaps))
