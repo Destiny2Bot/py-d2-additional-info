@@ -1,4 +1,13 @@
-from typing import List, TypeVar, Callable, Hashable, Optional, Generator
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    List,
+    TypeVar,
+    Callable,
+    Hashable,
+    Optional,
+    Generator,
+)
 
 T = TypeVar("T")
 
@@ -54,3 +63,10 @@ def diffArrays(all: List[T], exclude: Optional[List[T]] = None) -> List[T]:
     if exclude is None:
         return list(deduplicate(all))
     return [i for i in deduplicate(all) if i not in exclude]
+
+
+def sortObject(o: dict[str, Any]):
+    _sorted: dict[str, Any] = {}
+    for k in sorted(o.keys()):
+        _sorted[k] = o[k]
+    return _sorted

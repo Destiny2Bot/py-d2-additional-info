@@ -312,11 +312,10 @@ class ModSocketMetadata(BaseModel):
 
     emptyModSocketHash: int
     \"\"\"这有助于我们查找空白的模组内容，以获取其图标/名称\"\"\"
-    """
+"""
 
 
 pretty += "\n\nmodMetadatasList = " + modMetadatasStr
 pretty += "\n\nmodMetadatas = [ModSocketMetadata(**i) for i in modMetadatasList]"
 
 writeFile("./output/specialty_modslot_metadata.py", pretty)
-cc = 0

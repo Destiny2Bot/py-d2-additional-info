@@ -1,9 +1,12 @@
 from typing import List, Union, Optional
 
+import ujson
 from pydantic import BaseModel
 
-from tools import writeFile
-from manifest import getAll, loadLocal
+from log import logger
+from tools import writeFile, sortObject, dedupeAndSortArray
+from manifest import get, getAll, loadLocal
+from data.generated_enums import ItemCategoryHashes
 
 
 class CategoriesSources(BaseModel):
@@ -12,25 +15,25 @@ class CategoriesSources(BaseModel):
     > 对来源信息的筛选设定
     """
 
-    includes: List[str]
+    includes: Optional[List[str]] = []
     """字符串列表， 如果一个来源描述包含其中之一，它可能指的是这个 sourceTag"""
 
-    excludes: Optional[List[str]]
+    excludes: Optional[List[str]] = []
     """字符串列表，如果一个来源描述包含其中之一, 他不可能指这个 sourceTag"""
 
-    items: Optional[List[Union[str, int]]]
+    items: Optional[List[Union[str, int]]] = []
     """一个包含来源英文名或来源 hash 的列表"""
 
-    alias: Optional[str]
+    alias: Optional[str] = ""
     """将此类别复制到另一个 sourceTag"""
 
-    presentationNodes: Optional[List[Union[str, int]]]
+    presentationNodes: Optional[List[Union[str, int]]] = []
     """
     presentationNodes 包含一个 items (Collections) 的集合,
     我们将通过名称或哈希找到 presentationNodes 并将他们的子项目添加到 来源中
     """
 
-    searchString: Optional[List[str]]
+    searchString: Optional[List[str]] = []
 
 
 class Categories(BaseModel):
@@ -47,7 +50,37 @@ class Categories(BaseModel):
     exceptions: List[List[str]]
 
 
-categories = Categories.parse_file("./data/sources/categories.json")
+# 检查 haystack 值之间的 sourceStringRules 匹配
+# 并返回匹配值的键
+# 这会输出一个 sourceHashes 列表
+def applySourceStringRules(
+    haystack: dict[int, str], sourceStringRules: CategoriesSources
+) -> List[int]:
+    includes, excludes = sourceStringRules.includes, sourceStringRules.excludes
+    sourceStrings = list(haystack.values())
+    if includes:
+        # 包含 includes
+        sourceStrings = [
+            sourceString
+            for sourceString in sourceStrings
+            if [i.lower() for i in includes if i in sourceString.lower()]
+        ]
+    if excludes:
+        # 排除 excludes
+        sourceStrings = [
+            sourceString
+            for sourceString in sourceStrings
+            if [i.lower() for i in excludes if i in sourceString.lower()]
+        ]
+    # 只返回匹配到的 sourceHash 列表
+    return [
+        sourceHash
+        for sourceHash in haystack.keys()
+        if haystack[sourceHash] in sourceStrings
+    ]
+
+
+categories = Categories.parse_file("./data/sources/categories_translated.json")
 
 loadLocal()
 
@@ -96,5 +129,89 @@ for collectible in allCollectibles:
 for sourceHash, sourceString in categories.exceptions:
     sourcesInfo[int(sourceHash)] = sourceString
 
-# 查看分类规则的循环
-cc = 0
+# 循环进行分类
+for sourceTag, matchRule in categories.sources.items():
+    # 这是经过 includes 和 excludes 过滤后的 sourceHash 列表
+    sourceHashes = applySourceStringRules(sourcesInfo, matchRule)
+    assignedSources.extend([*sourceHashes])
+    searchString: List[str] = []
+    # 准备好 searchString
+    if matchRule.searchString:
+        searchString = [*matchRule.searchString]
+
+    # 值得注意的是我们的规则之一是否已失效
+    if not len(sourceHashes):
+        logger.warning(f"no matching sources for {sourceTag}: {matchRule.dict()}")
+
+    # 与此 sourceTag 对应的项目哈希
+    itemHashes: List[int] = []
+
+    # 按名称查找任何指定的单个项目，并添加它们的 hash
+    if items := matchRule.items:
+        for itemNameOrHash in items:
+            includedItemHashes = [
+                i["hash"]
+                for i in allInventoryItems
+                if ItemCategoryHashes.样品模型 not in i.get("itemCategoryHashes", [])
+                and ItemCategoryHashes.任务步骤 not in i.get("itemCategoryHashes", [])
+                and (
+                    itemNameOrHash == str(i["hash"])
+                    or i.get("displayProperties", {"name": ""})["name"] == itemNameOrHash
+                )
+            ]
+            itemHashes.extend(includedItemHashes)
+    # 如果提供了任何 presentation nodes name 或 hash，
+    # 获取他们包含的装备，然后添加它们
+    if presentationNodes := matchRule.presentationNodes:
+        foundPresentationNodes = [
+            p
+            for p in allPresentationNodes
+            if str(p["hash"]) in presentationNodes
+            or p.get("displayProperties", {"name": ""})["name"] in presentationNodes
+        ]
+        for foundPresentationNode in foundPresentationNodes:
+            for collectible in foundPresentationNode["children"]["collectibles"]:
+                if childItem := get(
+                    "DestinyCollectibleDefinition", collectible.get("collectibleHash")
+                ):
+                    if childItemHash := childItem.get("itemHash"):
+                        itemHashes.append(childItemHash)
+
+    # 添加所有元素后排序和去重
+    itemHashes = dedupeAndSortArray(itemHashes)
+
+    # 将结果添加到输出表中
+    D2Sources[sourceTag] = D2SourceInfo(
+        itemHashes=itemHashes,
+        sourceHashes=sourceHashes,
+        searchString=searchString,
+    )
+
+    # 最后添加别名并复制信息
+    if alias := matchRule.alias:
+        D2Sources[alias] = D2Sources[sourceTag]
+
+# 删除要忽略的来源
+D2Sources.pop("ignore", None)
+
+
+D2SourcesSorted: dict[str, D2SourceInfo] = sortObject(D2Sources)
+D2SourcesStringified = {k: v.dict() for k, v in D2SourcesSorted.items()}
+
+pretty = f"""from pydantic import BaseModel
+
+from typing import List
+
+
+class D2SourceInfo(BaseModel):
+    itemHashes: List[int]
+    sourceHashes: List[int]
+    searchString: List[str]
+
+D2SourcesJson: dict[str, dict] = {ujson.dumps(D2SourcesStringified, ensure_ascii=False, indent=4)}
+
+"""
+pretty += "D2Sources: dict[str, D2SourceInfo] = {\nk: D2SourceInfo.parse_obj(v) for k, v in D2SourcesJson.items()\n}"
+
+
+writeFile("./output/source_info.py", pretty)
