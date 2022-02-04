@@ -272,8 +272,8 @@ def sortCompatibleTags(key: str) -> int:
 
 # 对字段进行排序
 for m in modMetadatas:
-    m.compatiblePlugCategoryHashes.sort()
-    m.plugCategoryHashes.sort()
+    m.compatiblePlugCategoryHashes.sort(key=str)
+    m.plugCategoryHashes.sort(key=str)
     m.compatibleTags.sort(key=sortCompatibleTags)
 
 # 将 modMetadatas 转为字符串

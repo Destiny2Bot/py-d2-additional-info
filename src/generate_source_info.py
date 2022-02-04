@@ -7,34 +7,44 @@ from manifest import getAll, loadLocal
 
 
 class CategoriesSources(BaseModel):
-    # 字符串列表， 如果一个来源描述包含其中之一
-    # 它可能指的是这个 sourceTag
+    """
+    :说明: `CategoriesSources`
+    > 对来源信息的筛选设定
+    """
+
     includes: List[str]
+    """字符串列表， 如果一个来源描述包含其中之一，它可能指的是这个 sourceTag"""
 
-    # 字符串列表，如果一个来源描述包含其中之一
-    # 他不可能指这个 sourceTag
     excludes: Optional[List[str]]
+    """字符串列表，如果一个来源描述包含其中之一, 他不可能指这个 sourceTag"""
 
-    # 一个包含来源英文名或来源 hash 的列表
     items: Optional[List[Union[str, int]]]
+    """一个包含来源英文名或来源 hash 的列表"""
 
-    # 将此类别复制到另一个 sourceTag
     alias: Optional[str]
+    """将此类别复制到另一个 sourceTag"""
 
-    # presentationNodes 包含一个 items (Collections) 的集合
-    # 我们将通过名称或哈希找到 presentationNodes 并将他们的子项目添加到 来源中
     presentationNodes: Optional[List[Union[str, int]]]
+    """
+    presentationNodes 包含一个 items (Collections) 的集合,
+    我们将通过名称或哈希找到 presentationNodes 并将他们的子项目添加到 来源中
+    """
 
     searchString: Optional[List[str]]
 
 
 class Categories(BaseModel):
+    """
+    :说明: `Categories`
+    > 来源类别数据类
+    """
+
     sources: dict[
         str,  # 一个 sourceTag, i.e. "adventures" or "deadorbit" or "zavala" or "crucible"
         CategoriesSources,
     ]
 
-    exceptions: List[List[str]]  # 我真的不记得为什么会有这个东西
+    exceptions: List[List[str]]
 
 
 categories = Categories.parse_file("./data/sources/categories.json")
@@ -53,15 +63,16 @@ assignedSources: List[int] = []
 unassignedSources: List[int] = []
 
 for collectible in allCollectibles:
-    hash = collectible.get("sourceHash")
     sourceName = (
-        collectible["sourceString"]
-        if collectible.get("sourceString")
+        sourceString
+        if (sourceString := collectible.get("sourceString"))
         else collectible["displayProperties"]["description"]
     )
-    if hash:
-        # 仅添加具有现有哈希的源（例如，没有分类项目）
-        sourceStringsByHash[hash] = sourceName
+    # 仅添加具有现有哈希的源（例如，没有分类项目）
+    if hash := collectible.get("sourceHash"):
+        # 这里对原项目做了修改，CN包里面出现了一个 sourceName 为空的项目，所以要做额外的过滤
+        if sourceName:
+            sourceStringsByHash[hash] = sourceName
         allSources.append(hash)
 
 writeFile("./output/sources.json", sourceStringsByHash)
