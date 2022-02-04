@@ -4,3 +4,4 @@ from .file import writeFile as writeFile
 from .utils import sortObject as sortObject
 from .utils import deduplicate as deduplicate
 from .utils import dedupeAndSortArray as dedupeAndSortArray
+from .utils import annotate as annotate

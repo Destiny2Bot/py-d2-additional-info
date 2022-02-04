@@ -4,7 +4,7 @@ import ujson
 from pydantic import BaseModel
 
 from log import logger
-from tools import writeFile, sortObject, dedupeAndSortArray
+from tools import annotate, writeFile, sortObject, dedupeAndSortArray
 from manifest import get, getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
 
@@ -196,11 +196,16 @@ D2Sources.pop("ignore", None)
 
 
 D2SourcesSorted: dict[str, D2SourceInfo] = sortObject(D2Sources)
+for SourceInfo in D2SourcesSorted.values():
+    SourceInfo.itemHashes.sort(key=str)
+    SourceInfo.sourceHashes.sort(key=str)
+    SourceInfo.searchString.sort(key=str)
+
 D2SourcesStringified = {k: v.dict() for k, v in D2SourcesSorted.items()}
 
-pretty = f"""from pydantic import BaseModel
+pretty = f"""from typing import List
 
-from typing import List
+from pydantic import BaseModel
 
 
 class D2SourceInfo(BaseModel):
@@ -208,10 +213,31 @@ class D2SourceInfo(BaseModel):
     sourceHashes: List[int]
     searchString: List[str]
 
+
 D2SourcesJson: dict[str, dict] = {ujson.dumps(D2SourcesStringified, ensure_ascii=False, indent=4)}
 
 """
 pretty += "D2Sources: dict[str, D2SourceInfo] = {\nk: D2SourceInfo.parse_obj(v) for k, v in D2SourcesJson.items()\n}"
 
+annotated = annotate(pretty, sourcesInfo)
+writeFile("./output/source_info.py", annotated)
 
-writeFile("./output/source_info.py", pretty)
+unassignedSources = [i for i in allSources if i not in assignedSources]
+
+for hash in unassignedSources:
+    sourceList = [i for i in allCollectibles if i["hash"] == hash]
+    if sourceList:
+        source = sourceList[0]
+        sourceName = (
+            name
+            if (name := source.get("sourceString"))
+            else (
+                source.get("displayProperties", {"description": ""}.get("description"))
+                or ""
+            )
+        )
+        unassignedSourceStringsByHash[hash] = sourceName
+    else:
+        logger.warning(f"no sourceName found for {hash}")
+
+writeFile("./data/sources/unassigned.json", unassignedSourceStringsByHash)
