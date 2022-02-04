@@ -65,7 +65,17 @@ def diffArrays(all: List[T], exclude: Optional[List[T]] = None) -> List[T]:
     return [i for i in deduplicate(all) if i not in exclude]
 
 
-def sortObject(o: dict[str, Any]):
+def sortObject(o: dict[str, Any]) -> dict[str, Any]:
+    """
+    :说明: `sortObject`
+    > 根据键值排序一个字典
+
+    :参数:
+        * `o: dict[str, Any]`: 一个字典
+
+    :返回:
+        - `dict[str, Any]`: 排序后的字典
+    """
     _sorted: dict[str, Any] = {}
     for k in sorted(o.keys()):
         _sorted[k] = o[k]
