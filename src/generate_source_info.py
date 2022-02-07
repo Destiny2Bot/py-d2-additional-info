@@ -70,7 +70,7 @@ def applySourceStringRules(
         sourceStrings = [
             sourceString
             for sourceString in sourceStrings
-            if [i.lower() for i in excludes if i in sourceString.lower()]
+            if not [i.lower() for i in excludes if i in sourceString.lower()]
         ]
     # 只返回匹配到的 sourceHash 列表
     return [
