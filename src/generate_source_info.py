@@ -63,14 +63,14 @@ def applySourceStringRules(
         sourceStrings = [
             sourceString
             for sourceString in sourceStrings
-            if [i.lower() for i in includes if i in sourceString.lower()]
+            if [i for i in includes if i.lower() in sourceString.lower()]
         ]
     if excludes:
         # 排除 excludes
         sourceStrings = [
             sourceString
             for sourceString in sourceStrings
-            if not [i.lower() for i in excludes if i in sourceString.lower()]
+            if not [i for i in excludes if i.lower() in sourceString.lower()]
         ]
     # 只返回匹配到的 sourceHash 列表
     return [
@@ -80,13 +80,23 @@ def applySourceStringRules(
     ]
 
 
-categories = Categories.parse_file("./data/sources/categories_translated.json")
+categories = Categories.parse_file("./data/sources/categories.json")
 
 loadLocal()
+
+# --------------en----------------
+loadLocal(language="en")
+# --------------------------------
 
 allInventoryItems = getAll("DestinyInventoryItemDefinition")
 allCollectibles = getAll("DestinyCollectibleDefinition")
 allPresentationNodes = getAll("DestinyPresentationNodeDefinition")
+
+# --------------en----------------
+allInventoryItems_en = getAll("DestinyInventoryItemDefinition", language="en")
+allCollectibles_en = getAll("DestinyCollectibleDefinition", language="en")
+allPresentationNodes_en = getAll("DestinyPresentationNodeDefinition", language="en")
+# --------------------------------
 
 # 这只是一个 hash-to-sourceString 转换表，since none exists (因为不存在这样的表)。
 sourceStringsByHash: dict[int, str] = {}
@@ -94,6 +104,11 @@ unassignedSourceStringsByHash: dict[int, str] = {}
 allSources: List[int] = []
 assignedSources: List[int] = []
 unassignedSources: List[int] = []
+
+# --------------en----------------
+sourceStringsByHash_en: dict[int, str] = {}
+# --------------------------------
+
 
 for collectible in allCollectibles:
     sourceName = (
@@ -111,6 +126,23 @@ for collectible in allCollectibles:
 sourceStringsByHash = sortObject(sourceStringsByHash)
 writeFile("./output/sources.json", sourceStringsByHash)
 
+# --------------en----------------
+for collectible in allCollectibles_en:
+    sourceName = (
+        sourceString
+        if (sourceString := collectible.get("sourceString"))
+        else collectible["displayProperties"]["description"]
+    )
+    # 仅添加具有现有哈希的源（例如，没有分类项目）
+    if hash := collectible.get("sourceHash"):
+        # 这里对原项目做了修改，CN包里面出现了一个 sourceName 为空的项目，所以要做额外的过滤
+        if sourceName:
+            sourceStringsByHash_en[hash] = sourceName
+        allSources.append(hash)
+
+sourceStringsByHash_en = sortObject(sourceStringsByHash_en)
+# --------------------------------
+
 
 class D2SourceInfo(BaseModel):
     itemHashes: List[int]
@@ -121,19 +153,36 @@ class D2SourceInfo(BaseModel):
 sourcesInfo: dict[int, str] = {}
 D2Sources: dict[str, D2SourceInfo] = {}
 
+# --------------en----------------
+sourcesInfo_en: dict[int, str] = {}
+D2Sources_en: dict[str, D2SourceInfo] = {}
+# --------------------------------
+
+
 # 由 manifest collectibles 构建 sourcesInfo
 for collectible in allCollectibles:
     if collectible.get("sourceHash"):
         sourcesInfo[collectible["sourceHash"]] = collectible["sourceString"]
 
+# --------------en----------------
+for collectible in allCollectibles_en:
+    if collectible.get("sourceHash"):
+        sourcesInfo_en[collectible["sourceHash"]] = collectible["sourceString"]
+# --------------------------------
+
 # 从 categories.json 添加手动源字符串
 for sourceHash, sourceString in categories.exceptions:
     sourcesInfo[int(sourceHash)] = sourceString
 
+# --------------en----------------
+for sourceHash, sourceString in categories.exceptions:
+    sourcesInfo_en[int(sourceHash)] = sourceString
+# --------------------------------
+
 # 循环进行分类
 for sourceTag, matchRule in categories.sources.items():
     # 这是经过 includes 和 excludes 过滤后的 sourceHash 列表
-    sourceHashes = applySourceStringRules(sourcesInfo, matchRule)
+    sourceHashes = applySourceStringRules(sourcesInfo_en, matchRule)
     assignedSources.extend([*sourceHashes])
     searchString: List[str] = []
     # 准备好 searchString
@@ -152,7 +201,7 @@ for sourceTag, matchRule in categories.sources.items():
         for itemNameOrHash in items:
             includedItemHashes = [
                 i["hash"]
-                for i in allInventoryItems
+                for i in allInventoryItems_en
                 if ItemCategoryHashes.样品模型 not in i.get("itemCategoryHashes", [])
                 and ItemCategoryHashes.任务步骤 not in i.get("itemCategoryHashes", [])
                 and (
@@ -166,14 +215,16 @@ for sourceTag, matchRule in categories.sources.items():
     if presentationNodes := matchRule.presentationNodes:
         foundPresentationNodes = [
             p
-            for p in allPresentationNodes
+            for p in allPresentationNodes_en
             if str(p["hash"]) in presentationNodes
             or p.get("displayProperties", {"name": ""})["name"] in presentationNodes
         ]
         for foundPresentationNode in foundPresentationNodes:
             for collectible in foundPresentationNode["children"]["collectibles"]:
                 if childItem := get(
-                    "DestinyCollectibleDefinition", collectible.get("collectibleHash")
+                    "DestinyCollectibleDefinition",
+                    collectible.get("collectibleHash"),
+                    language="en",
                 ):
                     if childItemHash := childItem.get("itemHash"):
                         itemHashes.append(childItemHash)
@@ -218,7 +269,7 @@ class D2SourceInfo(BaseModel):
 D2SourcesJson: dict[str, dict] = {ujson.dumps(D2SourcesStringified, ensure_ascii=False, indent=4)}
 
 """
-pretty += "D2Sources: dict[str, D2SourceInfo] = {\nk: D2SourceInfo.parse_obj(v) for k, v in D2SourcesJson.items()\n}"
+pretty += "D2Sources: dict[str, D2SourceInfo] = {\n\tk: D2SourceInfo.parse_obj(v) for k, v in D2SourcesJson.items()\n}"
 
 annotated = annotate(pretty, sourcesInfo)
 writeFile("./output/source_info.py", annotated)

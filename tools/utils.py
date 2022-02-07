@@ -100,11 +100,22 @@ def annotate(fileString: str, table: dict[int, str] = {}) -> str:
     :返回:
         - `str`: 添加注释后的字符流
     """
+    import ujson
+
     from manifest import get
 
+    from .file import readFile as readFile_utils
+
+    translatDict: dict[str, dict[str, str]] = ujson.loads(
+        readFile_utils("./data/sources/translate_dict.json")
+    )
+    translatDict_fields: dict[str, str] = translatDict["fields"]
+
+    # 对 hash 值添加注释
     # 4+ 数字, 缩进, 以及可能被引号包围
     # 然后可能是逗号，然后可能是一些空格，然后是 EOL
     maybeHash = r"^( *)['\"]?(\d{2,})['\"]?(,?) *$"
+    maybeEnKey = r"^( {4}| {12})['\"]?(\w+)['\"]?([: {,]*)$"
     retStrList = []
     for line in fileString.split("\n"):
         if findlist := re.findall(maybeHash, line):
@@ -119,6 +130,10 @@ def annotate(fileString: str, table: dict[int, str] = {}) -> str:
                 logger.warning(f"{hash} not found in table")
             comment = comment.replace("\n", " ")
             retStrList.append(f"{prefix}{hash}{suffix}  # {comment}")
+        elif findlist := re.findall(maybeEnKey, line):
+            prefix, field, suffix = findlist[0]
+            comment = translatDict_fields.get(field, "未查询到的字段名")
+            retStrList.append(f'{prefix}"{field}"{suffix}  # {comment}')
         else:
             retStrList.append(line)
     return "\n".join(retStrList)
