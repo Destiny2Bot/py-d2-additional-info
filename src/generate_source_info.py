@@ -108,6 +108,7 @@ for collectible in allCollectibles:
             sourceStringsByHash[hash] = sourceName
         allSources.append(hash)
 
+sourceStringsByHash = sortObject(sourceStringsByHash)
 writeFile("./output/sources.json", sourceStringsByHash)
 
 
