@@ -63,5 +63,6 @@ for season in range(1, D2CalculatedSeason + 1):
     if not brightEngrams.get(season):
         brightEngrams[season] = brightEngrams[season - 1]
 
+# 各赛季的光明记忆水晶(不包含活动奖励)
 brightEngrams = sortObject(brightEngrams)
 writeFile("./output/bright-engrams.json", brightEngrams)
