@@ -73,3 +73,8 @@ def get(
         return item[0] if item else {}
     else:
         return manifest_json[language][tablename].get(str(hash))
+
+
+if __name__ == "__main__":
+    loadLocal()
+    pause = 0
