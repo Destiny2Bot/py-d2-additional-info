@@ -2,7 +2,7 @@ import re
 import json
 from typing import Any
 
-from tools import writeFile
+from tools import writeFile, sortObject
 from manifest import get, getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
 
@@ -61,7 +61,7 @@ events: dict[str, int] = {
     "血色浪漫": 2,
     "至日": 3,
     "英灵日": 4,
-    "狂欢季节": 5,
+    "欢庆": 5,
     "守护者游戏": 6,
 }
 
@@ -101,11 +101,13 @@ for item in inventoryItems:
     # * 跳过物品分类当
     if (
         collectibleHash in sourcedItems  # * 如果这个物品已经在活动中时
-        or item["itemCategoryHashes"] in categoryDenyList  # * 如果这个物品的分类在黑名单中
+        or (
+            hash in categoryDenyList for hash in item["itemCategoryHashes"]
+        )  # * 如果这个物品的分类在黑名单中
         or item["hash"] in itemHashDenyList  # * 如果这个物品在黑名单中
         or item["displayProperties"]["name"] == ""  # * 如果这个物品的名字为空
         or item.get("gearset")  # * 如果这个物品是套装的一部分
-        or not item["itemCategoryHashes"]  # * 如果这个物品的分类为0
+        or item["itemCategoryHashes"]  # * 如果这个物品的分类为0
     ):
         continue
 
@@ -126,7 +128,7 @@ for vendor in _vendors:
 
     hash = vendor["hash"]
     # * 包含活动名字
-    if re.findall(eventDetector, dP["description"]):
+    if re.findall(eventDetector, dP["name"] + dP["description"]):
         vendors[hash] = vendor
         continue
 
@@ -135,7 +137,11 @@ for vendor in _vendors:
 
 for hash, engram in vendors.items():
     eventID = events[
-        re.findall(eventDetector, engram["displayProperties"]["description"])[0]
+        re.findall(
+            eventDetector,
+            engram["displayProperties"]["description"]
+            + engram["displayProperties"]["name"],
+        )[0]
     ]
     eventInfo[eventID]["engram"].append(hash)
 
@@ -172,6 +178,8 @@ for eventID, itemList in itemHashAllowList.items():
     for itemHash in itemList:
         eventItemsLists[str(itemHash)] = eventID
 
+eventItemsLists = sortObject(eventItemsLists)
+
 writeFile("./output/events.json", eventItemsLists)
 
 # * 生成 d2_event_info.py
@@ -181,7 +189,7 @@ D2SourcesToEvent = ""
 D2EventInfo = ""
 
 for eventNumber, eventAttrs in eventInfo.items():
-    enumName = eventAttrs["name"]
+    enumName = eventAttrs["shortname"]
     D2EventEnum += f"    {enumName} = {eventNumber}\n"
 
     D2EventInfo += f"""    {eventNumber}: {{
@@ -200,6 +208,7 @@ for eventNumber, eventAttrs in eventInfo.items():
         D2SourcesToEvent += f"    {source}: D2EventEnum.{enumName},\n"
 
 eventData = f"""from enum import IntEnum
+
 
 class D2EventEnum(IntEnum):
 {D2EventEnum}
