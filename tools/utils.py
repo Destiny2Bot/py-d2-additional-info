@@ -115,7 +115,7 @@ def annotate(fileString: str, table: dict[int, str] = {}) -> str:
     # 4+ 数字, 缩进, 以及可能被引号包围
     # 然后可能是逗号，然后可能是一些空格，然后是 EOL
     maybeHash = r"^( *)['\"]?(\d{2,})['\"]?(,?) *$"
-    maybeEnKey = r"^( {4}| {12})['\"]?(\w+)['\"]?([: {,]*)$"
+    maybeEnKey = r"^( {4}| {12})['\"]?(\w+)['\"]?([: {,\[\]]*)$"
     retStrList = []
     for line in fileString.split("\n"):
         if findlist := re.findall(maybeHash, line):
