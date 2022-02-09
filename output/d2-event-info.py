@@ -47,6 +47,7 @@ D2EventInfo = {
         "sources": [611838069, 2011810450, 3388021959],
         "engram": [],
     },
+
 }
 
 D2EventPredicateLookup = {
@@ -56,6 +57,7 @@ D2EventPredicateLookup = {
     "英灵日": D2EventEnum.英灵日,
     "欢庆": D2EventEnum.欢庆,
     "游戏": D2EventEnum.游戏,
+
 }
 
 D2SourcesToEvent = {
@@ -76,4 +78,5 @@ D2SourcesToEvent = {
     611838069: D2EventEnum.游戏,
     2011810450: D2EventEnum.游戏,
     3388021959: D2EventEnum.游戏,
+
 }

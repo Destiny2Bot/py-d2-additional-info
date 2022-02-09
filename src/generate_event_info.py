@@ -83,35 +83,38 @@ eventDetector = re.compile(r"|".join(events.keys()))
 
 for item in inventoryItems:
     itemDescription = item["displayProperties"]["description"]
-    if not (des := re.findall(eventDetector, itemDescription)):
+    itemName = item["displayProperties"]["name"]
+    if not (des := re.findall(eventDetector, itemDescription + itemName)):
+
         continue
     eventName = des[0]
     eventID = events[eventName]
     if not item.get("collectibleHash"):
-        continue
-    collectHash = get("DestinyCollectibleDefinition", item["collectibleHash"])
-    collectibleHash = collectHash["sourceHash"] if collectHash else -99999999
+        collectibleHash = -99999999
+    else:
+        collectHash = get("DestinyCollectibleDefinition", item["collectibleHash"])
+        collectibleHash = collectHash["sourceHash"] if collectHash else -99999999
 
     if not item.get("displayProperties"):
         continue
 
-    if not item["itemCategoryHashes"]:
+    if not item.get("itemCategoryHashes"):
         continue
 
     # * 跳过物品分类当
     if (
         collectibleHash in sourcedItems  # * 如果这个物品已经在活动中时
-        or (
+        or any(
             hash in categoryDenyList for hash in item["itemCategoryHashes"]
         )  # * 如果这个物品的分类在黑名单中
         or item["hash"] in itemHashDenyList  # * 如果这个物品在黑名单中
         or item["displayProperties"]["name"] == ""  # * 如果这个物品的名字为空
-        or item.get("gearset")  # * 如果这个物品是套装的一部分
-        or item["itemCategoryHashes"]  # * 如果这个物品的分类为0
+        or not item.get("gearset")  # * 如果这个物品是套装的一部分
+        or not item["itemCategoryHashes"]  # * 如果这个物品的分类为0
     ):
         continue
 
-    eventItemsLists[item["hash"]] = eventID
+    eventItemsLists[str(item["hash"])] = eventID
 
 vendors: dict[int, dict[str, Any]] = {}
 
