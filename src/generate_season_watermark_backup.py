@@ -25,5 +25,5 @@ for inventoryItem in inventoryItems:
 
 backupData = sortObject(backupData)
 
-# 输出 watermark-to-season 未记录的水印
+# 输出 watermark-to-season.json 未记录的水印
 writeFile("./output/seasons_backup.json", backupData)
