@@ -11,6 +11,7 @@ pydantic = {extras = ["dotenv"], version = "^1.9.0"}
 python = "^3.9"
 types-ujson = "^4.2.1"
 ujson = "^5.1.0"
+fonttools = "^4.29.1"
 
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
