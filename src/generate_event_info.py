@@ -24,14 +24,14 @@ solstice: list[int] = loadJson("./data/events/solstice.json")
 all_sources: dict[int, str] = loadJson("./output/sources.json")
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
-_vendors: dict = getAll("DestinyVendorDefinition")  # type: ignore
+_vendors: list = getAll("DestinyVendorDefinition")  # type: ignore
 
 eventInfo: dict[int, dict[str, Any]] = {
     1: {"name": "曙光节", "shortname": "曙光节", "sources": [], "engram": []},
     2: {"name": "血色浪漫", "shortname": "血色浪漫", "sources": [], "engram": []},
     3: {"name": "至日英雄", "shortname": "至日", "sources": [], "engram": []},
     4: {"name": "英灵日", "shortname": "英灵日", "sources": [], "engram": []},
-    5: {"name": "狂欢季节", "shortname": "狂欢", "sources": [], "engram": []},
+    5: {"name": "狂欢季节", "shortname": "欢庆", "sources": [], "engram": []},
     6: {"name": "守护者游戏", "shortname": "游戏", "sources": [], "engram": []},
 }
 
@@ -87,6 +87,8 @@ for item in inventoryItems:
         continue
     eventName = des[0]
     eventID = events[eventName]
+    if not item.get("collectibleHash"):
+        continue
     collectHash = get("DestinyCollectibleDefinition", item["collectibleHash"])
     collectibleHash = collectHash["sourceHash"] if collectHash else -99999999
 
@@ -111,7 +113,7 @@ for item in inventoryItems:
 
 vendors: dict[int, dict[str, Any]] = {}
 
-for hash, vendor in _vendors.items():
+for vendor in _vendors:
     # * 缺少基础数据
     if not (dP := vendor.get("displayProperties")):
         continue
@@ -122,6 +124,7 @@ for hash, vendor in _vendors.items():
     if "记忆水晶" not in dP["name"]:
         continue
 
+    hash = vendor["hash"]
     # * 包含活动名字
     if re.findall(eventDetector, dP["description"]):
         vendors[hash] = vendor
@@ -138,7 +141,8 @@ for hash, engram in vendors.items():
 
     for listItem in engram["itemList"]:
         item = get("DestinyInventoryItemDefinition", listItem["itemHash"])
-
+        if not item.get("collectibleHash"):
+            continue
         collectHash = get("DestinyCollectibleDefinition", item["collectibleHash"])
         collectibleHash = collectHash["sourceHash"] if collectHash else -99999999
         # * 跳过此物品当
@@ -161,5 +165,56 @@ for hash, engram in vendors.items():
             or not item["itemCategoryHashes"]
         ):
             continue
-
         eventItemsLists[item["hash"]] = eventID
+
+# 将不能自动加入的物品放入
+for eventID, itemList in itemHashAllowList.items():
+    for itemHash in itemList:
+        eventItemsLists[str(itemHash)] = eventID
+
+writeFile("./output/events.json", eventItemsLists)
+
+# * 生成 d2_event_info.py
+D2EventEnum = ""
+D2EventPredicateLookup = ""
+D2SourcesToEvent = ""
+D2EventInfo = ""
+
+for eventNumber, eventAttrs in eventInfo.items():
+    enumName = eventAttrs["name"]
+    D2EventEnum += f"    {enumName} = {eventNumber}\n"
+
+    D2EventInfo += f"""    {eventNumber}: {{
+        \"name\": \"{eventAttrs["name"]}\",
+        \"shortname\": \"{eventAttrs["shortname"]}\",
+        \"sources\": {eventAttrs["sources"]},
+        \"engram\": {eventAttrs["engram"]},
+    }},
+"""
+
+    D2EventPredicateLookup += (
+        f"    \"{eventAttrs['shortname']}\": D2EventEnum.{enumName},\n"
+    )
+
+    for source in eventAttrs["sources"]:
+        D2SourcesToEvent += f"    {source}: D2EventEnum.{enumName},\n"
+
+eventData = f"""from enum import IntEnum
+
+class D2EventEnum(IntEnum):
+{D2EventEnum}
+
+D2EventInfo = {{
+{D2EventInfo}
+}}
+
+D2EventPredicateLookup = {{
+{D2EventPredicateLookup}
+}}
+
+D2SourcesToEvent = {{
+{D2SourcesToEvent}
+}}"""
+
+
+writeFile("./output/d2-event-info.py", eventData)
