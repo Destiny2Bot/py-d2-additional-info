@@ -2,6 +2,7 @@ import re
 import json
 from typing import Any
 
+from log import logger
 from tools import writeFile, sortObject
 from manifest import get, getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
@@ -57,11 +58,12 @@ itemHashAllowList: dict[int, list[int]] = {
 }
 
 events: dict[str, int] = {
-    "曙光节": 1,
-    "血色浪漫": 2,
+    "曙光": 1,
+    "血色浪漫日": 2,
     "至日": 3,
     "英灵日": 4,
     "欢庆": 5,
+    "狂欢": 5,
     "守护者游戏": 6,
 }
 
@@ -82,39 +84,35 @@ categoryDenyList = [
 eventDetector = re.compile(r"|".join(events.keys()))
 
 for item in inventoryItems:
-    itemDescription = item["displayProperties"]["description"]
     itemName = item["displayProperties"]["name"]
-    if not (des := re.findall(eventDetector, itemDescription + itemName)):
-
+    if not (des := re.findall(eventDetector, item["displayProperties"]["description"])):
         continue
     eventName = des[0]
     eventID = events[eventName]
+
     if not item.get("collectibleHash"):
         collectibleHash = -99999999
     else:
         collectHash = get("DestinyCollectibleDefinition", item["collectibleHash"])
         collectibleHash = collectHash["sourceHash"] if collectHash else -99999999
 
-    if not item.get("displayProperties"):
-        continue
-
-    if not item.get("itemCategoryHashes"):
-        continue
-
     # * 跳过物品分类当
     if (
         collectibleHash in sourcedItems  # * 如果这个物品已经在活动中时
+        or len(item.get("itemCategoryHashes", [])) == 0  # * 如果这个物品没有分类时
         or any(
             hash in categoryDenyList for hash in item["itemCategoryHashes"]
         )  # * 如果这个物品的分类在黑名单中
         or item["hash"] in itemHashDenyList  # * 如果这个物品在黑名单中
-        or item["displayProperties"]["name"] == ""  # * 如果这个物品的名字为空
-        or not item.get("gearset")  # * 如果这个物品是套装的一部分
-        or not item["itemCategoryHashes"]  # * 如果这个物品的分类为0
+        or not item["displayProperties"]["name"]  # * 如果这个物品的名字为空
+        or item.get("gearset")  # * 如果这个物品是套装的一部分
     ):
         continue
 
     eventItemsLists[str(item["hash"])] = eventID
+    logger.info(
+        f"{itemName}[{item['hash']}]\t{eventName}\t{item['displayProperties']['description']}"
+    )
 
 vendors: dict[int, dict[str, Any]] = {}
 
