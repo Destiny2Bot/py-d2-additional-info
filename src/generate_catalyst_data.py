@@ -1,8 +1,10 @@
 from typing import Final
 
+from log import logger
 from tools import writeFile
 from manifest import get, getAll, loadLocal
 
+logger.info("Generating ghost data...")
 loadLocal()
 
 catalystPresentationNodeHash: Final[int] = 1984921914
@@ -46,8 +48,11 @@ for presentationNode in presentationNodeDefinition["children"]["presentationNode
             continue
         icon = icon["icon"]
         triumphData[record["recordHash"]] = icon
+        logger.debug(f"{recordName} -> {icon}")
 
 writeFile(
     "./output/catalyst-triumph-icons.json",
     {x: triumphData[x] for x in sorted(triumphData)},
 )
+logger.success("writeFile ./output/catalyst-triumph-icons.json")
+logger.info("Generating ghost data... Done")

@@ -2,12 +2,15 @@ from typing import TYPE_CHECKING
 
 import ujson
 
+from log import logger
 from tools import copyFile, readFile, writeFile, deduplicate
 from manifest import getAll, loadLocal
 from data.seasons.d2_season_info import D2SeasonInfo, D2CalculatedSeason
 
 # 这里面是表里所有内容于哪个赛季添加的记录
 seasons: dict[str, int] = ujson.loads(readFile("./data/seasons/seasons_unfiltered.json"))
+
+logger.info("Generating Season Info...")
 
 loadLocal()
 
@@ -24,16 +27,19 @@ powerCaps = list(deduplicate(powerCaps))
 for i in inventoryItems:
     hash = str(i["hash"])
     if hash not in seasons.keys():
+        logger.info(f"Binding {hash} to season:{D2CalculatedSeason}")
         seasons[hash] = D2CalculatedSeason
 
 # 写回
 writeFile("./data/seasons/seasons_unfiltered.json", seasons)
+logger.success("writeFile ./data/seasons/seasons_unfiltered.json")
 
 # 一个新的字典内容为 dict[赛季简称: 赛季编号]
 seasonTags = {
     i.seasonTag: i.season for i in D2SeasonInfo.values() if i.season > 0 and i.seasonTag
 }
 writeFile("./output/season-tags.json", seasonTags)
+logger.success("writeFile ./output/season-tags.json")
 
 if TYPE_CHECKING:
     from data.seasons.d2_season_info import D2SeasonInfoItem
@@ -56,4 +62,7 @@ for season, powerCap in enumerate(powerCaps, D2CalculatedSeason + 1):
     lightCapToSeason[powerCap] = season
 
 writeFile("./output/lightcap-to-season.json", lightCapToSeason)
+logger.success("writeFile ./output/lightcap-to-season.json")
 copyFile("./data/seasons/d2_season_info.py", "./output/d2_season_info.py")
+logger.success("copyFile ./data/seasons/d2_season_info.py ./output/d2_season_info.py")
+logger.info("Generating Season Info... Done")

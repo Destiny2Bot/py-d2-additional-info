@@ -12,6 +12,7 @@ seasonsUnfiltered: dict[str, int] = ujson.loads(
     readFile("./data/seasons/seasons_unfiltered.json")
 )
 
+logger.info("Generating Season To Source...")
 loadLocal()
 
 inventoryItems: Any = getAll("DestinyInventoryItemDefinition")
@@ -106,6 +107,7 @@ sources: dict[int, int] = {}
 for season in seasonToSource.keys():
     for source in seasonToSource[season]:
         sources[source] = int(season)
+        logger.debug(f"{source} : {season}")
 
 seasonToSourceOutput = {
     "categoryDenyList": categoryDenyList,
@@ -113,7 +115,7 @@ seasonToSourceOutput = {
 }
 
 writeFile("./output/season-to-source.json", seasonToSourceOutput)
-
+logger.success("writeFile ./output/season-to-source.json")
 
 seasons: dict[int, int] = {}
 
@@ -171,3 +173,5 @@ seasonsClean = removeItemsNoLongerInManifest(seasons)
 
 # 这里面存了没有赛季图标的道具赛季信息（由每次 manifest 更新自动生成）
 writeFile("./output/seasons.json", seasonsClean)
+logger.success("writeFile ./output/seasons.json")
+logger.info("Generating Season To Source... Done")

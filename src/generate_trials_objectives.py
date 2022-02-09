@@ -2,9 +2,11 @@ from typing import List
 
 from bungieapi.generated.components.schemas.destiny import DestinyItemType
 
+from log import logger
 from tools import writeFile, dedupeAndSortArray
 from manifest import get, getAll, loadLocal
 
+logger.info("Generating Trials Objectives...")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -19,6 +21,9 @@ for inventoryItem in inventoryItems:
         and inventoryItem.get("itemType") != DestinyItemType.DUMMY.value
     ):
         trialsPassages.append(inventoryItem["hash"])
+        logger.debug(
+            f"Found Trials Passage: {inventoryItem['displayProperties']['name']}\t{inventoryItem['hash']}"
+        )
         if objectives := inventoryItem.get("objectives"):
             for o in objectives.get("objectiveHashes"):
                 if obj := get("DestinyObjectiveDefinition", o):
@@ -27,10 +32,16 @@ for inventoryItem in inventoryItems:
                             trialsObjectives[obj["hash"]] = obj.get(
                                 "displayProperties", {}
                             ).get("name") or obj.get("progressDescription", "")
+                            logger.debug(
+                                f"Found Trials Objective: {trialsObjectives[obj['hash']]}\t{obj['hash']}"
+                            )
                     else:
                         trialsObjectives[obj["hash"]] = obj.get(
                             "displayProperties", {}
                         ).get("name") or obj.get("progressDescription", "")
+                        logger.debug(
+                            f"Found Trials Objective: {trialsObjectives[obj['hash']]}\t{obj['hash']}"
+                        )
 
 trialsMetadata = {
     "passages": dedupeAndSortArray(trialsPassages),
@@ -39,3 +50,4 @@ trialsMetadata = {
 
 # 输出奥西里斯试炼门票信息
 writeFile("./output/d2-trials-objectives.json", trialsMetadata)
+logger.success("wirteFile: ./output/d2-trials-objectives.json")

@@ -82,6 +82,8 @@ def applySourceStringRules(
 
 categories = Categories.parse_file("./data/sources/categories.json")
 
+logger.info("开始生成来源信息")
+
 loadLocal()
 
 # --------------en----------------
@@ -125,6 +127,7 @@ for collectible in allCollectibles:
 
 sourceStringsByHash = sortObject(sourceStringsByHash)
 writeFile("./output/sources.json", sourceStringsByHash)
+logger.success("writeFile ./output/sources.json")
 
 # --------------en----------------
 for collectible in allCollectibles_en:
@@ -273,6 +276,7 @@ pretty += "D2Sources: dict[str, D2SourceInfo] = {\n\tk: D2SourceInfo.parse_obj(v
 
 annotated = annotate(pretty, sourcesInfo)
 writeFile("./output/source_info.py", annotated)
+logger.success("writeFile ./output/source_info.py")
 
 unassignedSources = [i for i in allSources if i not in assignedSources]
 
@@ -293,3 +297,5 @@ for hash in unassignedSources:
         logger.warning(f"no sourceName found for {hash}")
 
 writeFile("./data/sources/unassigned.json", unassignedSourceStringsByHash)
+logger.success("writeFile ./data/sources/unassigned.json")
+logger.info("生成来源信息完毕")

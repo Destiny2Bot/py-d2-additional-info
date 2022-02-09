@@ -3,9 +3,12 @@ from typing import List, Union
 import ujson
 from pydantic import BaseModel
 
+from log import logger
 from tools import writeFile, deduplicate
 from manifest import get, getAll, loadLocal
 from data.seasons.d2_season_info import D2CalculatedSeason
+
+logger.info("开始生成模组插槽数据")
 
 loadLocal()
 
@@ -319,3 +322,5 @@ pretty += "\n\nmodMetadatasList = " + modMetadatasStr
 pretty += "\n\nmodMetadatas = [ModSocketMetadata(**i) for i in modMetadatasList]"
 
 writeFile("./output/specialty_modslot_metadata.py", pretty)
+logger.success("writeFile ./output/specialty_modslot_metadata.py")
+logger.info("生成模组插槽数据完毕")

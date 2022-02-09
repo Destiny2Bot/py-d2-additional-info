@@ -1,9 +1,11 @@
 from typing import Dict, List, Union
 
+from log import logger
 from tools import writeFile
 from manifest import getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
 
+logger.info("Generating ghost data...")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -144,3 +146,5 @@ for item in inventoryItems:
     ghostPerks[str(hash)] = ghostData.to_dict()
 
 writeFile("./output/ghost-perks.json", ghostPerks)
+logger.success("writeFile: ./output/ghost-perks.json")
+logger.info("Generating ghost data... Done")

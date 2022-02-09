@@ -5,6 +5,7 @@ from bungieapi.generated.components.schemas.destiny.definitions import (
     DestinyInventoryItemDefinition,
 )
 
+from log import logger
 from tools import writeFile
 from manifest import get, getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
@@ -19,6 +20,7 @@ Result = dict
 BountyMetadata = assignModel
 AssignmentCategory = list(matchTable[0].assign.dict().keys())
 
+logger.info("Generating Bounty data...")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -109,3 +111,5 @@ def flattenRecords(hash: int) -> List[int]:
 recordHashes = flattenRecords(3443694067)
 recordInfo = dict
 # 这个赛季挑战也是，后面再说
+logger.warning("这个脚本还没写完")
+logger.info("Generating Bounty data... Done")

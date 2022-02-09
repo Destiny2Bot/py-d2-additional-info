@@ -1,9 +1,11 @@
 import re
 
+from log import logger
 from tools import writeFile
 from manifest import getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
 
+logger.info("Generating Objective to Triumph data...")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -30,6 +32,9 @@ for item in inventoryItems:
         for triumph in records:
             if triumphName == triumph["displayProperties"]["name"]:
                 objectiveToTriumphHash[objectiveHash] = triumph["hash"]
+                logger.debug(f"{triumphName}\t{objectiveHash} -> {triumph['hash']}")
 
 
 writeFile("./output/objective-triumph.json", objectiveToTriumphHash)
+logger.success("writeFile(./output/objective-triumph.json)")
+logger.info("Generating Objective to Triumph data... Done")

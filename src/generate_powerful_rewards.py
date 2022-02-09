@@ -4,6 +4,7 @@ from log import logger
 from tools import writeFile, dedupeAndSortArray
 from manifest import getAll, loadLocal
 
+logger.info("Generating powerful rewards data... 高光奖励")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -23,8 +24,13 @@ for milestone in milestones:
                 reward = entries["326786556"]["items"][0]["itemHash"]
 
     if reward and reward != 3853748946:
-        if debug:
-            logger.info(milestone["rewards"][rewardHash]["rewardEntries"][rewardHash])
+        logger.debug(
+            milestone["rewards"][rewardHash]["rewardEntries"][rewardHash][
+                "displayProperties"
+            ]["name"]
+            + "\t"
+            + str(rewardHash)
+        )
         rewards.append(reward)
 
     questHash = int(list(quests.keys())[0]) if (quests := milestone.get("quests")) else 0
@@ -36,6 +42,7 @@ for milestone in milestones:
                 if value := item.get("value"):
                     questReward = value.get("itemValue")[0]["itemHash"]
         if questReward:
+            logger.debug(f"{item['displayProperties']['name']} {questReward}")
             rewards.append(questReward)
 
 # 将高光球加入输出
@@ -45,6 +52,7 @@ for item in inventoryItems:
     if powerfulEquipment in item["displayProperties"]["description"]:
         if debug:
             logger.info(item["displayProperties"]["name"])
+        logger.debug(f"{item['displayProperties']['name']} {hash}")
         rewards.append(hash)
 
 # 去重
@@ -52,3 +60,5 @@ cleanedRewards = dedupeAndSortArray(rewards)
 
 # 输出所有高光奖励
 writeFile("./output/powerful-rewards.json", cleanedRewards)
+logger.success("writeFile ./output/powerful-rewards.json")
+logger.info("Generating powerful rewards data... Done")
