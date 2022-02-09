@@ -8,7 +8,7 @@ from tools import writeFile, sortObject
 font = ttLib.TTFont("./data/font.otf")
 acc: dict = {}
 # 获取 unicodeid: 字符名对照
-for cmap in font["cmap"].tables:
+for cmap in getattr(font["cmap"], "tables"):
     acc.update(cmap.cmap)
 
 # 以 unicodeid 为键排序
