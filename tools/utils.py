@@ -44,9 +44,11 @@ def deduplicate(
 Sortable = TypeVar("Sortable", str, int)
 
 
-def dedupeAndSortArray(items: List[Sortable], reverse: bool = False) -> List[Sortable]:
+def dedupeAndSortArray(
+    items: List[Sortable], reverse: bool = False, key: Callable = None
+) -> List[Sortable]:
     items = list(deduplicate(items))
-    items.sort(reverse=reverse)
+    items.sort(reverse=reverse, key=key)
     return items
 
 
