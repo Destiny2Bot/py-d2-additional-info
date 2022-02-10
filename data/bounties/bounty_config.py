@@ -7,10 +7,10 @@ from data.generated_enums import ItemCategoryHashes
 
 
 class ActivityModeHash(int, Enum):
-    gambit = 1848252830
-    strike = 2394616003
-    nightfall = 3789021730
-    crucible = 1164760504
+    智谋 = 1848252830
+    打击 = 2394616003
+    日落 = 3789021730
+    熔炉竞技场 = 1164760504
     mayhem = 1264443021
     control = 3199098480
     breakthrough = 4033000329
@@ -23,7 +23,7 @@ class ActivityModeHash(int, Enum):
     ironBanner = 1826469369
     dungeon = 608898761
     nightmareHunt = 332181804
-    story = 1686739444
+    剧情 = 1686739444
     trials = 1673724806
     explore = 3497767639
 
@@ -59,7 +59,7 @@ class VendorHash(int, Enum):
     Petra = 1841717884
 
 
-class assignModel(BaseModel):
+class BountyMetadata(BaseModel):
     ActivityMode: Optional[List[int]]
     Destination: Optional[List[int]]
     DamageType: Optional[List[int]]
@@ -68,7 +68,7 @@ class assignModel(BaseModel):
 
 
 class matchTableModel(BaseModel):
-    assign: assignModel
+    assign: BountyMetadata
     name: Optional[List[str]]
     desc: Optional[List[str]]
     obj: Optional[List[str]]
@@ -80,20 +80,20 @@ class matchTableModel(BaseModel):
 matchTableRaw = [
     # ActivityMode
     {
-        "assign": {"ActivityMode": [ActivityModeHash.gambit]},
-        "desc": ["gambit", "The Drifter"],
-        "type": ["gambit"],
+        "assign": {"ActivityMode": [ActivityModeHash.智谋]},
+        "desc": ["gambit#i", "The Drifter"],
+        "type": ["gambit#i"],
         "label": ["gambit"],
     },
     {
-        "assign": {"ActivityMode": [ActivityModeHash.strike]},
-        "desc": ["(?<!(?<!vanguard or )nightfall )strike"],
+        "assign": {"ActivityMode": [ActivityModeHash.打击]},
+        "desc": ["(?<!(?<!vanguard or )nightfall )strike#i"],
     },
-    {"assign": {"ActivityMode": [ActivityModeHash.nightfall]}, "desc": ["nightfall"]},
+    {"assign": {"ActivityMode": [ActivityModeHash.日落]}, "desc": ["nightfall#i"]},
     {
-        "assign": {"ActivityMode": [ActivityModeHash.crucible]},
-        "desc": ["crucible(?! matches in)"],
-        "type": ["crucible"],
+        "assign": {"ActivityMode": [ActivityModeHash.熔炉竞技场]},
+        "desc": ["crucible(?! matches in)#i"],
+        "type": ["crucible#i"],
         "label": ["bounties.crucible"],
     },
     # TODO: Roll up all crucible types into just crucible?
@@ -114,19 +114,19 @@ matchTableRaw = [
     {"assign": {"ActivityMode": [ActivityModeHash.survival]}, "desc": ["Survival"]},
     {
         "assign": {"ActivityMode": [ActivityModeHash.ironBanner]},
-        "desc": ["iron banner"],
-        "type": ["iron banner"],
+        "desc": ["iron banner#i"],
+        "type": ["iron banner#i"],
         "label": ["bounties.iron_banner"],
     },
-    {"assign": {"ActivityMode": [ActivityModeHash.dungeon]}, "desc": ["dungeon"]},
+    {"assign": {"ActivityMode": [ActivityModeHash.dungeon]}, "desc": ["dungeon#i"]},
     {
         "assign": {"ActivityMode": [ActivityModeHash.nightmareHunt]},
         "desc": ["Nightmare Hunt"],
     },
-    {"assign": {"ActivityMode": [ActivityModeHash.story]}, "desc": ["story mission"]},
+    {"assign": {"ActivityMode": [ActivityModeHash.剧情]}, "desc": ["story mission"]},
     {
         "assign": {"ActivityMode": [ActivityModeHash.trials]},
-        "desc": ["Trials of Osiris"],
+        "desc": ["Trials of Osiris#i"],
         "type": ["Trials Bounty"],
         "label": ["trials.bounties"],
     },
@@ -148,8 +148,8 @@ matchTableRaw = [
     },
     {
         "assign": {"Destination": [DestinationHash.DreamingCity]},
-        "desc": ["Dreaming City", "Oracle Engine", "plague.+well", "Petra Venj"],
-        "obj": ["Ascendant Challenge", "Baryon Boughs"],
+        "desc": ["Dreaming City", "Oracle Engine", "plague.+well#i", "Petra Venj"],
+        "obj": ["Ascendant Challenge#i", "Baryon Boughs"],
         "vendorHashes": [VendorHash.Petra],
     },
     {
@@ -191,21 +191,21 @@ matchTableRaw = [
             "DamageType": [DamageHash.Solar],
         },
         "desc": ["Solar"],
-        "obj": ["[Solar]", "Solar damage"],
+        "obj": [r"\[Solar\]", "Solar damage"],
     },
     {
         "assign": {
             "DamageType": [DamageHash.Arc],
         },
         "desc": ["Arc"],
-        "obj": ["[Arc]", "Arc damage"],
+        "obj": [r"\[Arc\]", "Arc damage"],
     },
     {
         "assign": {
             "DamageType": [DamageHash.Void],
         },
         "desc": ["Void"],
-        "obj": ["[Void]", "Void damage"],
+        "obj": [r"\[Void\]", "Void damage"],
     },
     {
         "assign": {
@@ -225,11 +225,11 @@ matchTableRaw = [
         },
         "desc": ["Stasis"],
         "obj": [
-            "[Stasis]",
+            r"\[Stasis\]",
             "(Stasis|Shatter) damage",
             "Stasis( Super)? final blows",
-            "slowed",
-            "frozen",
+            "slowed#i",
+            "frozen#i",
         ],
     },
     # Item Category
@@ -246,21 +246,21 @@ matchTableRaw = [
     {
         "assign": {"ItemCategory": [ItemCategoryHashes.融合步枪]},
         "desc": ["(?<!Linear )Fusion Rifle"],
-        "obj": ["[Fusion Rifle]"],
+        "obj": [r"\[Fusion Rifle\]"],
     },
     {
         "assign": {"ItemCategory": [ItemCategoryHashes.榴弹发射器]},
         "desc": [
-            "(?<!breechloaded|non-Heavy ammo|Kinetic or Energy)(a(ny)?|with|Heavy|Power)? Grenade Launcher(s)?(?!(s)? that use Special ammo)",
+            "(?<!breechloaded|n-Heavy ammo|ic or Energy)(a(ny)?|with|Heavy|Power)? Grenade Launcher(s)?(?!(s)? that use Special ammo)",
         ],
-        "obj": ["Grenade Launcher Multikills", "[Grenade Launcher]"],
+        "obj": ["Grenade Launcher Multikills", r"\[Grenade Launcher\]"],
     },
     {
         "assign": {"ItemCategory": [-ItemCategoryHashes.榴弹发射器]},
         "desc": [
             "(?<!Heavy|Power)(breechloaded|non-Heavy ammo|Kinetic or Energy|a(ny)?|with)? Grenade Launcher(s)?(?!(s)? that use Heavy ammo)",
         ],
-        "obj": ["[Special Grenade Launcher]"],
+        "obj": [r"\[Special Grenade Launcher\]"],
     },
     {
         "assign": {"ItemCategory": [ItemCategoryHashes.手炮]},
@@ -289,8 +289,8 @@ matchTableRaw = [
     },
     {
         "assign": {"ItemCategory": [ItemCategoryHashes.微型冲锋枪]},
-        "desc": ["[SMG]", "Submachine Gun"],
-        "obj": ["[SMG]"],
+        "desc": [r"\[SMG\]", "Submachine Gun"],
+        "obj": [r"\[SMG\]"],
     },
     {
         "assign": {"ItemCategory": [ItemCategoryHashes.斥候步枪]},
@@ -330,24 +330,24 @@ matchTableRaw = [
     },
     {
         "assign": {"KillType": [KillType.Finisher]},
-        "desc": ["finisher"],
-        "obj": ["finisher"],
+        "desc": ["finisher#i"],
+        "obj": ["finisher#i"],
     },
     {
         "assign": {"KillType": [KillType.Grenade]},
-        "desc": ["grenade(?! launcher)"],
-        "obj": ["grenade(?! launcher)"],
+        "desc": ["grenade(?! launcher)#i"],
+        "obj": ["grenade(?! launcher)#i"],
     },
-    {"assign": {"KillType": [KillType.Melee]}, "desc": ["melee"], "obj": ["melee"]},
+    {"assign": {"KillType": [KillType.Melee]}, "desc": ["melee#i"], "obj": ["melee#i"]},
     {
         "assign": {"KillType": [KillType.Precision]},
-        "desc": ["precision"],
-        "obj": ["precision"],
+        "desc": ["precision#i"],
+        "obj": ["precision#i"],
     },
     {
         "assign": {"KillType": [KillType.ClassAbilities]},
-        "desc": ["class abilities"],
-        "obj": ["class abilities"],
+        "desc": ["class abilities#i"],
+        "obj": ["class abilities#i"],
     },
 ]
 
