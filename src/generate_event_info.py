@@ -1,6 +1,6 @@
 import re
 import json
-from typing import Any
+from typing import Any, List
 
 from log import logger
 from tools import writeFile, sortObject
@@ -25,7 +25,7 @@ solstice: list[int] = loadJson("./data/events/solstice.json")
 all_sources: dict[int, str] = loadJson("./output/sources.json")
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
-_vendors: list = getAll("DestinyVendorDefinition")  # type: ignore
+vendors: list = getAll("DestinyVendorDefinition")  # type: ignore
 
 eventInfo: dict[int, dict[str, Any]] = {
     1: {"name": "曙光节", "shortname": "曙光节", "sources": [], "engram": []},
@@ -44,7 +44,7 @@ for source in all_sources:
 
 sourcedItems: list[int] = [y for x in eventInfo.values() for y in x["sources"]]
 
-eventItemsLists: dict[str, int] = {}
+eventItemsLists: dict[int, int] = {}
 
 itemHashDenyList = eventDenyList
 
@@ -109,67 +109,59 @@ for item in inventoryItems:
     ):
         continue
 
-    eventItemsLists[str(item["hash"])] = eventID
+    eventItemsLists[item["hash"]] = eventID
     logger.info(
         f"{itemName}[{item['hash']}]\t{eventName}\t{item['displayProperties']['description']}"
     )
 
-vendors: dict[int, dict[str, Any]] = {}
+engramVendor: List[dict] = []
 
-for vendor in _vendors:
-    # * 缺少基础数据
-    if not (dP := vendor.get("displayProperties")):
-        continue
-    if not dP["description"]:
-        continue
+# 对记忆水晶添加 血色浪漫 为键
+events["血色浪漫"] = 2
+eventDetector = re.compile(r"|".join([eventDetector.pattern, "血色浪漫"]))
+for vendor in vendors:
 
-    # * 不是记忆水晶
-    if "记忆水晶" not in dP["name"]:
+    if (not vendor["displayProperties"]["description"]) or "记忆水晶" not in vendor[
+        "displayProperties"
+    ]["name"]:
         continue
 
     hash = vendor["hash"]
     # * 包含活动名字
-    if re.findall(eventDetector, dP["name"] + dP["description"]):
-        vendors[hash] = vendor
+    if re.findall(eventDetector, vendor["displayProperties"]["description"]):
+        engramVendor.append(vendor)
         continue
 
     # * 如果到这都不是活动记忆水晶的话，就将其放入黑名单中
-    itemHashDenyList.append(hash)
+    itemHashDenyList.extend([item["itemHash"] for item in vendor.get("itemList", [])])
 
-for hash, engram in vendors.items():
+for engram in engramVendor:
     eventID = events[
         re.findall(
             eventDetector,
-            engram["displayProperties"]["description"]
-            + engram["displayProperties"]["name"],
+            engram["displayProperties"]["description"],
         )[0]
     ]
-    eventInfo[eventID]["engram"].append(hash)
+    eventInfo[eventID]["engram"].append(engram["hash"])
 
     for listItem in engram["itemList"]:
         item = get("DestinyInventoryItemDefinition", listItem["itemHash"])
+
         if not item.get("collectibleHash"):
-            continue
-        collectHash = get("DestinyCollectibleDefinition", item["collectibleHash"])
-        collectibleHash = collectHash["sourceHash"] if collectHash else -99999999
+            collectibleHash = -99999999
+        else:
+            collectHash = get("DestinyCollectibleDefinition", item["collectibleHash"])
+            collectibleHash = collectHash["sourceHash"] if collectHash else -99999999
         # * 跳过此物品当
         if (
-            # * 已经有活动来源了
-            collectibleHash in sourcedItems
-            # * 不是要包含的类别
-            or (
-                item["itemCategoryHashes"]
-                and ((hash in item["itemCategoryHashes"]) for hash in categoryDenyList)
-            )
-            # * 是另外的记忆水晶
-            or item["hash"] in itemHashDenyList
-            # * 没有名字
-            or not (dP := item.get("displayProperties"))
-            or not dP["name"]
-            # * 是套装的一部分
-            or item.get("gearset")
-            # * 没有分类
-            or not item["itemCategoryHashes"]
+            collectibleHash in sourcedItems  # 已经有活动来源了
+            or len(item.get("itemCategoryHashes", [])) == 0  # 没有分类
+            or any(
+                hash in categoryDenyList for hash in item["itemCategoryHashes"]
+            )  # 如果这个物品的分类在黑名单中
+            or item["hash"] in itemHashDenyList  # 是其他记忆水晶
+            or not item["displayProperties"]["name"]  # 没有名字
+            or item.get("gearset")  # 是套装的一部分
         ):
             continue
         eventItemsLists[item["hash"]] = eventID
@@ -177,7 +169,7 @@ for hash, engram in vendors.items():
 # 将不能自动加入的物品放入
 for eventID, itemList in itemHashAllowList.items():
     for itemHash in itemList:
-        eventItemsLists[str(itemHash)] = eventID
+        eventItemsLists[itemHash] = eventID
 
 eventItemsLists = sortObject(eventItemsLists)
 
