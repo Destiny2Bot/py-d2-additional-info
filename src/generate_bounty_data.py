@@ -1,10 +1,6 @@
 import re
 from typing import List
 
-from bungieapi.generated.components.schemas.destiny.definitions import (
-    DestinyInventoryItemDefinition,
-)
-
 from log import logger
 from tools import writeFile, sortObject, dedupeAndSortArray
 from manifest import get, getAll, loadLocal

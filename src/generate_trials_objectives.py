@@ -1,7 +1,5 @@
 from typing import List
 
-from bungieapi.generated.components.schemas.destiny import DestinyItemType
-
 from log import logger
 from tools import writeFile, dedupeAndSortArray
 from manifest import get, getAll, loadLocal
@@ -18,7 +16,7 @@ for inventoryItem in inventoryItems:
     if (
         inventoryItem.get("itemTypeDisplayName") == "试炼入场券"
         and inventoryItem["displayProperties"]["name"].endswith("入场券")
-        and inventoryItem.get("itemType") != DestinyItemType.DUMMY.value
+        and inventoryItem.get("itemType") != 20
     ):
         trialsPassages.append(inventoryItem["hash"])
         logger.debug(
