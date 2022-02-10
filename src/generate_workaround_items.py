@@ -4,6 +4,7 @@ from log import logger
 from tools import writeFile
 from manifest import getAll, loadLocal
 
+logger.info("Generating Workaround items... ")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -36,8 +37,6 @@ def collectibles_test(collectibleHash: int) -> bool:
 
 
 for item in inventoryItems:
-    logger.debug("Checking item: {}", item["displayProperties"]["name"])
-    logger.debug("Item hash: {}", item["hash"])
     if (
         (1 in item.get("itemCategoryHashes", [-1]))
         and item.get("collectibleHash")
@@ -46,5 +45,10 @@ for item in inventoryItems:
         badItem = get_badItem(inventoryItems, item)
         if badItem:
             itemReplacementTable[badItem["hash"]] = item["hash"]
+            logger.debug(
+                f"{badItem['displayProperties']['name']}[{badItem['hash']}] -> {item['displayProperties']['name']}[{item['hash']}]"
+            )
 
 writeFile("./output/item-def-workaround-replacements.json", itemReplacementTable)
+logger.success("writeFile ./output/item-def-workaround-replacements.json")
+logger.info("Generating Workaround items... Done")

@@ -122,3 +122,4 @@ data/BungieManifest/*
 fytest
 .vscode/launch.json
 .env
+test/*

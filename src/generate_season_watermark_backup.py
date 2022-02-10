@@ -1,5 +1,6 @@
 import ujson
 
+from log import logger
 from tools import readFile, writeFile, sortObject
 from manifest import getAll, loadLocal
 
@@ -8,7 +9,7 @@ watermarkToSeason: dict[str, int] = ujson.loads(
     readFile("./output/watermark-to-season.json")
 )
 
-
+logger.info("Generating Season Watermark Backup...输出非赛季与活动水印")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -25,5 +26,7 @@ for inventoryItem in inventoryItems:
 
 backupData = sortObject(backupData)
 
-# 输出 watermark-to-season.json 未记录的水印
+# 输出非赛季与活动水印
 writeFile("./output/seasons_backup.json", backupData)
+logger.success("writeFile ./output/seasons_backup.json")
+logger.info("Generating Season Watermark Backup...Done")

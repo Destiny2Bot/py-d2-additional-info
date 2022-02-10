@@ -1,8 +1,10 @@
 from typing import List
 
+from log import logger
 from tools import writeFile, dedupeAndSortArray
 from manifest import getAll, loadLocal
 
+logger.info("Generating Raid Mods... raid 模组类型标识")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -29,3 +31,5 @@ raidModPlugCategoryHashes = dedupeAndSortArray(raidModPlugCategoryHashes)
 
 # 输出 raid 模组类型标识
 writeFile("./output/raid-mod-plug-category-hashes.json", raidModPlugCategoryHashes)
+logger.success("writeFile ./output/raid-mod-plug-category-hashes.json")
+logger.info("Generating Raid Mods... Done")

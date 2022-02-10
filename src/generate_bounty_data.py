@@ -26,8 +26,6 @@ loadLocal(language="en")
 inventoryItems = getAll("DestinyInventoryItemDefinition", language="en")
 # inventoryItems_zh = getAll("DestinyInventoryItemDefinition")
 
-debug = False
-debugRecords = False
 
 # 要处理的 Item 类型
 categoryAllowList = [ItemCategoryHashes.任务步骤, ItemCategoryHashes.悬赏]

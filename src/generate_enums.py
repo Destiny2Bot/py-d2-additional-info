@@ -10,6 +10,7 @@ from src.flipped_enums import (
     DestinySocketCategoryStyleLookup,
 )
 
+logger.info("Generating Enums... 需要用到的枚举类")
 loadLocal()
 
 ignoreHashes = [
@@ -235,4 +236,8 @@ for enumName, enumValues in generatedEnums.items():
     outString += "\n\n"
 
 writeFile("./output/generated_enums.py", outString)
+logger.success("writeFile ./output/generated_enums.py")
 writeFile("./data/generated_enums.py", outString)
+logger.success("writeFile ./data/generated_enums.py")
+
+logger.info("Generating Enums... Done")

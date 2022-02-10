@@ -1,8 +1,10 @@
 from typing import List
 
+from log import logger
 from tools import writeFile, dedupeAndSortArray
 from manifest import getAll, loadLocal
 
+logger.info("Generating missing faction tokens... 没有指定库存物品的派系与相关NPC信息")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -30,5 +32,9 @@ for hash in allTokenHashes:
 
 # 输出没有指定库存物品的派系 tokenValues
 writeFile("./output/missing-faction-tokens.json", missingTokenHashes)
+logger.success("writeFile ./output/missing-faction-tokens.json")
 # 输出没有指定库存物品的派系 tokenValues 的NPC hash
 writeFile("./output/bad-vendors.json", badVendors)
+logger.success("writeFile ./output/bad-vendors.json")
+
+logger.info("Generating missing faction tokens... Done")

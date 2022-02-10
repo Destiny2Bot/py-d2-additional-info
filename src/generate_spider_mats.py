@@ -1,7 +1,10 @@
 from typing import List
 
+from log import logger
 from tools import writeFile, sortObject
 from manifest import get, loadLocal
+
+logger.info('Generating spider mats...蛛王售卖信息')
 
 loadLocal()
 
@@ -74,6 +77,9 @@ purchaseableMatTable = sortObject(purchaseableMatTable)
 
 # 蛛王出售物品的 hash
 writeFile("./output/spider-mats.json", spiderMats)
+logger.success("writeFile ./output/spider-mats.json")
 
 # 蛛王出售物品的购买材料信息，表项为 物品: 所需材料
 writeFile("./output/spider-purchaseables-to-mats.json", purchaseableMatTable)
+logger.success("writeFile ./output/spider-purchaseables-to-mats.json")
+logger.info('Generating spider mats...Done')

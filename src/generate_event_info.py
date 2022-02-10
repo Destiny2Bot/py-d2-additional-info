@@ -7,6 +7,7 @@ from tools import writeFile, sortObject
 from manifest import get, getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
 
+logger.info("Generating event info...活动道具与活动到道具的映射")
 loadLocal()
 
 
@@ -110,7 +111,7 @@ for item in inventoryItems:
         continue
 
     eventItemsLists[item["hash"]] = eventID
-    logger.info(
+    logger.debug(
         f"{itemName}[{item['hash']}]\t{eventName}\t{item['displayProperties']['description']}"
     )
 
@@ -118,7 +119,7 @@ engramVendor: List[dict] = []
 
 # 对记忆水晶添加 血色浪漫 为键
 events["血色浪漫"] = 2
-eventDetector = re.compile(r"|".join([eventDetector.pattern, "血色浪漫"]))
+eventDetector = re.compile(r"|".join(events.keys()))
 for vendor in vendors:
 
     if (not vendor["displayProperties"]["description"]) or "记忆水晶" not in vendor[
@@ -173,7 +174,9 @@ for eventID, itemList in itemHashAllowList.items():
 
 eventItemsLists = sortObject(eventItemsLists)
 
+# 活动道具
 writeFile("./output/events.json", eventItemsLists)
+logger.success("writeFile ./output/events.json")
 
 # * 生成 d2_event_info.py
 D2EventEnum = ""
@@ -220,3 +223,5 @@ D2SourcesToEvent = {{
 
 
 writeFile("./output/d2-event-info.py", eventData)
+logger.success("writeFile ./output/d2-event-info.py")
+logger.info("Generating event info... Done")

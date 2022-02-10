@@ -3,7 +3,10 @@ import keyword
 
 from fontTools import ttLib
 
+from log import logger
 from tools import writeFile, sortObject
+
+logger.info("Generating Font Glyph Enums... 字符名到 unicodeid 对照表")
 
 font = ttLib.TTFont("./data/font.otf")
 acc: dict = {}
@@ -30,3 +33,5 @@ class FontGlyphs(int, Enum):
 """
 # 输出字符名到 unicodeid 对照表
 writeFile("./output/d2_font_glyphs.py", pretty)
+logger.success("writeFile ./output/d2_font_glyphs.py")
+logger.info("Generating Font Glyph Enums... Done")

@@ -13,6 +13,7 @@ watermarkToSeason: dict[str, int] = ujson.loads(
     readFile("./output/watermark-to-season.json")
 )
 
+logger.info("Generating watermark info... 赛季及活动水印图标")
 loadLocal()
 
 
@@ -91,5 +92,9 @@ for hash in watermarkHashesEvents.keys():
 
 # 输出所有赛季水印图标 URL
 writeFile("./output/watermark-to-season.json", watermarkToSeason)
+logger.success("writeFile ./output/watermark-to-season.json")
 # # 输出所有活动水印图标 URL
 writeFile("./output/watermark-to-event.json", watermarkToEvent)
+logger.success("writeFile ./output/watermark-to-event.json")
+
+logger.info("Generating watermark info... Done")

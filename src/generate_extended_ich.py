@@ -1,7 +1,9 @@
+from log import logger
 from tools import writeFile, sortObject
 from manifest import getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
 
+logger.info("Generating Extended ICH... 所有榴弹发射器和精密框架霰弹枪的物品 hash")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -37,3 +39,5 @@ extendedICH = sortObject(extendedICH)
 
 # 所有榴弹发射器和精密框架霰弹枪的物品 hash
 writeFile("./output/extended-ich.json", extendedICH)
+logger.success("writeFile ./output/extended-ich.json")
+logger.info("Generating Extended ICH... Done")

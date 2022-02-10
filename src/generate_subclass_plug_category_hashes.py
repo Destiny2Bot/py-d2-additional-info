@@ -1,8 +1,10 @@
 from typing import List
 
+from log import logger
 from tools import writeFile, dedupeAndSortArray
 from manifest import get, getAll, loadLocal
 
+logger.info("Generating Subclass Plug Category Hashes... 职业技能插槽类型")
 loadLocal()
 
 
@@ -78,3 +80,5 @@ subclassPlugs = findAllSubclassPlugs()
 
 # 输出职业技能插槽类型 hash
 writeFile("./output/subclass-plug-category-hashes.json", subclassPlugs)
+logger.success("writeFile ./output/subclass-plug-category-hashes.json")
+logger.info("Generating Subclass Plug Category Hashes... Done")

@@ -10,6 +10,8 @@ from data.seasons.d2_season_info import D2CalculatedSeason
 
 seasons = ujson.loads(readFile("./data/seasons/seasons_unfiltered.json"))
 
+logger.info("Generating Bright Engram data...各赛季光明记忆水晶")
+
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
@@ -57,12 +59,15 @@ for inventoryItem in inventoryItems:
         # 获取这个道具的赛季信息
         if season := seasons.get(str(hash)):
             brightEngrams[season] = hash
-            logger.info(f"{hash}\t{name}\t{description}\t{season}")
+            logger.debug(f"{season}\t{hash}\t{name}")
 
 for season in range(1, D2CalculatedSeason + 1):
     if not brightEngrams.get(season):
         brightEngrams[season] = brightEngrams[season - 1]
+        logger.debug(f"{season}\t{brightEngrams[season]}")
 
 # 各赛季的光明记忆水晶(不包含活动奖励)
 brightEngrams = sortObject(brightEngrams)
 writeFile("./output/bright-engrams.json", brightEngrams)
+logger.success("writeFile ./output/bright-engrams.json")
+logger.info("Generating Bright Engram data...Done")
