@@ -222,6 +222,6 @@ D2SourcesToEvent = {{
 }}"""
 
 
-writeFile("./output/d2-event-info.py", eventData)
-logger.success("writeFile ./output/d2-event-info.py")
+writeFile("./output/d2_event_info.py", eventData)
+logger.success("writeFile ./output/d2_event_info.py")
 logger.info("Generating event info... Done")
