@@ -18,9 +18,10 @@ def loadLocal(language: str = "zh-chs") -> None:
       * `language: str = 'zh-chs'`: 语言
     """
     global manifest_json
-    manifest_json[language] = ujson.loads(
-        readFile(BungieJSONFilePath + f"BungieJSON_{language}.json")
-    )
+    if not manifest_json.get(language):
+        manifest_json[language] = ujson.loads(
+            readFile(BungieJSONFilePath + f"BungieJSON_{language}.json")
+        )
 
 
 def getAll(tablename: str = None, language: str = "zh-chs") -> Union[dict, list]:
@@ -33,7 +34,7 @@ def getAll(tablename: str = None, language: str = "zh-chs") -> Union[dict, list]
       * `language: str = 'zh-chs'`: 语言
 
     :返回:
-      - `Union[dict, list]`: 整个清单字典 or 指定表的列表
+    - `Union[dict, list]`: 整个清单字典 or 指定表的列表
     """
     if tablename:
         return list(manifest_json[language][tablename].values())
