@@ -219,4 +219,4 @@ D2SourcesToEvent = {{
 }}"""
 
 
-writeFile("./output/d2-event-info.py", eventData)
+writeFile("./output/d2_event_info.py", eventData)
