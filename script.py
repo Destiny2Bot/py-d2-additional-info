@@ -1,29 +1,28 @@
-# import src.generate_enums
-# import src.generate_season_info
-# import src.generate_season_to_source
-# import src.generate_mod_slot_data
-# import src.generate_source_info
-# import src.generate_event_info
-# import src.generate_ghost_data
-# import src.generate_objective_to_triumph
-# import src.generate_bounty_data
-# import src.generate_catalyst_data
-# import src.generate_powerful_rewards
-# import src.generate_engram_rarity_icons
+import src.generate_enums
+import src.generate_season_info
+import src.generate_season_to_source
+import src.generate_mod_slot_data
+import src.generate_source_info
+import src.generate_event_info
+import src.generate_ghost_data
+import src.generate_objective_to_triumph
+import src.generate_bounty_data
+import src.generate_catalyst_data
+import src.generate_powerful_rewards
+import src.generate_engram_rarity_icons
 import src.generate_bright_engram_data
-
-# import src.generate_workaround_items
-# import src.generate_spider_mats
-# import src.generate_rich_text_objective
-# import src.generate_missing_collectible_info
-# import src.generate_watermark_info
-# import src.generate_missing_faction_tokens
-# import src.generate_season_watermark_backup
-# import src.generate_extended_ich
-# import src.generate_adept_weapon_hashes
-# import src.generate_masterworks_with_cond_stats
-# import src.generate_raid_mods
-# import src.generate_subclass_plug_category_hashes
-# import src.generate_font_glyph_enums
-# import src.copy_files
-# import src.generate_trials_objectives
+import src.generate_workaround_items
+import src.generate_spider_mats
+import src.generate_rich_text_objective
+import src.generate_missing_collectible_info
+import src.generate_watermark_info
+import src.generate_missing_faction_tokens
+import src.generate_season_watermark_backup
+import src.generate_extended_ich
+import src.generate_adept_weapon_hashes
+import src.generate_masterworks_with_cond_stats
+import src.generate_raid_mods
+import src.generate_subclass_plug_category_hashes
+import src.generate_font_glyph_enums
+import src.copy_files
+import src.generate_trials_objectives

@@ -34,7 +34,7 @@ def _translater_for_table(
 
     # 如果是数字则跳过
     if item.isdigit():
-        logger.info(f"{keyName.upper()}\t|\t[{item}] \t is digit \t continue")
+        logger.debug(f"{keyName.upper()}\t|\t[{item}] \t is digit \t continue")
         return item
 
     # 尝试在翻译表中查找
@@ -58,7 +58,7 @@ def _translater_for_table(
             .get("name")
         )
     if itemName:
-        logger.info(f"{keyName.upper()}\t|\t[{item}] \t translated to \t [{itemName}]")
+        logger.debug(f"{keyName.upper()}\t|\t[{item}] \t translated to \t [{itemName}]")
 
         if item not in translatDict["items"].keys():
             translatDict["items"][item] = itemName
@@ -106,7 +106,7 @@ def sourcesTranslater(sourcesNames: List[str]) -> List[str]:
     for sourceName in sourcesNames:
         # 如果是数字则跳过
         if sourceName.isdigit():
-            logger.info(f"SCOURCE\t|\t[{sourceName}] \t is digit \t continue")
+            logger.debug(f"SCOURCE\t|\t[{sourceName}] \t is digit \t continue")
             sourcesNamesCn.append(sourceName)
             continue
 
@@ -142,7 +142,7 @@ def sourcesTranslater(sourcesNames: List[str]) -> List[str]:
                 "DestinyCollectibleDefinition", collectibleItemInfo[0].get("hash")
             ).get("sourceString")
         if sourceNameCn:
-            logger.info(
+            logger.debug(
                 f"SCOURCE\t|\t[{sourceName}] \t translated to \t [{sourceNameCn}]"
             )
             sourcesNamesCn.extend(sourceNameCn.split("||##||"))
@@ -199,7 +199,7 @@ def _translater(originStrs: str, keyName: str) -> str:
     if unKnownItems.get(keyName) is None:
         unKnownItems[keyName] = []
     if retName:
-        logger.info(
+        logger.debug(
             f"{keyName.upper()}\t|\t[{originStrs}] \t translated to \t [{retName}]"
         )
     else:
