@@ -1,3 +1,5 @@
+import os
+
 import requests
 
 from log import logger
@@ -15,7 +17,7 @@ def getManifestOnline() -> dict:
         - `dict`: Bungieapi返回值
     """
     url = "https://www.bungie.net/Platform/Destiny2/Manifest/"
-    headers = {"X-API-KEY": "{}".format(config.api_key)}
+    headers = {"X-API-KEY": "{}".format(os.environ.get("API_KEY"))}
     with requests.Session() as session:
         response = session.get(url=url, headers=headers)
         data = response.json()
