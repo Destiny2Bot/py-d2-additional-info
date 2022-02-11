@@ -3,7 +3,6 @@ import os
 import requests
 
 from log import logger
-from config import config
 
 BungieJSONFilePath = "./data/BungieManifest/"
 
@@ -41,5 +40,7 @@ def downloadManifest(languages: list = ["zh-chs", "en"]) -> None:
             f.write(data)
             logger.success(f"Downloaded {language} manifest")
 
-
-downloadManifest()
+try:
+    downloadManifest()
+except Exception as e:
+    print(e)
