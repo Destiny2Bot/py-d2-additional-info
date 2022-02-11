@@ -60,7 +60,7 @@ jobs:
           token: ${{ secrets.PAT }}
           commit-message: D2AI - Update All - Manifest v${{ github.event.client_payload.config.env.MANIFEST_VERSION }}
           committer: Tian-que <1605206150@qq.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          author: ${{ github.actor }} <1605206150@qq.com>
           title: '[D2AI] Manifest Update'
           body: |
             Manifest Update
