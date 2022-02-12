@@ -46,7 +46,6 @@ jobs:
         env:
           LOG_LEVEL: "SUCCESS"
 
-
       - name: Check for new files (D2AI)
         id: D2AI-porcelain
         working-directory: d2ai
