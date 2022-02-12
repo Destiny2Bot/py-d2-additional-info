@@ -1,9 +1,9 @@
 # This workflow runs when a new manifest is detected by cron
 name: Pull Request Merge Flow
-on:
-  repository_dispatch:
-    types: [new-manifest-detected]
-# on: [push]  # 不能使用这种方式触发，因为这样会导致无法读取 secrets.PAT
+# on:
+#   repository_dispatch:
+#     types: [new-manifest-detected]
+on: [push]  # 不能使用这种方式触发，因为这样会导致无法读取 secrets.PAT
 jobs:
   build:
     runs-on: ubuntu-latest
