@@ -26,6 +26,8 @@ class ActivityModeHash(int, Enum):
     剧情 = 1686739444
     trials = 1673724806
     explore = 3497767639
+    daresOfEternity = 2294590554
+    raid = 2043403989
 
 
 class DestinationHash(int, Enum):
@@ -173,6 +175,14 @@ matchTableRaw = [
         "assign": {"Destination": [DestinationHash.Cosmodrome]},
         "desc": ["Cosmodrome"],
         "label": ["cosmodrome.bounties"],
+    },
+    {
+        "assign": {"ActivityMode": [ActivityModeHash.daresOfEternity]},
+        "label": ["eternity.bounties"],
+    },
+    {
+        "assign": {"ActivityMode": [ActivityModeHash.raid]},
+        "label": ["weekly_raid"],
     },
     # # enemyType
     # { "assign": { enemyType: 'Taken',                                         }, "desc": ["\btaken\b"],                                                        },
