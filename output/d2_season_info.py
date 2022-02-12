@@ -20,7 +20,7 @@ class D2SeasonEnum(Enum):
     天选赛季 = 13
     永夜赛季 = 14
     神隐赛季 = 15
-    隐藏赛季 = 16
+    苏生赛季 = 16
 
 
 D2SeasonInfoDict_nomodel = {
@@ -236,8 +236,8 @@ D2SeasonInfoDict_nomodel = {
     },
     16: {
         "DLCName": "邪姬魅影",
-        "seasonName": "【隐藏】赛季",
-        "seasonTag": "邪姬魅影",
+        "seasonName": "苏生赛季",
+        "seasonTag": "苏生",
         "season": 16,
         "maxLevel": 50,
         "powerFloor": 1350,
