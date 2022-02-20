@@ -67,9 +67,9 @@ def get(
     if not hash and itemname:
         item = [
             item
-            for item in manifest_json[language][tablename]
+            for item in manifest_json[language][tablename].values()
             if item.get("displayProperties")
-            and item.get("displayProperties").get("name") == itemname
+            and item.get("displayProperties", {}).get("name") == itemname
         ]
         return item[0] if item else {}
     else:

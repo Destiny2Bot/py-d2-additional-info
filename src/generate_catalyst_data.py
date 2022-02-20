@@ -4,7 +4,7 @@ from log import logger
 from tools import writeFile
 from manifest import get, getAll, loadLocal
 
-logger.info("Generating ghost data...")
+logger.info("Generating catalyst data...")
 loadLocal()
 
 catalystPresentationNodeHash: Final[int] = 1984921914
@@ -54,5 +54,6 @@ writeFile(
     "./output/catalyst-triumph-icons.json",
     {x: triumphData[x] for x in sorted(triumphData)},
 )
+# 催化剂
 logger.success("writeFile ./output/catalyst-triumph-icons.json")
-logger.info("Generating ghost data... Done")
+logger.info("Generating catalyst data... Done")
