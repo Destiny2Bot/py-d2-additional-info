@@ -213,9 +213,9 @@ logger.success(f"{version} 更新武器数据 {len(updateData)}")
 
 def uploadWeaponInfo():
     """上传武器信息"""
-    url = f"{config.upload_url}{version}"
+    url = f"{os.environ.get('UPLOAD_URL')}{version}"
     print(url)
-    headers = {"X-TQ-KEY": config.upload_key}
+    headers = {"X-TQ-KEY": os.environ.get("UPLOAD_KEY")}
     with requests.Session() as session:
         ret = session.post(url=url, data=ujson.dumps(updateData), headers=headers)
         if ret.status_code == 200:
