@@ -10,6 +10,7 @@ from manifest import get, getAll, loadLocal, getManifestOnline
 from data.generated_enums import ItemCategoryHashes
 
 version = getManifestOnline()["version"]
+logger.success("Get Version {}".format(version))
 
 loadLocal()
 
