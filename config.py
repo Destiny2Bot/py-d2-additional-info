@@ -1,3 +1,5 @@
+import os
+
 from pydantic import Field, BaseModel, AnyHttpUrl, PostgresDsn, BaseSettings
 
 
@@ -16,6 +18,10 @@ class Settings(BaseSettings):
 
     log_level: str = "INFO"
     """日志级别"""
+
+    upload_url: str = os.environ.get("UPLOAD_URL") or ""
+
+    upload_key: str = os.environ.get("UPLOAD_KEY") or ""
 
     class Config:
         env_file = ".env"

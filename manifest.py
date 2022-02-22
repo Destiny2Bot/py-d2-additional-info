@@ -1,6 +1,8 @@
+import os
 from typing import Any, Dict, Union
 
 import ujson
+import requests
 
 from tools import readFile
 
@@ -74,6 +76,25 @@ def get(
         return item[0] if item else {}
     else:
         return manifest_json[language][tablename].get(str(hash))
+
+
+def getManifestOnline() -> dict:
+    """
+    :说明: `getManifestOnline`
+    > 在线获取manifest信息
+
+    :返回:
+        - `dict`: Bungieapi返回值
+    """
+    url = "https://www.bungie.net/Platform/Destiny2/Manifest/"
+    headers = {"X-API-KEY": "{}".format(os.environ.get("API_KEY"))}
+    with requests.Session() as session:
+        response = session.get(url=url, headers=headers)
+        data = response.json()
+    if data.get("ErrorCode") == 1 and data.get("Message") == "Ok":
+        return data["Response"]
+    else:
+        raise
 
 
 if __name__ == "__main__":
