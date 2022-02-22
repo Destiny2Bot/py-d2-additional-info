@@ -26,3 +26,4 @@ import src.generate_subclass_plug_category_hashes
 import src.generate_font_glyph_enums
 import src.copy_files
 import src.generate_trials_objectives
+import src.generate_weapon_info
