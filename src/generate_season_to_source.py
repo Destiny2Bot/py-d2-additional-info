@@ -41,7 +41,7 @@ for item in inventoryItems:
     if not collectibleinfo:
         continue
 
-    sourceHash = collectibleinfo["sourceHash"]
+    sourceHash = collectibleinfo.get("sourceHash")
     season = seasonsUnfiltered.get(str(item["hash"]))
 
     if sourceHash and season:
