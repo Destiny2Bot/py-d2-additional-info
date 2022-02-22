@@ -213,6 +213,8 @@ logger.success(f"{version} 更新武器数据 {len(updateData)}")
 
 def uploadWeaponInfo():
     """上传武器信息"""
+    if os.environ.get("UPLOAD_URL") == "***":
+        print("PL")
     url = f"{os.environ.get('UPLOAD_URL')}{version}"
     print(url, os.environ.get("UPLOAD_KEY"))
     headers = {"X-TQ-KEY": os.environ.get("UPLOAD_KEY")}
