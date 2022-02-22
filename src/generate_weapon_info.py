@@ -213,11 +213,8 @@ logger.success(f"{version} 更新武器数据 {len(updateData)}")
 
 def uploadWeaponInfo():
     """上传武器信息"""
-    if os.environ.get("UPLOAD_URL") != os.environ.get("UPLOAD_KEY"):
-        print("PL")
-    url = f"{os.environ.get('UPLOAD_URL')}{version}"
-    print(url, os.environ.get("UPLOAD_KEY"))
-    headers = {"X-TQ-KEY": os.environ.get("UPLOAD_KEY")}
+    url = f"https://test.tianque.top/destiny2/weapon/upload/{version}"
+    headers = {"X-TQ-KEY": config.upload_key}
     with requests.Session() as session:
         ret = session.post(url=url, data=ujson.dumps(updateData), headers=headers)
         if ret.status_code == 200:
