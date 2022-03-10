@@ -16,77 +16,33 @@ richTextManifestSourceData = {
         "Objective",
         3099500251
     ],
-    "": [
-        "Objective",
-        5982754
-    ],
-    "": [
-        "Objective",
-        2926828923
-    ],
-    "": [
-        "Objective",
-        3545438122
-    ],
-    "": [
-        "Objective",
-        2907757911
-    ],
     "": [
         "Objective",
         4079285740
     ],
-    "": [
+    "": [
         "Objective",
-        2492452914
+        781670288
     ],
-    "": [
+    "": [
         "Objective",
-        55815981
-    ],
-    "": [
-        "Objective",
-        3442082567
-    ],
-    "": [
-        "Objective",
-        961585232
-    ],
-    "": [
-        "Objective",
-        3159311403
-    ],
-    "": [
-        "Objective",
-        349912592
-    ],
-    "": [
-        "Objective",
-        736303416
+        1702250216
     ],
     "": [
         "Objective",
-        557968429
+        1702250217
     ],
-    "": [
+    "": [
         "Objective",
-        3336308210
+        1702250218
     ],
-    "": [
+    "": [
         "Objective",
-        392195191
-    ],
-    "": [
-        "Objective",
-        2907774932
+        1324462945
     ],
     "": [
         "Objective",
-        1011164281
-    ],
-    "": [
-        "Objective",
-        3259598300
+        3084583225
     ],
     "": [
         "Objective",
@@ -96,17 +52,57 @@ richTextManifestSourceData = {
         "Objective",
         75057024
     ],
+    "": [
+        "Objective",
+        3792487535
+    ],
     "": [
         "Objective",
         2839055140
     ],
-    "": [
+    "": [
         "Objective",
-        3119800191
+        3132164210
+    ],
+    "": [
+        "Objective",
+        273389628
+    ],
+    "": [
+        "Objective",
+        2506456167
+    ],
+    "": [
+        "Objective",
+        2382054703
+    ],
+    "": [
+        "Objective",
+        3068792281
+    ],
+    "": [
+        "Objective",
+        3581927170
+    ],
+    "": [
+        "Objective",
+        2793993158
+    ],
+    "": [
+        "Objective",
+        2269729042
+    ],
+    "": [
+        "Objective",
+        1937858729
     ],
     "": [
         "Objective",
-        3595915296
+        1566997684
+    ],
+    "": [
+        "Objective",
+        2845685672
     ],
     "": [
         "Objective",
@@ -180,6 +176,10 @@ richTextManifestSourceData = {
         "SandboxPerk",
         3368836162
     ],
+    "": [
+        "SandboxPerk",
+        591985846
+    ],
     "": [
         "SandboxPerk",
         2648846626
@@ -187,10 +187,6 @@ richTextManifestSourceData = {
     "": [
         "SandboxPerk",
         72139184
-    ],
-    "": [
-        "SandboxPerk",
-        1427016431
     ],
     "[瞄准]": [
         "SandboxPerk",

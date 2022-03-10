@@ -93,6 +93,7 @@ class DestinyItemSubType(Enum):
     CLASS_ARMOR = 30
     BOW = 31
     DUMMY_REPEATABLE_BOUNTY = 32
+    Glaive = 33
 
 
 class BucketCategory(Enum):

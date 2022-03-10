@@ -26,4 +26,7 @@ import src.generate_subclass_plug_category_hashes
 import src.generate_font_glyph_enums
 import src.copy_files
 import src.generate_trials_objectives
+import src.generate_craftable_hashes
+import src.generate_crafting_enhanced_intrinsics
+import src.generate_crafting_resonant_elements
 import src.generate_weapon_info

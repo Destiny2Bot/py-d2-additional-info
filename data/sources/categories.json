@@ -1,503 +1,812 @@
 {
-"sources": {
-    "adventure": { "includes": ["adventure"] },
-    "blackarmory": {
-    "includes": [
-        "Source: Acquired from Ada-1",
-        "forge ignition",
-        "glyph puzzle",
-        "Black armory",
-        "Obsidian Accelerator",
-        "Reunited Siblings",
-        "Master Blaster",
-        "Clean Up on Aisle Five",
-        "Beautiful but Deadly",
-        "Master Smith"
-    ],
-    "items": [
-        "Bergusian Night",
-        "House of Meyrin",
-        "Izanagi's Burden",
-        "Jötunn",
-        "Le Monarque",
-        "New Age Black Armory",
-        "Rasmussen Clan",
-        "Refurbished Black Armory",
-        "Satou Tribe"
-    ],
-    "alias": "ada"
+    "sources": {
+        "adventure": {
+            "includes": [
+                "adventure"
+            ]
+        },
+        "blackarmory": {
+            "includes": [
+                "Source: Acquired from Ada-1",
+                "forge ignition",
+                "glyph puzzle",
+                "Black armory",
+                "Obsidian Accelerator",
+                "Reunited Siblings",
+                "Master Blaster",
+                "Clean Up on Aisle Five",
+                "Beautiful but Deadly",
+                "Master Smith"
+            ],
+            "items": [
+                "Bergusian Night",
+                "House of Meyrin",
+                "Izanagi's Burden",
+                "Jötunn",
+                "Le Monarque",
+                "New Age Black Armory",
+                "Rasmussen Clan",
+                "Refurbished Black Armory",
+                "Satou Tribe"
+            ],
+            "alias": "ada"
+        },
+        "calus": {
+            "includes": [
+                "leviathan",
+                "menagerie",
+                "crown of sorrow"
+            ],
+            "excludes": [
+                "chalice"
+            ],
+            "items": [
+                "The Tribute Hall",
+                "3580904580",
+                "Bad Juju"
+            ]
+        },
+        "crownofsorrow": {
+            "includes": [
+                "crown of sorrow"
+            ],
+            "items": [
+                "Crown of Sorrow",
+                "Imperial Dress",
+                "Imperial Opulence",
+                "Shadow of Earth Shell"
+            ]
+        },
+        "crucible": {
+            "includes": [
+                "Shaxx",
+                "crucible",
+                "Reconnaissance by Fire",
+                "Battle Drills",
+                "Crucible"
+            ],
+            "items": [
+                "Devil in the Details",
+                "Disdain for Glitter",
+                "Crucible Carmine",
+                "Crucible Legacy",
+                "Crucible Metallic",
+                "Crucible Redjack",
+                "Crucible Solemnity",
+                "Made Shaxx Proud",
+                "Punctuation Marks",
+                "Rain of Ashes",
+                "Victory's Wreath",
+                "Rubicund Wrap (Ornament)"
+            ],
+            "alias": "shaxx"
+        },
+        "deepstonecrypt": {
+            "includes": [
+                "Deep Stone Crypt",
+                "Not a Scratch",
+                "Rock Bottom"
+            ],
+            "alias": "dsc"
+        },
+        "do": {
+            "includes": [
+                "Arach Jalaal"
+            ]
+        },
+        "dreaming": {
+            "includes": [
+                "Dreaming City",
+                "The Corrupted"
+            ],
+            "items": [
+                "Ennead",
+                "Secret Victories"
+            ]
+        },
+        "dungeon": {
+            "includes": [
+                "Pit of Heresy",
+                "Season of Arrivals dungeon",
+                "Presage",
+                "Let Loose Thy Talons",
+                "Grasp of Avarice"
+            ],
+            "items": [
+                "Pallas Galliot",
+                "Wish-Ender",
+                "The Eternal Return"
+            ],
+            "searchString": [
+                "shatteredthrone",
+                "pit",
+                "prophecy",
+                "presage",
+                "harbinger"
+            ]
+        },
+        "edz": {
+            "includes": [
+                "European Dead Zone",
+                "edz"
+            ]
+        },
+        "eow": {
+            "includes": [
+                "Eater of Worlds raid"
+            ]
+        },
+        "ep": {
+            "includes": [
+                "Escalation Protocol",
+                "Defeat 25 Final Bosses"
+            ]
+        },
+        "europa": {
+            "includes": [
+                "Europa",
+                "Fallen Empire",
+                "Empire Hunts",
+                "The Stasis Prototype",
+                "Lost Lament"
+            ]
+        },
+        "eververse": {
+            "includes": [
+                "Bright Engrams",
+                "Eververse"
+            ]
+        },
+        "fwc": {
+            "includes": [
+                "Lakshmi-2"
+            ]
+        },
+        "gambit": {
+            "includes": [
+                "from the Drifter",
+                "Gambit quest",
+                "Clean Getaway",
+                "Keepin' On",
+                "Gambit"
+            ],
+            "items": [
+                "Dance the Demons Away",
+                "Gambit Blackguard",
+                "Gambit Chrome",
+                "Gambit Duds",
+                "Gambit Leather",
+                "Gambit Steel",
+                "Gambit Suede",
+                "Keep on Drifting",
+                "Kit and Kaboodle",
+                "Mistrust of Gifts",
+                "Live for the Hustle",
+                "Snakeskin Wrap (Ornament)"
+            ],
+            "excludes": [
+                "Prime"
+            ],
+            "alias": "drifter"
+        },
+        "gambitprime": {
+            "includes": [
+                "Gambit Prime matches"
+            ],
+            "items": [
+                "Prime Palette",
+                "The Collector",
+                "The Invader",
+                "The Reaper",
+                "The Sentry",
+                "Viper Strike"
+            ]
+        },
+        "garden": {
+            "includes": [
+                "Garden of Salvation"
+            ],
+            "items": [
+                "Divinity"
+            ]
+        },
+        "gunsmith": {
+            "includes": [
+                "Banshee-44",
+                "Salvager's Salvo Armament Quest",
+                "Source: A Sacred Fusion Quest"
+            ],
+            "excludes": [
+                "Vanguard",
+                "Crucible",
+                "Gambit"
+            ],
+            "alias": "banshee"
+        },
+        "ikora": {
+            "includes": [
+                "ikora"
+            ]
+        },
+        "io": {
+            "includes": [
+                "on io",
+                "The Pyramidion"
+            ]
+        },
+        "ironbanner": {
+            "includes": [
+                "Iron Banner"
+            ],
+            "items": [
+                "Grizzled Wolf",
+                "Iron Bone",
+                "Iron Gold",
+                "Iron Ruby",
+                "Iron Strength",
+                "Rusted Iron",
+                "The Golden Standard"
+            ]
+        },
+        "lastwish": {
+            "includes": [
+                "Last Wish raid"
+            ],
+            "items": [
+                "Dreaming Spectrum"
+            ]
+        },
+        "legendaryengram": {
+            "includes": [
+                "Legendary engrams and"
+            ]
+        },
+        "leviathan": {
+            "includes": [
+                "leviathan raid"
+            ],
+            "items": [
+                "3580904580"
+            ]
+        },
+        "mars": {
+            "includes": [
+                "on Mars",
+                "Will of the Thousands",
+                "Strange Terrain"
+            ]
+        },
+        "menagerie": {
+            "includes": [
+                "Menagerie"
+            ],
+            "items": [
+                "Árma Mákhēs",
+                "A Hall of Delights",
+                "Cinderchar",
+                "Golden Empire",
+                "Goldleaf",
+                "The Emperor's Chosen",
+                "The Imperial Menagerie",
+                "Shadow Gilt"
+            ]
+        },
+        "mercury": {
+            "includes": [
+                "mercury",
+                "A Garden World",
+                "Tree of Probabilities"
+            ]
+        },
+        "moon": {
+            "includes": [
+                "Moon",
+                "Altars of Sorrow"
+            ],
+            "excludes": [
+                "Titan"
+            ]
+        },
+        "nessus": {
+            "includes": [
+                "Nessus",
+                "The Inverted Spire",
+                "The Insight Terminus",
+                "Exodus Crash"
+            ]
+        },
+        "nightfall": {
+            "includes": [
+                "nightfall"
+            ],
+            "item": [
+                "After the Nightfall",
+                "Soldier On"
+            ]
+        },
+        "nightmare": {
+            "includes": [
+                "nightmare"
+            ]
+        },
+        "nm": {
+            "includes": [
+                "Executor Hideo"
+            ]
+        },
+        "prestige": {
+            "includes": [
+                "Prestige difficulty"
+            ]
+        },
+        "pit": {
+            "includes": [
+                "Pit of Heresy"
+            ]
+        },
+        "prophecy": {
+            "includes": [
+                "Season of Arrivals dungeon"
+            ]
+        },
+        "raid": {
+            "includes": [
+                "raid",
+                "Guide",
+                "Guided",
+                "Not a Scratch",
+                "Rock Bottom"
+            ],
+            "items": [
+                "3580904580",
+                "Crown of Sorrow",
+                "Dreaming Spectrum",
+                "Imperial Opulence",
+                "Midnight Smith",
+                "Shadow of Earth Shell",
+                "Divinity"
+            ],
+            "searchString": [
+                "crownofsorrow",
+                "deepstonecrypt",
+                "eow",
+                "garden",
+                "lastwish",
+                "leviathan",
+                "scourge",
+                "sos",
+                "vog"
+            ]
+        },
+        "scourge": {
+            "includes": [
+                "Scourge"
+            ],
+            "items": [
+                "Midnight Smith"
+            ]
+        },
+        "seasonpass": {
+            "includes": [
+                "season pass"
+            ]
+        },
+        "shipwright": {
+            "includes": [
+                "Amanda Holliday"
+            ]
+        },
+        "sos": {
+            "includes": [
+                "Spire of Stars raid"
+            ]
+        },
+        "strikes": {
+            "includes": [
+                "zavala",
+                "vanguard",
+                "First Watch",
+                "A Loud Racket",
+                "Strikes",
+                "strike",
+                "Vanguard"
+            ],
+            "items": [
+                "Determination",
+                "Disdain for Gold",
+                "Vanguard Burnished Steel",
+                "Vanguard Divide",
+                "Vanguard Metallic",
+                "Vanguard Steel",
+                "Vanguard Unyielding",
+                "Vanguard Veteran",
+                "Consequence of Duty",
+                "Balistraria Wrap (Ornament)"
+            ],
+            "excludes": [
+                "Nightfall"
+            ],
+            "alias": "zavala"
+        },
+        "sundial": {
+            "includes": [
+                "sundial",
+                "obelisk"
+            ]
+        },
+        "tangled": {
+            "includes": [
+                "Warden of Nothing",
+                "The Hollowed Lair",
+                "the Tangled Shore",
+                "Complete wanted escapee bounties for the Spider."
+            ],
+            "items": [
+                "Secret Treasure",
+                "Tangled Bronze",
+                "Tangled Rust"
+            ]
+        },
+        "titan": {
+            "includes": [
+                "Saturn's moon, Titan",
+                "Savathûn's Song"
+            ]
+        },
+        "trials": {
+            "includes": [
+                "Trials"
+            ],
+            "items": [
+                "Hardened by Trial",
+                "Light for the Lost",
+                "Flawless Empyrean"
+            ]
+        },
+        "vexoffensive": {
+            "includes": [
+                "seasonal activities during Season of the Undying"
+            ],
+            "items": [
+                "Substitutional Alloy Greaves",
+                "Substitutional Alloy Hood",
+                "Substitutional Alloy Cloak",
+                "Substitutional Alloy Boots",
+                "Substitutional Alloy Bond",
+                "Substitutional Alloy Gauntlets",
+                "Substitutional Alloy Robes",
+                "Substitutional Alloy Strides",
+                "Substitutional Alloy Vest",
+                "Substitutional Alloy Plate",
+                "Substitutional Alloy Helm",
+                "Substitutional Alloy Mark",
+                "Substitutional Alloy Grips",
+                "Substitutional Alloy Mask",
+                "Substitutional Alloy Gloves"
+            ]
+        },
+        "wrathborn": {
+            "includes": [
+                "Wrathborn",
+                "Coup de Grâce"
+            ],
+            "items": [
+                "Blast Battue",
+                "Royal Chase"
+            ],
+            "presentationNodes": [
+                "Wild Hunt Suit"
+            ]
+        },
+        "vow": {
+            "includes": [
+                "Source: Vow of the Disciple raid"
+            ]
+        },
+        "events": {
+            "includes": [
+                "event",
+                "Moments of Triumph",
+                "Solstice of Heroes",
+                "Dawning",
+                "Guardian Games",
+                "Moment of Triumph",
+                "Festival of the Lost",
+                "Revelry",
+                "Crimson Days",
+                "Ages of Triumph"
+            ],
+            "excludes": [
+                "public",
+                "End-of-Season",
+                "promotional",
+                "Handed out"
+            ],
+            "searchString": [
+                "dawning",
+                "crimsondays",
+                "solstice",
+                "fotl",
+                "revelry",
+                "games"
+            ]
+        },
+        "battlegrounds": {
+            "includes": [
+                "Battlegrounds"
+            ]
+        },
+        "wartable": {
+            "includes": [
+                "War Table",
+                "Challenger's Proving VII Quest"
+            ]
+        },
+        "deluxe": {
+            "includes": [
+                "Annual Pass",
+                "Limited Edition",
+                "special offer",
+                "Deluxe Edition",
+                "charity",
+                "pre-order bonus",
+                "preorder",
+                "Refer-a-Friend",
+                "Handed out"
+            ],
+            "alias": "limited"
+        },
+        "exoticcipher": {
+            "includes": [
+                "Source: Obtained from Master Cryptarch Rahool."
+            ],
+            "alias": "cipher"
+        },
+        "shatteredthrone": {
+            "includes": [],
+            "items": [
+                "Pallas Galliot",
+                "Wish-Ender",
+                "The Eternal Return"
+            ]
+        },
+        "contact": {
+            "includes": [
+                "Contact"
+            ]
+        },
+        "campaign": {
+            "includes": [
+                "campaign",
+                "Requires",
+                "Unlocked by default.",
+                "Source: Unlock your ",
+                "Earned while leveling.",
+                "A Spark of Hope",
+                "Planetary faction chests",
+                "Dismantle an item with this shader applied to it.",
+                "Found in Legendary world engrams.",
+                "Flashpoint",
+                "Grimoire",
+                "all factions",
+                "heroic Public Event"
+            ]
+        },
+        "cayde6": {
+            "includes": [
+                "Follow treasure maps."
+            ]
+        },
+        "presage": {
+            "includes": [
+                "Presage"
+            ]
+        },
+        "grasp": {
+            "includes": [
+                "Grasp of Avarice"
+            ]
+        },
+        "rasputin": {
+            "includes": [
+                "Rasputin",
+                "Seraph",
+                "The Lie",
+                "End-of-Season event"
+            ]
+        },
+        "saint14": {
+            "includes": [
+                "A Matter of Time",
+                "Empyrean",
+                "Global Resonance",
+                "???????"
+            ]
+        },
+        "harbinger": {
+            "includes": [
+                "Let Loose Thy Talons"
+            ]
+        },
+        "lostsectors": {
+            "includes": [
+                "Lost Sectors"
+            ]
+        },
+        "umbral": {
+            "includes": [
+                "Umbral",
+                "Recaster"
+            ]
+        },
+        "dcv": {
+            "includes": [
+                "mercury",
+                "A Garden World",
+                "Tree of Probabilities",
+                "on Mars",
+                "Will of the Thousands",
+                "Strange Terrain",
+                "Saturn's moon, Titan",
+                "Savathûn's Song",
+                "on io",
+                "The Pyramidion",
+                "leviathan",
+                "menagerie",
+                "crown of sorrow",
+                "Escalation Protocol",
+                "Defeat 25 Final Bosses",
+                "Eater of Worlds raid",
+                "Spire of Stars raid",
+                "forge ignition",
+                "glyph puzzle",
+                "Black armory",
+                "Obsidian Accelerator",
+                "Reunited Siblings",
+                "Master Blaster",
+                "Clean Up on Aisle Five",
+                "Beautiful but Deadly",
+                "Master Smith",
+                "Scourge",
+                "crown of sorrow"
+            ],
+            "excludes": [
+                "chalice"
+            ],
+            "items": [
+                "The Tribute Hall",
+                "3580904580",
+                "Bad Juju",
+                "Árma Mákhēs",
+                "A Hall of Delights",
+                "Cinderchar",
+                "Golden Empire",
+                "Goldleaf",
+                "The Emperor's Chosen",
+                "The Imperial Menagerie",
+                "Shadow Gilt",
+                "Bergusian Night",
+                "House of Meyrin",
+                "Izanagi's Burden",
+                "Jötunn",
+                "Le Monarque",
+                "New Age Black Armory",
+                "Rasmussen Clan",
+                "Refurbished Black Armory",
+                "Satou Tribe",
+                "Midnight Smith",
+                "Crown of Sorrow",
+                "Imperial Dress",
+                "Imperial Opulence",
+                "Shadow of Earth Shell"
+            ],
+            "searchString": [
+                "mercury",
+                "mars",
+                "titan",
+                "io",
+                "leviathan",
+                "ep",
+                "blackarmory",
+                "menagerie",
+                "eow",
+                "sos",
+                "scourge",
+                "crownofsorrow"
+            ]
+        },
+        "servitor": {
+            "includes": [
+                "Source: Season of the Splicer",
+                "Source: Splicer Servitor"
+            ]
+        },
+        "vog": {
+            "includes": [
+                "Source: Venus Raid"
+            ]
+        },
+        "lost": {
+            "includes": [
+                "Source: Season of the Lost ritual playlists",
+                "Source: Display of Supremacy, Weekly Challenge"
+            ]
+        },
+        "compass": {
+            "includes": [
+                "Source: Wayfinder's Compass",
+                "Source: Mission Exorcism",
+                "Source: Display of Supremacy, Weekly Challenge"
+            ]
+        },
+        "30th": {
+            "includes": [
+                "Eternity",
+                "Grasp of Avarice",
+                "Magnum Opus",
+                "And Out Fly the Wolves"
+            ]
+        },
+        "wellspring": {
+            "includes": [
+                "Wellspring",
+                "All the Spring's Riches",
+                "Warden of the Spring"
+            ]
+        },
+        "psiops": {
+            "includes": [
+                "PsiOps",
+                "Source: Season of the Risen"
+            ],
+            "excludes": [
+                "Source: Season of the Risen Nightfall Grandmaster"
+            ]
+        },
+        "evidenceboard": {
+            "includes": [
+                "Evidence Board",
+                "Investigator"
+            ],
+            "alias": "enclave"
+        },
+        "throneworld": {
+            "includes": [
+                "Throne World",
+                "Vox Obscura",
+                "Of Queens and Worms"
+            ]
+        },
+        "ignore": {
+            "includes": [
+                "Forging Your Own Path",
+                "Exotic engrams; extremely rare world drops.",
+                "An Exotic quest or challenge",
+                "Season of Opulence Triumph",
+                "Season of Arrivals",
+                "Season of the Worthy",
+                "Season of the Hunt",
+                "Artifacts - IGNORE",
+                "Ornaments - IGNORE",
+                "Source: Seasonal Artifact",
+                "Source: Season of the Chosen",
+                "Source: Xûr",
+                "Source: Season of the Lost"
+            ]
+        }
     },
-    "calus": {
-    "includes": ["leviathan", "menagerie", "crown of sorrow"],
-    "excludes": ["chalice"],
-    "items": [
-        "The Tribute Hall",
-        "3580904580",
-        "Bad Juju"
-    ]
-    },
-    "crownofsorrow": {
-    "includes": ["crown of sorrow"],
-    "items": [
-        "Crown of Sorrow",
-        "Imperial Dress",
-        "Imperial Opulence",
-        "Shadow of Earth Shell"
-    ]
-    },
-    "crucible": {
-    "includes": ["Shaxx", "crucible", "Reconnaissance by Fire", "Battle Drills", "Crucible"],
-    "items": [
-        "Devil in the Details",
-        "Disdain for Glitter",
-        "Crucible Carmine",
-        "Crucible Legacy",
-        "Crucible Metallic",
-        "Crucible Redjack",
-        "Crucible Solemnity",
-        "Made Shaxx Proud",
-        "Punctuation Marks",
-        "Rain of Ashes",
-        "Victory's Wreath",
-        "Rubicund Wrap (Ornament)"
-    ],
-    "alias": "shaxx"
-    },
-    "deepstonecrypt": {
-    "includes": ["Deep Stone Crypt", "Not a Scratch", "Rock Bottom"],
-    "alias": "dsc"
-    },
-    "do": { "includes": ["Arach Jalaal"] },
-    "dreaming": {
-    "includes": ["Dreaming City", "The Corrupted"],
-    "items": [
-        "Ennead",
-        "Secret Victories"
-    ]
-    },
-    "dungeon": {
-    "includes": ["Pit of Heresy", "Season of Arrivals dungeon", "Presage", "Let Loose Thy Talons"],
-    "items": [
-        "Pallas Galliot",
-        "Wish-Ender",
-        "The Eternal Return"
-    ],
-    "searchString": [
-        "shatteredthrone",
-        "pit",
-        "prophecy",
-        "presage",
-        "harbinger"
-    ]
-    },
-    "edz": { "includes": ["European Dead Zone", "edz"] },
-    "eow": { "includes": ["Eater of Worlds raid"] },
-    "ep": { "includes": ["Escalation Protocol", "Defeat 25 Final Bosses"] },
-    "europa": {
-    "includes": ["Europa", "Fallen Empire", "Empire Hunts", "The Stasis Prototype", "Lost Lament"]
-    },
-    "eververse": { "includes": ["Bright Engrams", "Eververse"] },
-    "fwc": { "includes": ["Lakshmi-2"] },
-    "gambit": {
-    "includes": ["from the Drifter", "Gambit quest", "Clean Getaway", "Keepin' On", "Gambit"],
-    "items": [
-        "Dance the Demons Away",
-        "Gambit Blackguard",
-        "Gambit Chrome",
-        "Gambit Duds",
-        "Gambit Leather",
-        "Gambit Steel",
-        "Gambit Suede",
-        "Keep on Drifting",
-        "Kit and Kaboodle",
-        "Mistrust of Gifts",
-        "Live for the Hustle",
-        "Snakeskin Wrap (Ornament)"
-    ],
-    "excludes": ["Prime"],
-    "alias": "drifter"
-    },
-    "gambitprime": {
-    "includes": ["Gambit Prime matches"],
-    "items": [
-        "Prime Palette",
-        "The Collector",
-        "The Invader",
-        "The Reaper",
-        "The Sentry",
-        "Viper Strike"
-    ]
-    },
-    "garden": {
-    "includes": ["Garden of Salvation"],
-    "items": ["Divinity"]
-    },
-    "gunsmith": {
-    "includes": [
-        "Banshee-44",
-        "Salvager's Salvo Armament Quest",
-        "Source: A Sacred Fusion Quest"
+    "exceptions": [
+        [
+            "3389857033",
+            "Ornaments - IGNORE"
         ],
-    "excludes": [
-        "Vanguard",
-        "Crucible",
-        "Gambit"
+        [
+            "1402439016",
+            "Artifacts - IGNORE"
         ],
-    "alias": "banshee"
-    },
-    "ikora": { "includes": ["ikora"] },
-    "io": { "includes": ["on io", "The Pyramidion"] },
-    "ironbanner": {
-    "includes": ["Iron Banner"],
-    "items": [
-        "Grizzled Wolf",
-        "Iron Bone",
-        "Iron Gold",
-        "Iron Ruby",
-        "Iron Strength",
-        "Rusted Iron",
-        "The Golden Standard"
-    ]
-    },
-    "lastwish": {
-    "includes": ["Last Wish raid"],
-    "items": [
-        "Dreaming Spectrum"
-    ]
-    },
-    "legendaryengram": {
-    "includes": ["Legendary engrams and"]
-    },
-    "leviathan": {
-    "includes": ["leviathan raid"],
-    "items": [
-        "3580904580"
-    ]
-    },
-    "mars": { "includes": ["on Mars", "Will of the Thousands", "Strange Terrain"] },
-    "menagerie": {
-    "includes": ["Menagerie"],
-    "items": [
-        "Árma Mákhēs",
-        "A Hall of Delights",
-        "Cinderchar",
-        "Golden Empire",
-        "Goldleaf",
-        "The Emperor's Chosen",
-        "The Imperial Menagerie",
-        "Shadow Gilt"
-    ]
-    },
-    "mercury": { "includes": ["mercury", "A Garden World", "Tree of Probabilities"] },
-    "moon": {
-    "includes": ["Moon", "Altars of Sorrow"],
-    "excludes": ["Titan"]
-    },
-    "nessus": {
-    "includes": ["Nessus", "The Inverted Spire", "The Insight Terminus", "Exodus Crash"]
-    },
-    "nightfall": {
-    "includes": ["nightfall"],
-    "item": [
-        "After the Nightfall",
-        "Soldier On"
-    ]
-    },
-    "nightmare": { "includes": ["nightmare"] },
-    "nm": { "includes": ["Executor Hideo"] },
-    "prestige": { "includes": ["Prestige difficulty"] },
-    "pit": { "includes": ["Pit of Heresy"] },
-    "prophecy": { "includes": ["Season of Arrivals dungeon"] },
-    "raid": {
-    "includes": ["raid", "Guide", "Guided", "Not a Scratch", "Rock Bottom"],
-    "items": [
-        "3580904580",
-        "Crown of Sorrow",
-        "Dreaming Spectrum",
-        "Imperial Opulence",
-        "Midnight Smith",
-        "Shadow of Earth Shell",
-        "Divinity"
-    ],
-    "searchString": [
-        "crownofsorrow",
-        "deepstonecrypt",
-        "eow",
-        "garden",
-        "lastwish",
-        "leviathan",
-        "scourge",
-        "sos",
-        "vog"
-    ]
-    },
-    "scourge": {
-    "includes": ["Scourge"],
-    "items": [
-        "Midnight Smith"
-    ]
-    },
-    "seasonpass": { "includes": ["season pass"] },
-    "shipwright": { "includes": ["Amanda Holliday"] },
-    "sos": { "includes": ["Spire of Stars raid"] },
-    "strikes": {
-    "includes": ["zavala", "vanguard", "First Watch", "A Loud Racket", "Strikes", "strike", "Vanguard"],
-    "items": [
-        "Determination",
-        "Disdain for Gold",
-        "Vanguard Burnished Steel",
-        "Vanguard Divide",
-        "Vanguard Metallic",
-        "Vanguard Steel",
-        "Vanguard Unyielding",
-        "Vanguard Veteran",
-        "Consequence of Duty",
-        "Balistraria Wrap (Ornament)"
-    ],
-    "excludes": ["Nightfall"],
-    "alias": "zavala"
-    },
-    "sundial": {
-    "includes": ["sundial", "obelisk"]
-    },
-    "tangled": {
-    "includes": [
-        "Warden of Nothing",
-        "The Hollowed Lair",
-        "the Tangled Shore",
-        "Complete wanted escapee bounties for the Spider."
-    ],
-    "items": [
-        "Secret Treasure",
-        "Tangled Bronze",
-        "Tangled Rust"
-    ]
-    },
-    "titan": { "includes": ["Saturn's moon, Titan", "Savathûn's Song"] },
-    "trials": {
-    "includes": ["Trials"],
-    "items": [
-        "Hardened by Trial",
-        "Light for the Lost",
-        "Flawless Empyrean"
-    ]
-    },
-    "vexoffensive": {
-    "includes": ["seasonal activities during Season of the Undying"],
-    "items": [
-        "Substitutional Alloy Greaves",
-        "Substitutional Alloy Hood",
-        "Substitutional Alloy Cloak",
-        "Substitutional Alloy Boots",
-        "Substitutional Alloy Bond",
-        "Substitutional Alloy Gauntlets",
-        "Substitutional Alloy Robes",
-        "Substitutional Alloy Strides",
-        "Substitutional Alloy Vest",
-        "Substitutional Alloy Plate",
-        "Substitutional Alloy Helm",
-        "Substitutional Alloy Mark",
-        "Substitutional Alloy Grips",
-        "Substitutional Alloy Mask",
-        "Substitutional Alloy Gloves"
-    ]
-    },
-    "wrathborn": {
-    "includes": ["Wrathborn", "Coup de Grâce"],
-    "items": [
-        "Blast Battue",
-        "Royal Chase"
-    ],
-    "presentationNodes": ["Wild Hunt Suit"]
-    },
-    "events": {
-    "includes": [
-        "event",
-        "Moments of Triumph",
-        "Solstice of Heroes",
-        "Dawning",
-        "Guardian Games",
-        "Moment of Triumph",
-        "Festival of the Lost",
-        "Revelry",
-        "Crimson Days",
-        "Ages of Triumph"
-    ],
-    "excludes": [
-        "public",
-        "End-of-Season",
-        "promotional",
-        "Handed out"
-    ],
-    "searchString": [
-        "dawning",
-        "crimsondays",
-        "solstice",
-        "fotl",
-        "revelry",
-        "games"
-    ]
-    },
-    "battlegrounds": { "includes": ["Battlegrounds"] },
-    "wartable": { "includes": ["War Table", "Challenger's Proving VII Quest"] },
-    "deluxe": {
-    "includes": [
-        "Annual Pass",
-        "Limited Edition",
-        "special offer",
-        "Deluxe Edition",
-        "charity",
-        "pre-order bonus",
-        "preorder",
-        "Refer-a-Friend",
-        "Handed out"
-    ],
-    "alias": "limited"
-    },
-    "exoticcipher": {
-    "includes": ["Source: Obtained from Master Cryptarch Rahool."],
-    "alias": "cipher"
-    },
-    "shatteredthrone": {
-    "includes": [],
-    "items": ["Pallas Galliot", "Wish-Ender", "The Eternal Return"]
-    },
-    "contact": {
-    "includes": ["Contact"]
-    },
-    "campaign": {
-    "includes": [
-        "campaign",
-        "Requires",
-        "Unlocked by default.",
-        "Source: Unlock your ",
-        "Earned while leveling.",
-        "A Spark of Hope",
-        "Planetary faction chests",
-        "Dismantle an item with this shader applied to it.",
-        "Found in Legendary world engrams.",
-        "Flashpoint",
-        "Grimoire",
-        "all factions",
-        "heroic Public Event"
-    ]
-    },
-    "cayde6": { "includes": ["Follow treasure maps."] },
-    "presage": { "includes": ["Presage"] },
-    "rasputin": { "includes": ["Rasputin", "Seraph", "The Lie", "End-of-Season event"] },
-    "saint14": { "includes": ["A Matter of Time", "Empyrean", "Global Resonance", "???????"] },
-    "harbinger": { "includes": ["Let Loose Thy Talons"] },
-    "lostsectors": { "includes": ["Lost Sectors"] },
-    "umbral": { "includes": ["Umbral", "Recaster"] },
-    "dcv": {
-    "includes": [
-        "mercury",
-        "A Garden World",
-        "Tree of Probabilities",
-        "on Mars",
-        "Will of the Thousands",
-        "Strange Terrain",
-        "Saturn's moon, Titan",
-        "Savathûn's Song",
-        "on io",
-        "The Pyramidion",
-        "leviathan",
-        "menagerie",
-        "crown of sorrow",
-        "Escalation Protocol",
-        "Defeat 25 Final Bosses",
-        "Eater of Worlds raid",
-        "Spire of Stars raid",
-        "forge ignition",
-        "glyph puzzle",
-        "Black armory",
-        "Obsidian Accelerator",
-        "Reunited Siblings",
-        "Master Blaster",
-        "Clean Up on Aisle Five",
-        "Beautiful but Deadly",
-        "Master Smith",
-        "Scourge",
-        "crown of sorrow"
-    ],
-    "excludes": [
-        "chalice"
-    ],
-    "items": [
-        "The Tribute Hall",
-        "3580904580",
-        "Bad Juju",
-        "Árma Mákhēs",
-        "A Hall of Delights",
-        "Cinderchar",
-        "Golden Empire",
-        "Goldleaf",
-        "The Emperor's Chosen",
-        "The Imperial Menagerie",
-        "Shadow Gilt",
-        "Bergusian Night",
-        "House of Meyrin",
-        "Izanagi's Burden",
-        "Jötunn",
-        "Le Monarque",
-        "New Age Black Armory",
-        "Rasmussen Clan",
-        "Refurbished Black Armory",
-        "Satou Tribe",
-        "Midnight Smith",
-        "Crown of Sorrow",
-        "Imperial Dress",
-        "Imperial Opulence",
-        "Shadow of Earth Shell"
-    ],
-    "searchString": [
-        "mercury",
-        "mars",
-        "titan",
-        "io",
-        "leviathan",
-        "ep",
-        "blackarmory",
-        "menagerie",
-        "eow",
-        "sos",
-        "scourge",
-        "crownofsorrow"
-    ]
-    },
-    "servitor": {
-    "includes": [
-        "Source: Season of the Splicer",
-        "Source: Splicer Servitor"
-    ]
-    },
-    "vog": {
-    "includes": ["Source: Venus Raid"]
-    },
-    "compass": {
-    "includes": ["Source: Wayfinder's Compass"]
-    },
-    "30th": {
-    "includes": ["Eternity", "Grasp of Avarice", "Magnum Opus", "And Out Fly the Wolves"]
-    },
-    "ignore": {
-    "includes": [
-        "Forging Your Own Path",
-        "Exotic engrams; extremely rare world drops.",
-        "An Exotic quest or challenge",
-        "Season of Opulence Triumph",
-        "Season of Arrivals",
-        "Season of the Worthy",
-        "Season of the Hunt",
-        "Artifacts - IGNORE",
-        "Ornaments - IGNORE",
-        "Source: Seasonal Artifact",
-        "Source: Season of the Chosen"
-    ]
-    }
-},
-"exceptions": [
-    ["3389857033", "Ornaments - IGNORE"],
-    ["1402439016", "Artifacts - IGNORE"]
+        [
+            "2075569025",
+            "PsiOps"
+        ]
     ]
 }

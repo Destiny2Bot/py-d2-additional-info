@@ -132,6 +132,17 @@ def tryToGetAdditionalStringContent(thing: dict) -> str:
                     convertMixedStringToLeadingCapCamelCase(list(itemTypes)[0])
                 )
 
+            traitIds = list(
+                deduplicate(
+                    [i.get("traitIds")[0] for i in exampleItems if i.get("traitIds")]
+                )
+            )
+
+            if len(traitIds) == 1:
+                labels.append(
+                    convertMixedStringToLeadingCapCamelCase(traitIds[0].split(".")[-1])
+                )
+
     # buckets 处理 ，尝试附加类型信息
     if thing in allBuckets:
         if category := thing.get("category"):
@@ -214,7 +225,9 @@ for i in enumSources:
 
     # 如果生成的名字不都是唯一的，只能说是寄了
     if len(list(deduplicate(deDupedIdentifiers))) != len(deDupedIdentifiers):
-        logger.error(f"couldn't properly make unique labels for {deDupedIdentifiers}")
+        logger.error(
+            f"couldn't properly make unique labels for {deDupedIdentifiers}, using hash"
+        )
         continue
 
     # 如果我们到了这里，那么这些重复的东西都产生了不同的字符串

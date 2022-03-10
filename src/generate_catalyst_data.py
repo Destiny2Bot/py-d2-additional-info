@@ -7,7 +7,22 @@ from manifest import get, getAll, loadLocal
 logger.info("Generating catalyst data...")
 loadLocal()
 
-catalystPresentationNodeHash: Final[int] = 1984921914
+
+def getCatalystPresentationNodeHash() -> int | None:
+    presentationNodes = getAll("DestinyPresentationNodeDefinition")
+    catNode = [
+        p
+        for p in presentationNodes
+        if p["displayProperties"]["name"] == "异域催化"
+        and len(p["children"]["presentationNodes"]) > 1
+    ]
+    if catNode:
+        return catNode[0]["hash"]
+    else:
+        return None
+
+
+catalystPresentationNodeHash = getCatalystPresentationNodeHash()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")
 

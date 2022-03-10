@@ -18,7 +18,7 @@ T = TypeVar("T")
 
 def deduplicate(
     items: List[T],
-    key: Callable[[T], Hashable] = None,
+    key: Optional[Callable[[T], Hashable]] = None,
 ) -> Generator[T, None, None]:
     """
     :说明: `dedupelicate`

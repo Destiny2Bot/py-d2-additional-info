@@ -44,7 +44,7 @@ D2EventInfo = {
     6: {
         "name": "守护者游戏",
         "shortname": "游戏",
-        "sources": [611838069, 2011810450, 3388021959],
+        "sources": [611838069, 2006303146, 2011810450, 3388021959],
         "engram": [],
     },
 
@@ -76,6 +76,7 @@ D2SourcesToEvent = {
     3693722471: D2EventEnum.英灵日,
     2187511136: D2EventEnum.欢庆,
     611838069: D2EventEnum.游戏,
+    2006303146: D2EventEnum.游戏,
     2011810450: D2EventEnum.游戏,
     3388021959: D2EventEnum.游戏,
 

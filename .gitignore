@@ -117,7 +117,7 @@ dmypy.json
 # My Own Config
 test.py
 poetry.lock
-data/BungieManifest/BungieJSON*
+data/BungieManifest/*
 *.DS_Store
 fytest
 .vscode/launch.json

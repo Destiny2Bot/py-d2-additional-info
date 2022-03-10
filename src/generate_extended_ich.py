@@ -3,7 +3,7 @@ from tools import writeFile, sortObject
 from manifest import getAll, loadLocal
 from data.generated_enums import ItemCategoryHashes
 
-logger.info("Generating Extended ICH... 所有榴弹发射器和精密框架霰弹枪的物品 hash")
+logger.info("Generating Extended ICH... 所有特殊榴弹发射器和精密框架霰弹枪的物品 hash")
 loadLocal()
 
 inventoryItems = getAll("DestinyInventoryItemDefinition")

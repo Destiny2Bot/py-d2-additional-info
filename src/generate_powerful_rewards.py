@@ -13,7 +13,6 @@ milestones = getAll("DestinyMilestoneDefinition")
 rewards: List[int] = []
 rewardHash = "326786556"
 
-debug = False
 
 # 将高光任务加入输出
 for milestone in milestones:
@@ -50,8 +49,6 @@ for item in inventoryItems:
     hash = item["hash"]
     powerfulEquipment = "解密大师可将它解码成一件强大的装备"
     if powerfulEquipment in item["displayProperties"]["description"]:
-        if debug:
-            logger.info(item["displayProperties"]["name"])
         logger.debug(f"{item['displayProperties']['name']} {hash}")
         rewards.append(hash)
 

@@ -1,5 +1,5 @@
 import os
-from typing import Any, Dict, Union
+from typing import Any, Dict, Union, Optional
 
 import ujson
 import requests
@@ -26,7 +26,7 @@ def loadLocal(language: str = "zh-chs") -> None:
         )
 
 
-def getAll(tablename: str = None, language: str = "zh-chs") -> Union[dict, list]:
+def getAll(tablename: Optional[str], language: str = "zh-chs") -> Union[dict, list]:
     """
     :说明: `getAll`
     > 获取清单中所有的数据
@@ -45,8 +45,8 @@ def getAll(tablename: str = None, language: str = "zh-chs") -> Union[dict, list]
 
 def get(
     tablename: str,
-    hash: Union[str, int] = None,
-    itemname: str = None,
+    hash: Optional[Union[str, int]] = None,
+    itemname: Optional[str] = None,
     language: str = "zh-chs",
 ) -> dict:
     """
@@ -64,9 +64,9 @@ def get(
     :返回:
         - `dict`: 查询到的数据原JSON格式字典
     """
-    if not hash and not itemname:
+    if hash is None and not itemname:
         raise ValueError("`hash` or `itemname` must be specified")
-    if not hash and itemname:
+    if hash is None and itemname:
         item = [
             item
             for item in manifest_json[language][tablename].values()
