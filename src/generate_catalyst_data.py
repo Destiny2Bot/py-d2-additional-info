@@ -1,4 +1,4 @@
-from typing import Final
+from typing import Union
 
 from log import logger
 from tools import writeFile
@@ -8,7 +8,7 @@ logger.info("Generating catalyst data...")
 loadLocal()
 
 
-def getCatalystPresentationNodeHash() -> int | None:
+def getCatalystPresentationNodeHash() -> Union[int, None]:
     presentationNodes = getAll("DestinyPresentationNodeDefinition")
     catNode = [
         p
