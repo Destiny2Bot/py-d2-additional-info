@@ -20,25 +20,25 @@ richTextManifestSourceData = {
         "Objective",
         4079285740
     ],
-    "": [
-        "Objective",
-        781670288
-    ],
-    "": [
-        "Objective",
-        1702250216
-    ],
-    "": [
-        "Objective",
-        1702250217
-    ],
     "": [
         "Objective",
-        1702250218
+        299529734
+    ],
+    "": [
+        "Objective",
+        3644867379
+    ],
+    "": [
+        "Objective",
+        4128245958
     ],
     "": [
         "Objective",
-        1324462945
+        49978863
+    ],
+    "": [
+        "Objective",
+        49978862
     ],
     "": [
         "Objective",
@@ -51,6 +51,10 @@ richTextManifestSourceData = {
     "": [
         "Objective",
         75057024
+    ],
+    "": [
+        "Objective",
+        1878777304
     ],
     "": [
         "Objective",
@@ -71,10 +75,6 @@ richTextManifestSourceData = {
     "": [
         "Objective",
         2506456167
-    ],
-    "": [
-        "Objective",
-        2382054703
     ],
     "": [
         "Objective",
@@ -100,25 +100,13 @@ richTextManifestSourceData = {
         "Objective",
         1566997684
     ],
-    "": [
+    "": [
         "Objective",
-        2845685672
+        3840421587
     ],
     "": [
         "Objective",
         4231452845
-    ],
-    "": [
-        "Objective",
-        276438067
-    ],
-    "": [
-        "Objective",
-        3792840449
-    ],
-    "": [
-        "Objective",
-        2031240843
     ],
     "": [
         "Objective",
@@ -191,6 +179,10 @@ richTextManifestSourceData = {
     "[瞄准]": [
         "SandboxPerk",
         2169611095
+    ],
+    "[空中移动]": [
+        "SandboxPerk",
+        3694014520
     ]
 }
 
