@@ -624,7 +624,7 @@ class PlugCategoryHashes(int, Enum):
     V520NewSidearm0Skins = 3585770670
     V520RepackageFusionRifle0Skins = 3764575515
     V520PursuitFusionRifle0Skins = 2234989376
-    V520TitanNewLegs0Skins = 1237800331
+    V460TitanNewLegs0Skins = 178034590
     EnhancementsRaidV520 = 2274750776
     V500HunterNewHead0Skins = 1458473036
     V480TitanNewArms0Skins = 3977445226
@@ -643,6 +643,7 @@ class PlugCategoryHashes(int, Enum):
     V510HunterNewChest0Skins = 161162146
     V500HunterNewArms0Skins = 3358309601
     V510TitanNewChest0Skins = 1707985078
+    V520TitanNewLegs0Skins = 1237800331
     V510WarlockNewChest0Skins = 3047659449
     V600NewGlaiveHunterMasterwork = 4031794373
     V600NewGlaiveTitanMasterwork = 1751014081
@@ -698,8 +699,9 @@ class PlugCategoryHashes(int, Enum):
     V610NewSword0Skins = 3670567962
     V610NewMachinegun0Skins = 425188854
     V530TitanRepackageArms1Skins = 640799760
-    EventsSolsticeAshes = 2908199290
-    EventsSolsticeStones = 1222804544
+    EventsSolsticeEmbersEmpty = 566942471
+    EventsSolsticeEmbers = 3134612854
+    EventsSolsticeKindling = 115096268
     SocialClansPerks2 = 1683579090
     SocialClansPerks = 3898156960
     SocialClansStaves = 3954618873
