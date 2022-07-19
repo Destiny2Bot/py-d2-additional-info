@@ -26,7 +26,7 @@ D2EventInfo = {
     3: {
         "name": "至日英雄",
         "shortname": "至日",
-        "sources": [151416041, 641018908, 3724111213],
+        "sources": [],
         "engram": [821844118],
     },
     4: {
@@ -66,9 +66,6 @@ D2SourcesToEvent = {
     3952847349: D2EventEnum.曙光节,
     4054646289: D2EventEnum.曙光节,
     2502262376: D2EventEnum.血色浪漫,
-    151416041: D2EventEnum.至日,
-    641018908: D2EventEnum.至日,
-    3724111213: D2EventEnum.至日,
     1054169368: D2EventEnum.英灵日,
     1677921161: D2EventEnum.英灵日,
     1919933822: D2EventEnum.英灵日,
