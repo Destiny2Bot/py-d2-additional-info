@@ -719,10 +719,12 @@ class PlugCategoryHashes(int, Enum):
     HunterArcMovement = 2101241798
     TitanArcMovement = 2415307576
     WarlockArcMovement = 1943502171
+    EnhancementsRaidV620 = 2173937871
     V460HunterNewHead0Skins = 15211617
     V400HunterNewChest0Skins = 1466491256
     V400WarlockNewArms0 = 554591716
     V620ExoticWeaponMasterwork = 503826300
+    V620RepackageScoutRifle0Skins = 2565240946
     V400NewTraceRifle0Skins = 3613020796
     V620NewFusionRifle0Skins = 964101403
     V620PursuitGrenadeLauncher0Skins = 1006653369
