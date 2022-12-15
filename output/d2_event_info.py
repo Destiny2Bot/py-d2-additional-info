@@ -14,7 +14,7 @@ D2EventInfo = {
     1: {
         "name": "曙光节",
         "shortname": "曙光节",
-        "sources": [510530151, 930411416, 3952847349, 4054646289],
+        "sources": [464727567, 547767158, 629617846, 2364515524, 3092212681, 3952847349, 4054646289],
         "engram": [1170720694, 3151770741],
     },
     2: {
@@ -61,8 +61,11 @@ D2EventPredicateLookup = {
 }
 
 D2SourcesToEvent = {
-    510530151: D2EventEnum.曙光节,
-    930411416: D2EventEnum.曙光节,
+    464727567: D2EventEnum.曙光节,
+    547767158: D2EventEnum.曙光节,
+    629617846: D2EventEnum.曙光节,
+    2364515524: D2EventEnum.曙光节,
+    3092212681: D2EventEnum.曙光节,
     3952847349: D2EventEnum.曙光节,
     4054646289: D2EventEnum.曙光节,
     2502262376: D2EventEnum.血色浪漫,

@@ -1,6 +1,7 @@
 
 resonantElementTagsByObjectiveHash: dict = {
   4061659983: "共振", # 共振元素
+  4061659983: "共振", # 共振元素
 }
 
 resonantMaterialStringVarHashes = [

@@ -2,28 +2,30 @@ from enum import Enum
 
 class PlugCategoryHashes(int, Enum):
     V400WeaponModEmpty = 3945646995
-    HunterStasisTotems = 1853189378
+    HunterSharedAspects = 3032847657
     HunterVoidAspects = 2905530840
     HunterSolarAspects = 3052104375
     HunterArcAspects = 185594100
-    TitanStasisTotems = 1491608144
+    TitanSharedAspects = 4032445539
     TitanVoidAspects = 3990226434
     TitanSolarAspects = 1970675705
     TitanArcAspects = 3460332466
-    WarlockStasisTotems = 2997725741
+    WarlockSharedAspects = 3908861120
     WarlockVoidAspects = 227647633
     WarlockSolarAspects = 81856188
     WarlockArcAspects = 2111409167
-    SharedStasisTrinkets = 83940941
+    SharedFragments = 1920373979
     SharedVoidFragments = 39076551
     SharedSolarFragments = 3119191718
     SharedArcFragments = 2430016289
+    SharedStasisTrinkets = 83940941
     EnhancementsGhostsActivity = 1232333242
     EnhancementsGhostsActivityFake = 623624742
     EnhancementsGhostsExperience = 2112073485
     EnhancementsGhostsEconomic = 2544257478
     EnhancementsGhostsTracking = 1102742598
     PlugsGhostsMasterworks = 4096629092
+    ArchetypeIntrinsic = 1188147254
     Shader = 2973005342
     CraftingPlugsFrameIdentifiers = 3425085882
     V400PlugsWeaponsMasterworks = 3185182717
@@ -32,15 +34,15 @@ class PlugCategoryHashes(int, Enum):
     CraftingRecipesEmptySocket = 3618704867
     V400EmptyExoticMasterwork = 1915962497
     V404ArmorFotlMasksAbyssPerks = 457704685
-    EventsDawningOvenEmptyCombination = 1176784699
-    EventsDawningOvenCombine = 518484847
-    EventsDawningOvenEmpty = 166881535
-    EventsDawningNoRecipe = 753199014
-    EventsDawningOvenNotMasterworked = 966890896
+    EventsDawning2022OvenEmptyCombination = 2883189075
+    EventsDawning2022OvenCombine = 1225255975
+    EventsDawning2022OvenEmpty = 19687479
+    EventsDawning2022NoRecipe = 1005018270
+    EventsDawning2022OvenNotMasterworked = 445150264
     EventsDawningOvenMasterworked = 2791193194
-    EventsDawningIngredientA = 134161965
-    EventsDawningIngredientB = 134161966
-    EventsDawningRecipe = 327911382
+    EventsDawning2022IngredientA = 677796293
+    EventsDawning2022IngredientB = 677796294
+    EventsDawning2022Recipe = 1707065358
     ArmorSkinsHunterArms = 4060972748
     ArmorSkinsHunterChest = 4147546868
     ArmorSkinsHunterClass = 1392996619
@@ -70,7 +72,9 @@ class PlugCategoryHashes(int, Enum):
     EnhancementsUniversal = 3347429529
     DummyInfuse = 1654900552
     V300GhostsModsPerks = 1820735122
+    RandomPerk = 1135709122
     GhostTrackerLeft = 3611137032
+    GhostTrackerRight = 2841059071
     ShipSpawnfx = 3189353766
     V300VehiclesModSpeed = 231630128
     V300VehiclesModFunction = 3536704835
@@ -606,6 +610,9 @@ class PlugCategoryHashes(int, Enum):
     HunterStasisSupers = 818442312
     TitanStasisSupers = 635737914
     WarlockStasisSupers = 3379648287
+    HunterStasisTotems = 1853189378
+    TitanStasisTotems = 1491608144
+    WarlockStasisTotems = 2997725741
     DawningShipSpawnfx = 1767518647
     V500ShipsEventsDawningExoticShip0Engines = 3754191634
     DawningShipShader = 2492152783
@@ -728,7 +735,16 @@ class PlugCategoryHashes(int, Enum):
     V400NewTraceRifle0Skins = 3613020796
     V620NewFusionRifle0Skins = 964101403
     V620PursuitGrenadeLauncher0Skins = 1006653369
-    SocialClansPerks2 = 1683579090
+    V630NewBow0Masterwork = 1131152613
+    Catalysts = 2142400139
+    V630NewSubmachinegun0Masterwork = 725540660
+    V630PursuitPulseRifle0Skins = 3180604129
+    V630NewPulseRifle0Skins = 3446925989
+    V630NewSubmachinegun0Skins = 1942616782
+    V320HunterRepackageLegs0Skins = 1246166040
+    V600HunterNewArms0Skins = 1305529752
+    V600WarlockNewArms0Skins = 1568401913
+    V600WarlockNewLegs0Skins = 45915023
     SocialClansPerks = 3898156960
     SocialClansStaves = 3954618873
 
@@ -918,7 +934,7 @@ class ItemCategoryHashes(int, Enum):
     公会战旗_874645359 = 874645359
 
 class SocketCategoryHashes(int, Enum):
-    原料 = 322810736
+    原料 = 4084329384
     藏宝图 = 819416197
     大副 = 32507403
     秘密隔间 = 135233934
@@ -940,7 +956,6 @@ class SocketCategoryHashes(int, Enum):
     日落修改器 = 2622243744
     动作 = 1093090108
     锻炉材料 = 3970188346
-    食谱 = 2059652296
     符文适应性 = 2316895247
     符文奖励 = 879083882
     力量与效率 = 2529820344
@@ -949,6 +964,7 @@ class SocketCategoryHashes(int, Enum):
     机灵装饰 = 2549160099
     公会旗杆 = 3954618873
     武器特性_CONSUMABLE = 3410521964
+    食谱_CONSUMABLE_容器_Quest = 809913446
     护甲特性_REUSABLE = 2518356196
     护甲特性_LARGE_PERK = 3154740035
     武器特性_REUSABLE = 4241085061
@@ -956,6 +972,7 @@ class SocketCategoryHashes(int, Enum):
     载具模组_CONSUMABLE_飞船 = 4265082475
     技能_ABILITIES = 309722977
     技能_ABILITIES_LightSubclass = 3218807805
+    食谱_CONSUMABLE_UNUSED = 2059652296
     公会特性_UNLOCKABLE_公会战旗 = 3898156960
     公会特性_UNLOCKABLE_UNUSED = 1683579090
 

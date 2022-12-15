@@ -20,49 +20,41 @@ richTextManifestSourceData = {
         "Objective",
         4079285740
     ],
-    "": [
+    "": [
         "Objective",
-        1237801580
+        4052506320
+    ],
+    "": [
+        "Objective",
+        4052506321
     ],
     "": [
         "Objective",
-        2211647377
+        1623396945
     ],
-    "": [
+    "": [
         "Objective",
-        3565357126
-    ],
-    "": [
-        "Objective",
-        2584205171
-    ],
-    "": [
-        "Objective",
-        2439045878
+        4065410705
     ],
     "": [
         "Objective",
-        726078890
+        4065410707
     ],
-    "": [
+    "": [
         "Objective",
-        2182114467
+        4275139238
     ],
-    "": [
+    "": [
         "Objective",
-        2182114464
-    ],
-    "": [
-        "Objective",
-        1898666999
+        635284441
     ],
     "": [
         "Objective",
         3084583225
     ],
-    "": [
+    "": [
         "Objective",
-        848833235
+        75057024
     ],
     "": [
         "Objective",
@@ -72,17 +64,33 @@ richTextManifestSourceData = {
         "Objective",
         3792487535
     ],
+    "": [
+        "Objective",
+        2839055140
+    ],
+    "": [
+        "Objective",
+        3132164210
+    ],
+    "": [
+        "Objective",
+        273389628
+    ],
     "": [
         "Objective",
         2506456167
     ],
-    "": [
+    "": [
         "Objective",
-        2382054703
+        3068792281
     ],
     "": [
         "Objective",
         1221579507
+    ],
+    "": [
+        "Objective",
+        3581927170
     ],
     "": [
         "Objective",
@@ -95,14 +103,6 @@ richTextManifestSourceData = {
     "": [
         "Objective",
         1566997684
-    ],
-    "": [
-        "Objective",
-        2845685672
-    ],
-    "": [
-        "Objective",
-        1652109544
     ],
     "": [
         "Objective",
