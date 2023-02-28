@@ -22,35 +22,23 @@ richTextManifestSourceData = {
     ],
     "": [
         "Objective",
-        4052506320
+        1250089451
     ],
-    "": [
+    "": [
         "Objective",
-        4052506321
+        1250089450
     ],
-    "": [
+    "": [
         "Objective",
-        1623396945
-    ],
-    "": [
-        "Objective",
-        4065410705
-    ],
-    "": [
-        "Objective",
-        4065410707
-    ],
-    "": [
-        "Objective",
-        4275139238
-    ],
-    "": [
-        "Objective",
-        635284441
+        1250089449
     ],
     "": [
         "Objective",
         3084583225
+    ],
+    "": [
+        "Objective",
+        848833235
     ],
     "": [
         "Objective",
@@ -60,10 +48,6 @@ richTextManifestSourceData = {
         "Objective",
         1878777304
     ],
-    "": [
-        "Objective",
-        3792487535
-    ],
     "": [
         "Objective",
         2839055140
@@ -71,6 +55,10 @@ richTextManifestSourceData = {
     "": [
         "Objective",
         3132164210
+    ],
+    "": [
+        "Objective",
+        212380697
     ],
     "": [
         "Objective",
@@ -80,33 +68,45 @@ richTextManifestSourceData = {
         "Objective",
         2506456167
     ],
+    "": [
+        "Objective",
+        2382054703
+    ],
     "": [
         "Objective",
         3068792281
+    ],
+    "": [
+        "Objective",
+        3119800191
     ],
     "": [
         "Objective",
         1221579507
     ],
-    "": [
+    "": [
         "Objective",
-        3581927170
+        2793993158
     ],
     "": [
         "Objective",
         2269729042
     ],
-    "": [
-        "Objective",
-        1937858729
-    ],
     "": [
         "Objective",
         1566997684
     ],
+    "": [
+        "Objective",
+        2845685672
+    ],
     "": [
         "Objective",
         4231452845
+    ],
+    "": [
+        "Objective",
+        1413945832
     ],
     "": [
         "Objective",
@@ -183,6 +183,14 @@ richTextManifestSourceData = {
     "[空中移动]": [
         "SandboxPerk",
         3694014520
+    ],
+    "": [
+        "SandboxPerk",
+        501809574
+    ],
+    "": [
+        "SandboxPerk",
+        2081053592
     ]
 }
 

@@ -6,18 +6,22 @@ class PlugCategoryHashes(int, Enum):
     HunterVoidAspects = 2905530840
     HunterSolarAspects = 3052104375
     HunterArcAspects = 185594100
+    HunterStrandAspects = 3805562622
     TitanSharedAspects = 4032445539
     TitanVoidAspects = 3990226434
     TitanSolarAspects = 1970675705
     TitanArcAspects = 3460332466
+    TitanStrandAspects = 323641540
     WarlockSharedAspects = 3908861120
     WarlockVoidAspects = 227647633
     WarlockSolarAspects = 81856188
     WarlockArcAspects = 2111409167
+    WarlockStrandAspects = 2557935615
     SharedFragments = 1920373979
     SharedVoidFragments = 39076551
     SharedSolarFragments = 3119191718
     SharedArcFragments = 2430016289
+    SharedStrandFragments = 685964393
     SharedStasisTrinkets = 83940941
     EnhancementsGhostsActivity = 1232333242
     EnhancementsGhostsActivityFake = 623624742
@@ -26,11 +30,20 @@ class PlugCategoryHashes(int, Enum):
     EnhancementsGhostsTracking = 1102742598
     PlugsGhostsMasterworks = 4096629092
     ArchetypeIntrinsic = 1188147254
+    EnhancementsV2Arms = 3422420680
+    EnhancementsV2Chest = 1526202480
+    EnhancementsV2ClassItem = 912441879
+    EnhancementsV2General = 2487827355
+    EnhancementsV2Head = 2912171003
+    EnhancementsV2Legs = 2111701510
+    EnhancementsArtifice = 3773173029
     Shader = 2973005342
     CraftingPlugsFrameIdentifiers = 3425085882
     V400PlugsWeaponsMasterworks = 3185182717
+    CraftingPlugsWeaponsModsEnhancers = 711031169
     CraftingPlugsWeaponsModsExtractors = 3520412733
     CraftingPlugsWeaponsModsMemories = 2748073883
+    CraftingPlugsWeaponsModsTransfusersLevel = 1716719962
     CraftingRecipesEmptySocket = 3618704867
     V400EmptyExoticMasterwork = 1915962497
     V404ArmorFotlMasksAbyssPerks = 457704685
@@ -58,15 +71,8 @@ class PlugCategoryHashes(int, Enum):
     ArmorSkinsWarlockClass = 505602046
     ArmorSkinsWarlockHead = 454950060
     ArmorSkinsWarlockLegs = 3281006437
-    EnhancementsV2Arms = 3422420680
-    EnhancementsV2Head = 2912171003
-    EnhancementsV2Legs = 2111701510
-    EnhancementsV2ClassItem = 912441879
     EnhancementsSeasonV500 = 393461403
-    EnhancementsV2Chest = 1526202480
-    SeasonsSeason18RitualCaptainsLogMaps = 819416197
-    SeasonsSeason18RitualCaptainsLogSecretButtons = 135233934
-    SeasonsSeason18RitualCaptainsLogCrew = 32507403
+    EnhancementsArtifact = 284811516
     Intrinsics = 1744546145
     Mods = 3313201758
     EnhancementsUniversal = 3347429529
@@ -518,7 +524,7 @@ class PlugCategoryHashes(int, Enum):
     V450ActivitiesCaluseumSubmachinegun0Skins = 3823441427
     V450ActivitiesPinnacleSniperRifle0Skins = 1866435883
     V450ActivitiesPinnacleGrenadeLauncher0Skins = 4284125154
-    EnhancementsV2General = 2487827355
+    Deprecated = 3247958962
     EnhancementsSeasonMaverick = 1081029832
     EnhancementsRaidGarden = 1486918022
     EnhancementsSeasonOutlaw = 13646368
@@ -555,8 +561,6 @@ class PlugCategoryHashes(int, Enum):
     V410ActivitiesBlackArmoryMachinegun0Skins = 3642094098
     V310HunterRepackageArms0Skins = 847056233
     V310RepackageHead0Skins = 4261130451
-    EnhancementsSeasonV470 = 208760563
-    EnhancementsElemental = 991069377
     V470NewFusionRifle0Masterwork = 2086437224
     V470NewSidearm0Masterwork = 1764823814
     V470NewScoutRifle0Masterwork = 4058834
@@ -580,7 +584,6 @@ class PlugCategoryHashes(int, Enum):
     V480NewAutoRifle0Masterwork = 1365020630
     V480NewMachinegun0Masterwork = 3883869807
     V480RepackageShotgun0Masterwork = 464940035
-    EnhancementsSeasonV480 = 426869514
     V500NewGrenadeLauncher0Masterwork = 4002498006
     V500NewRocketLauncher0Masterwork = 163781180
     V500NewShotgun0Masterwork = 3621127437
@@ -616,7 +619,6 @@ class PlugCategoryHashes(int, Enum):
     DawningShipSpawnfx = 1767518647
     V500ShipsEventsDawningExoticShip0Engines = 3754191634
     DawningShipShader = 2492152783
-    EnhancementsSeasonV490 = 443647229
     V490NewGrenadeLauncher0Masterwork = 4238615496
     V490NewSidearm0Masterwork = 4133961368
     V490NewTraceRifle0Masterwork = 769288861
@@ -745,6 +747,25 @@ class PlugCategoryHashes(int, Enum):
     V600HunterNewArms0Skins = 1305529752
     V600WarlockNewArms0Skins = 1568401913
     V600WarlockNewLegs0Skins = 45915023
+    HunterStrandSupers = 144959979
+    TitanStrandSupers = 1080622901
+    WarlockStrandSupers = 1774026300
+    HunterStrandMelee = 3873313773
+    TitanStrandMelee = 3826855743
+    WarlockStrandMelee = 3904090216
+    SharedStrandGrenades = 2831653331
+    HunterStrandClassAbilities = 2552562702
+    TitanStrandClassAbilities = 2480042224
+    WarlockStrandClassAbilities = 2200902275
+    HunterStrandMovement = 1979332108
+    TitanStrandMovement = 2139679542
+    WarlockStrandMovement = 3728449707
+    V500WarlockNewHead0Skins = 2332885763
+    V600TitanNewHead0Skins = 4260763321
+    V700ExoticWeaponMasterwork = 4109527333
+    V700PursuitGlaive0Skins = 1980932117
+    V700NewBow0Skins = 1242165521
+    V620NewAutoRifle0Skins = 2920012332
     SocialClansPerks = 3898156960
     SocialClansStaves = 3954618873
 
@@ -794,20 +815,21 @@ class StatHashes(int, Enum):
     电弧伤害抗性 = 1546607978
     烈日伤害抗性 = 1546607979
     虚空伤害抗性 = 1546607980
-    电弧能量适配 = 3625423501
-    烈日能量适配 = 2018193158
-    虚空能量适配 = 16120457
     星相能量容量 = 2223994109
     机灵能量容量 = 237763788
     电弧消耗 = 3779394102
     烈日消耗 = 3344745325
     虚空消耗 = 2399985800
+    冰影消耗 = 998798867
     任意能量类型消耗 = 3578062600
     碎片消耗 = 119204074
     模组消耗 = 514071887
     能量加成 = 3289069874
-    冰影消耗_3950461274 = 3950461274
-    冰影消耗_998798867 = 998798867
+    护甲能量容量_3625423501 = 3625423501
+    护甲能量容量_2018193158 = 2018193158
+    护甲能量容量_16120457 = 16120457
+    护甲能量容量_3950461274 = 3950461274
+    护甲能量容量_2441327376 = 2441327376
 
 class ItemCategoryHashes(int, Enum):
     武器 = 1
@@ -935,9 +957,6 @@ class ItemCategoryHashes(int, Enum):
 
 class SocketCategoryHashes(int, Enum):
     原料 = 4084329384
-    藏宝图 = 819416197
-    大副 = 32507403
-    秘密隔间 = 135233934
     全盛智谋特性 = 2283447921
     护甲阶级 = 760375309
     护甲模组 = 590099826
@@ -949,8 +968,6 @@ class SocketCategoryHashes(int, Enum):
     武器装饰 = 2048875504
     载具特性 = 2278110604
     超能 = 457473665
-    星相 = 2140934067
-    碎片 = 1313488945
     徽标额外特性 = 513547461
     徽标自定义 = 279738248
     日落修改器 = 2622243744
@@ -963,18 +980,6 @@ class SocketCategoryHashes(int, Enum):
     机灵模组 = 3886482628
     机灵装饰 = 2549160099
     公会旗杆 = 3954618873
-    武器特性_CONSUMABLE = 3410521964
-    食谱_CONSUMABLE_容器_Quest = 809913446
-    护甲特性_REUSABLE = 2518356196
-    护甲特性_LARGE_PERK = 3154740035
-    武器特性_REUSABLE = 4241085061
-    载具模组_CONSUMABLE_载具 = 4243480345
-    载具模组_CONSUMABLE_飞船 = 4265082475
-    技能_ABILITIES = 309722977
-    技能_ABILITIES_LightSubclass = 3218807805
-    食谱_CONSUMABLE_UNUSED = 2059652296
-    公会特性_UNLOCKABLE_公会战旗 = 3898156960
-    公会特性_UNLOCKABLE_UNUSED = 1683579090
 
 class BucketHashes(int, Enum):
     动能武器 = 1498876634
