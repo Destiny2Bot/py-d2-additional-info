@@ -41,6 +41,7 @@ class PlugCategoryHashes(int, Enum):
     CraftingPlugsFrameIdentifiers = 3425085882
     V400PlugsWeaponsMasterworks = 3185182717
     CraftingPlugsWeaponsModsEnhancers = 711031169
+    Frames = 7906839
     CraftingPlugsWeaponsModsExtractors = 3520412733
     CraftingPlugsWeaponsModsMemories = 2748073883
     CraftingPlugsWeaponsModsTransfusersLevel = 1716719962
@@ -114,7 +115,6 @@ class PlugCategoryHashes(int, Enum):
     Barrels = 2833605196
     Blades = 1041766312
     Batteries = 1757026848
-    Frames = 7906839
     Guards = 683359327
     Magazines = 1806783418
     MagazinesGl = 2718120384
@@ -760,12 +760,15 @@ class PlugCategoryHashes(int, Enum):
     HunterStrandMovement = 1979332108
     TitanStrandMovement = 2139679542
     WarlockStrandMovement = 3728449707
+    EnhancementsRaidV700 = 2106680364
     V500WarlockNewHead0Skins = 2332885763
     V600TitanNewHead0Skins = 4260763321
     V700ExoticWeaponMasterwork = 4109527333
+    V700WeaponsModsMissionAvalon = 709861688
     V700PursuitGlaive0Skins = 1980932117
     V700NewBow0Skins = 1242165521
     V620NewAutoRifle0Skins = 2920012332
+    V700NewGlaive0Skins = 2359272137
     SocialClansPerks = 3898156960
     SocialClansStaves = 3954618873
 
